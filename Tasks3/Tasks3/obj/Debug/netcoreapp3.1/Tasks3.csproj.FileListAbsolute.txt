@@ -1,0 +1,13 @@
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\bin\Debug\netcoreapp3.1\Tasks3.exe
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\bin\Debug\netcoreapp3.1\Tasks3.deps.json
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\bin\Debug\netcoreapp3.1\Tasks3.runtimeconfig.json
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\bin\Debug\netcoreapp3.1\Tasks3.runtimeconfig.dev.json
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\bin\Debug\netcoreapp3.1\Tasks3.dll
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\bin\Debug\netcoreapp3.1\Tasks3.pdb
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.csprojAssemblyReference.cache
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.AssemblyInfoInputs.cache
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.AssemblyInfo.cs
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.csproj.CoreCompileInputs.cache
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.dll
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.pdb
+C:\Users\krzys\Desktop\CSharp\Tasks3\Tasks3\obj\Debug\netcoreapp3.1\Tasks3.genruntimeconfig.cache
