@@ -156,8 +156,136 @@ namespace Tasks3
             {
                 Console.WriteLine("Stypendium : 550.00 zł");
             }
-            */
             // Zadanie 3.9 ----------------------------------------------------------
+            char choice;
+            int rows,i,j,vhelp;
+            Console.Write("Wybierz wariant(a|b|c|d) : ");
+            choice = char.Parse(Console.ReadLine());
+            Console.Write("Podaj liczbe wyświetlanych wierszy(1-4) : ");
+            rows = int.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                case 'a':
+                    for(i = 1;i <= rows; i++)
+                    {
+                        j = i;
+                        while (j > 0)
+                        {
+                            Console.Write('*');
+                            j--;
+                        }
+                        Console.WriteLine();
+                    }
+                    break;
+                case 'b':
+                    for (i = 1; i <= rows; i++)
+                    {
+                        j = 5 - i;
+                        while (j > 0)
+                        {
+                            Console.Write('*');
+                            j--;
+                        }
+                        Console.WriteLine();
+                    }
+                    break;
+                case 'c':
+                    for (i = 1; i <= rows; i++)
+                    {
+                        j = 4;vhelp = 4 - i;
+                        while (j > 0)
+                        {
+                            if (vhelp > 0)
+                            {
+                                Console.Write(' ');
+                            }
+                            else
+                            {
+                                Console.Write('*');
+                            }
+                            j--;vhelp--;
+                        }
+                        Console.WriteLine();
+                    }
+                    break;
+                case 'd':
+                    for (i = 1; i <= rows; i++)
+                    {
+                        j = 4;
+                        while (j > 0)
+                        {
+                            if ((i > 1) && (i < 4) && (j < 4) && (j > 1))
+                            {
+                                Console.Write(' ');
+                            }
+                            else
+                            {
+                                Console.Write('*');
+                            }
+                            j--;
+                        }
+                        Console.WriteLine();
+                    }
+                    break;
+            }
+            // Zadanie 3.10 ----------------------------------------------------------
+            Console.Write("Podaj liczbe z której chcesz uzyskać silnię : ");
+            int number = int.Parse(Console.ReadLine());
+
+            static int silnia(int n)
+            {
+                if (n < 2) return 1;
+                else
+                {
+                    return n * silnia(n-1);
+                }
+            }
+
+            Console.WriteLine("Silnia z {0} to {1}", number, silnia(number));
+            // Zadanie 3.11 ----------------------------------------------------------
+            int suma = 0;
+            int amount = 0;
+            for(int i = 1;suma <= 100;i++)
+            {
+                suma += i;
+                amount++;
+            }
+            Console.WriteLine(amount);
+            // Zadanie 3.12 ----------------------------------------------------------
+            int number, sum = 0;
+            while(1 == 1)
+            {
+                Console.Write("Podaj liczbe : ");
+                number = int.Parse(Console.ReadLine());
+                if(number != 0)
+                {
+                    sum += number;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Console.WriteLine("Suma wprowadzonych liczb to : {0}", sum);
+            // Zadanie 3.13 ----------------------------------------------------------
+            int n,suma = 0;
+            Console.Write("Podaj liczbę n : ");
+            n = int.Parse(Console.ReadLine());
+            for(int i = 1;i <= n; i++)
+            {
+                if((i % 2) == 0)
+                {
+                    suma -= i;
+                }
+                else
+                {
+                    suma += i;
+                }
+            }
+            Console.WriteLine("Suma szeregu to {0}", suma);
+            */
+            // Zadanie 3.14 ----------------------------------------------------------
+            
         }
     }
 }
