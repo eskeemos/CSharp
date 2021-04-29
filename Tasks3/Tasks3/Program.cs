@@ -283,9 +283,36 @@ namespace Tasks3
                 }
             }
             Console.WriteLine("Suma szeregu to {0}", suma);
-            */
             // Zadanie 3.14 ----------------------------------------------------------
-            
+            int suma;
+            Console.Write("Podaj liczbą n : ");
+            int n = int.Parse(Console.ReadLine());
+
+            for(int i = 2;i <= n; i++)
+            {
+                suma = 1;
+                for (int j = 2;j <= Math.Sqrt(i);j++)
+                {
+                    if(i % j == 0) suma += j + i / j;
+                }
+                if(i == suma) Console.WriteLine("Liczba {0} jest doskonała",i);
+            }
+            // Zadanie 3.15 ----------------------------------------------------------
+            Console.WriteLine("Możliwe sposoby wypłacenia 10zł w nominałach(1zł, 2zł, 5zł)");
+            for (int m5 = 0; m5 <= 2; m5++)
+            {
+                for (int m2 = 0; m2 <= 5; m2++)
+                {
+                    for (int m1 = 0; m1 <= 10; m1++)
+                    {
+                        if((m5 * 5) + (m2 * 2) + m1 == 10)
+                        {
+                            Console.WriteLine("5zł * {0} + 2zł * {1} + 1zł * {2}", m5, m2, m1);
+                        }
+                    }
+                }
+            }
+            */
         }
     }
 }
