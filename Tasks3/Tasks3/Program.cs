@@ -8,7 +8,7 @@ namespace Tasks3
     {
         static void Main(string[] args)
         {
-            // ZADANIA http://c-sharp.ue.katowice.pl/ksiazka/c_sharp_wer2_0.pdf strona 54
+            // ZADANIA http://c-sharp.ue.katowice.pl/ksiazka/c_sharp_wer2_0.pdf strona 88
             // Zadanie 3.1 ----------------------------------------------------------
             /*
             Console.Write("Podaj rok : ");
