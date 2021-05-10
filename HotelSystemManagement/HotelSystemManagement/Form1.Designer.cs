@@ -70,10 +70,10 @@ namespace HotelSystemManagement
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.textBox1.CausesValidation = false;
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(75, 175);
+            this.textBox1.Location = new System.Drawing.Point(71, 120);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Username";
-            this.textBox1.Size = new System.Drawing.Size(177, 27);
+            this.textBox1.Size = new System.Drawing.Size(200, 27);
             this.textBox1.TabIndex = 2;
             // 
             // textBox2
@@ -81,10 +81,10 @@ namespace HotelSystemManagement
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.textBox2.CausesValidation = false;
             this.textBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(75, 229);
+            this.textBox2.Location = new System.Drawing.Point(71, 171);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "Password";
-            this.textBox2.Size = new System.Drawing.Size(177, 27);
+            this.textBox2.Size = new System.Drawing.Size(200, 27);
             this.textBox2.TabIndex = 3;
             this.textBox2.UseSystemPasswordChar = true;
             // 
@@ -94,7 +94,7 @@ namespace HotelSystemManagement
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(75, 303);
+            this.button1.Location = new System.Drawing.Point(75, 323);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 40);
@@ -105,7 +105,7 @@ namespace HotelSystemManagement
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(75, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(75, 228);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -115,7 +115,7 @@ namespace HotelSystemManagement
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(25, 175);
+            this.pictureBox2.Location = new System.Drawing.Point(21, 120);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(44, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -125,7 +125,7 @@ namespace HotelSystemManagement
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(25, 229);
+            this.pictureBox3.Location = new System.Drawing.Point(21, 171);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(44, 27);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
