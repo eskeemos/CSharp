@@ -1,0 +1,16 @@
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.exe
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.deps.json
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.runtimeconfig.json
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.runtimeconfig.dev.json
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.pdb
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csprojAssemblyReference.cache
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.Form1.resources
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csproj.GenerateResource.cache
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.AssemblyInfoInputs.cache
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.AssemblyInfo.cs
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csproj.CoreCompileInputs.cache
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.pdb
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.genruntimeconfig.cache
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.Properties.Resources.resources
