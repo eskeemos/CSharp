@@ -14,3 +14,11 @@ C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\De
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.pdb
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.genruntimeconfig.cache
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.Properties.Resources.resources
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.MainForm.resources
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csproj.CopyComplete
