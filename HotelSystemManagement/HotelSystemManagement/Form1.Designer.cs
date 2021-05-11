@@ -47,7 +47,7 @@ namespace HotelSystemManagement
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Magneto", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(49)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.label1.Location = new System.Drawing.Point(33, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 48);
@@ -58,7 +58,7 @@ namespace HotelSystemManagement
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Showcard Gothic", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(173)))), ((int)(((byte)(181)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.label2.Location = new System.Drawing.Point(170, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 50);
@@ -67,37 +67,45 @@ namespace HotelSystemManagement
             // 
             // username
             // 
-            this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username.CausesValidation = false;
             this.username.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.username.Location = new System.Drawing.Point(71, 120);
+            this.username.ForeColor = System.Drawing.SystemColors.Window;
+            this.username.Location = new System.Drawing.Point(56, 127);
+            this.username.Multiline = true;
             this.username.Name = "username";
             this.username.PlaceholderText = "Username";
-            this.username.Size = new System.Drawing.Size(200, 27);
+            this.username.Size = new System.Drawing.Size(200, 25);
             this.username.TabIndex = 2;
+            this.username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // password
             // 
-            this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password.CausesValidation = false;
             this.password.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.password.Location = new System.Drawing.Point(71, 171);
+            this.password.ForeColor = System.Drawing.SystemColors.Window;
+            this.password.Location = new System.Drawing.Point(56, 197);
+            this.password.Margin = new System.Windows.Forms.Padding(5);
             this.password.Name = "password";
             this.password.PlaceholderText = "Password";
             this.password.Size = new System.Drawing.Size(200, 27);
             this.password.TabIndex = 3;
+            this.password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.password.UseSystemPasswordChar = true;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(75, 323);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
+            this.button1.Location = new System.Drawing.Point(56, 313);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 40);
+            this.button1.Size = new System.Drawing.Size(200, 40);
             this.button1.TabIndex = 4;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
@@ -106,9 +114,9 @@ namespace HotelSystemManagement
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(75, 228);
+            this.pictureBox1.Location = new System.Drawing.Point(56, 232);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 73);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 73);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -116,9 +124,10 @@ namespace HotelSystemManagement
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(21, 120);
+            this.pictureBox2.Location = new System.Drawing.Point(56, 92);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(44, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(200, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -126,9 +135,10 @@ namespace HotelSystemManagement
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(21, 171);
+            this.pictureBox3.Location = new System.Drawing.Point(56, 160);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(44, 27);
+            this.pictureBox3.Size = new System.Drawing.Size(200, 27);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
@@ -138,7 +148,7 @@ namespace HotelSystemManagement
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
             this.ClientSize = new System.Drawing.Size(300, 400);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
