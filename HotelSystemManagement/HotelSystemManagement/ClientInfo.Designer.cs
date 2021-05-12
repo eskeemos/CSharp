@@ -111,7 +111,6 @@ namespace HotelSystemManagement
             this.ClientName.PlaceholderText = "ClientName";
             this.ClientName.Size = new System.Drawing.Size(222, 25);
             this.ClientName.TabIndex = 4;
-            this.ClientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ClientPhone
             // 
@@ -127,10 +126,10 @@ namespace HotelSystemManagement
             this.ClientPhone.PlaceholderText = "ClientPhone";
             this.ClientPhone.Size = new System.Drawing.Size(222, 25);
             this.ClientPhone.TabIndex = 3;
-            this.ClientPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ClientCountry
             // 
+            this.ClientCountry.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ClientCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.ClientCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ClientCountry.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

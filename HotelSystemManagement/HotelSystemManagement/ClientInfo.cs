@@ -46,13 +46,16 @@ namespace HotelSystemManagement
             SqlCommand sql1 = new SqlCommand($"INSERT INTO Client_tab(ClientName,ClientPhone,ClientCountry) VALUES('{ClientName.Text}','{ClientPhone.Text}','{ClientCountry.SelectedItem.ToString()}')", Con);
             sql1.ExecuteNonQuery();
             MessageBox.Show("Client Successfully Added");
+            ClientName.Text = ClientPhone.Text = ""; ClientCountry.Text = "Chose country";
             Con.Close();
             populate();
         }
 
         private void ClientGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // ClientName.Text = ClientGridView.Rows[2].Cells[1].Value.ToString();
+            ClientName.Text    = ClientGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            ClientPhone.Text   = ClientGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            ClientCountry.Text = ClientGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
         }
     }
 }
