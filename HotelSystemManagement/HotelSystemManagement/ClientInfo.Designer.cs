@@ -30,14 +30,15 @@ namespace HotelSystemManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.Datetxt = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ClientName = new System.Windows.Forms.TextBox();
+            this.ClientPhone = new System.Windows.Forms.TextBox();
+            this.ClientCountry = new System.Windows.Forms.ComboBox();
+            this.ClientGridView = new System.Windows.Forms.DataGridView();
             this.AddBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
@@ -45,7 +46,7 @@ namespace HotelSystemManagement
             this.button4 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,70 +97,77 @@ namespace HotelSystemManagement
             this.label1.TabIndex = 0;
             this.label1.Text = "Client Information";
             // 
-            // textBox1
+            // ClientName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.CausesValidation = false;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(39, 152);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "ClientName";
-            this.textBox1.Size = new System.Drawing.Size(222, 25);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClientName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.ClientName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ClientName.CausesValidation = false;
+            this.ClientName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClientName.ForeColor = System.Drawing.SystemColors.Window;
+            this.ClientName.Location = new System.Drawing.Point(39, 152);
+            this.ClientName.Margin = new System.Windows.Forms.Padding(10);
+            this.ClientName.Multiline = true;
+            this.ClientName.Name = "ClientName";
+            this.ClientName.PlaceholderText = "ClientName";
+            this.ClientName.Size = new System.Drawing.Size(222, 25);
+            this.ClientName.TabIndex = 4;
+            this.ClientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // ClientPhone
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.CausesValidation = false;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Location = new System.Drawing.Point(39, 197);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "ClientPhone";
-            this.textBox2.Size = new System.Drawing.Size(222, 25);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClientPhone.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.ClientPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ClientPhone.CausesValidation = false;
+            this.ClientPhone.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClientPhone.ForeColor = System.Drawing.SystemColors.Window;
+            this.ClientPhone.Location = new System.Drawing.Point(39, 197);
+            this.ClientPhone.Margin = new System.Windows.Forms.Padding(10);
+            this.ClientPhone.Multiline = true;
+            this.ClientPhone.Name = "ClientPhone";
+            this.ClientPhone.PlaceholderText = "ClientPhone";
+            this.ClientPhone.Size = new System.Drawing.Size(222, 25);
+            this.ClientPhone.TabIndex = 3;
+            this.ClientPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // comboBox1
+            // ClientCountry
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ClientCountry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.ClientCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClientCountry.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClientCountry.ForeColor = System.Drawing.SystemColors.Window;
+            this.ClientCountry.FormattingEnabled = true;
+            this.ClientCountry.Items.AddRange(new object[] {
             "POLAND",
             "ENGLAND",
             "GERMANY",
             "FRANCE",
             "USA",
             "OTHER"});
-            this.comboBox1.Location = new System.Drawing.Point(39, 242);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(222, 29);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.Text = "Country";
+            this.ClientCountry.Location = new System.Drawing.Point(39, 242);
+            this.ClientCountry.Margin = new System.Windows.Forms.Padding(10);
+            this.ClientCountry.Name = "ClientCountry";
+            this.ClientCountry.Size = new System.Drawing.Size(222, 29);
+            this.ClientCountry.TabIndex = 7;
+            this.ClientCountry.Text = "Country";
             // 
-            // dataGridView1
+            // ClientGridView
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.Chocolate;
-            this.dataGridView1.Location = new System.Drawing.Point(292, 152);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(30);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 272);
-            this.dataGridView1.TabIndex = 8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Orange;
+            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.ClientGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.ClientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClientGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(34)))));
+            this.ClientGridView.Location = new System.Drawing.Point(292, 152);
+            this.ClientGridView.Margin = new System.Windows.Forms.Padding(30);
+            this.ClientGridView.Name = "ClientGridView";
+            this.ClientGridView.RowTemplate.Height = 25;
+            this.ClientGridView.Size = new System.Drawing.Size(443, 341);
+            this.ClientGridView.TabIndex = 8;
+            this.ClientGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGridView_CellContentClick);
             // 
             // AddBtn
             // 
@@ -245,10 +253,10 @@ namespace HotelSystemManagement
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ClientGridView);
+            this.Controls.Add(this.ClientCountry);
+            this.Controls.Add(this.ClientPhone);
+            this.Controls.Add(this.ClientName);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientInfo";
@@ -257,7 +265,7 @@ namespace HotelSystemManagement
             this.Load += new System.EventHandler(this.ClientInfo_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,10 +275,10 @@ namespace HotelSystemManagement
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ClientName;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox ClientCountry;
+        private System.Windows.Forms.DataGridView Client;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button EditBtn;
@@ -281,5 +289,7 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Label Datetxt;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox ClientPhone;
+        private System.Windows.Forms.DataGridView ClientGridView;
     }
 }
