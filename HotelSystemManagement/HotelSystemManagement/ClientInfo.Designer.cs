@@ -30,9 +30,9 @@ namespace HotelSystemManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.ClientID = new System.Windows.Forms.TextBox();
             this.Datetxt = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ClientName = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@ namespace HotelSystemManagement
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.ClientID);
             this.panel1.Controls.Add(this.Datetxt);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -62,20 +62,20 @@ namespace HotelSystemManagement
             this.panel1.Size = new System.Drawing.Size(800, 106);
             this.panel1.TabIndex = 0;
             // 
-            // textBox4
+            // ClientID
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.CausesValidation = false;
-            this.textBox4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox4.Location = new System.Drawing.Point(1, 1);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(1, 1);
-            this.textBox4.TabIndex = 1;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClientID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.ClientID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ClientID.CausesValidation = false;
+            this.ClientID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClientID.ForeColor = System.Drawing.SystemColors.Window;
+            this.ClientID.Location = new System.Drawing.Point(1, 1);
+            this.ClientID.Margin = new System.Windows.Forms.Padding(10);
+            this.ClientID.Multiline = true;
+            this.ClientID.Name = "ClientID";
+            this.ClientID.Size = new System.Drawing.Size(1, 1);
+            this.ClientID.TabIndex = 1;
+            this.ClientID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Datetxt
             // 
@@ -151,12 +151,12 @@ namespace HotelSystemManagement
             // 
             // ClientGridView
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Orange;
-            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Orange;
+            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.ClientGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.ClientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ClientGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(34)))));
@@ -194,6 +194,7 @@ namespace HotelSystemManagement
             this.DeleteBtn.TabIndex = 10;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -207,6 +208,7 @@ namespace HotelSystemManagement
             this.EditBtn.TabIndex = 11;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = false;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // textBox3
             // 
@@ -290,5 +292,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox ClientPhone;
         private System.Windows.Forms.DataGridView ClientGridView;
+        private System.Windows.Forms.TextBox ClientID;
     }
 }
