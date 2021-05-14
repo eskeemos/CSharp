@@ -10,10 +10,10 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace HotelSystemManagement
 {
-    public partial class Form1 : Form
+    public partial class Start : Form
     {
         SqlConnection Con = new SqlConnection(@"Data Source=DESKTOP-DABF71C;Initial Catalog=hotel_db;Integrated Security=True");
-        public Form1()
+        public Start()
         {
             InitializeComponent();
         }

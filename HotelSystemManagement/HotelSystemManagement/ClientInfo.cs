@@ -38,6 +38,7 @@ namespace HotelSystemManagement
             Datetxt.Text = DateTime.Now.ToLongTimeString();
             timer1.Start();
             populate();
+            ClientCountry.Text = "POLAND";
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace HotelSystemManagement
             SqlCommand sql1 = new SqlCommand($"INSERT INTO Client_tab(ClientName,ClientPhone,ClientCountry) VALUES('{ClientName.Text}','{ClientPhone.Text}','{ClientCountry.SelectedItem.ToString()}')", Con);
             sql1.ExecuteNonQuery();
             MessageBox.Show("Client Successfully Added");
-            ClientName.Text = ClientPhone.Text = ""; ClientCountry.Text = "Chose country";
+            ClientName.Text = ClientPhone.Text = ""; ClientCountry.Text = "POLAND";
             Con.Close();
             populate();
         }
@@ -66,7 +67,7 @@ namespace HotelSystemManagement
             SqlCommand sql = new SqlCommand(query,Con);
             sql.ExecuteNonQuery();
             Con.Close();
-            ClientName.Text = ClientPhone.Text = ""; ClientCountry.Text = "Chose country";
+            ClientName.Text = ClientPhone.Text = ""; ClientCountry.Text = "POLAND";
             populate();
             MessageBox.Show("Client Successfully Edited");
         }
@@ -81,6 +82,30 @@ namespace HotelSystemManagement
             ClientName.Text = ClientPhone.Text = ""; ClientCountry.Text = "Chose country";
             populate();
             MessageBox.Show("Client Successfully Deleted");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            string sql = "SELECT * FROM Client_tab WHERE ClientName LIKE '%" + ClientSearch.Text + "%'";
+            SqlDataAdapter getData = new SqlDataAdapter(sql, Con);
+            SqlCommandBuilder getRows = new SqlCommandBuilder(getData);
+            var getSpace = new DataSet();
+            getData.Fill(getSpace);
+            ClientGridView.DataSource = getSpace.Tables[0];
+            Con.Close();
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            populate();
+            ClientSearch.Text = "";
+        }
+
+        private void ClientSearch_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

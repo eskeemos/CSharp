@@ -5,7 +5,6 @@ C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\De
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.dll
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\Debug\netcoreapp3.1\HotelSystemManagement.pdb
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csprojAssemblyReference.cache
-C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.Form1.resources
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csproj.GenerateResource.cache
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.AssemblyInfoInputs.cache
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.AssemblyInfo.cs
@@ -23,3 +22,5 @@ C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\bin\De
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.MainForm.resources
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.csproj.CopyComplete
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.ClientInfo.resources
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.StaffInfo.resources
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.Start.resources

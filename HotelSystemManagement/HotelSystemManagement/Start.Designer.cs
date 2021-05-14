@@ -1,7 +1,7 @@
 ﻿
 namespace HotelSystemManagement
 {
-    partial class Form1
+    partial class Start
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace HotelSystemManagement
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
@@ -174,7 +174,6 @@ namespace HotelSystemManagement
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox U;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;

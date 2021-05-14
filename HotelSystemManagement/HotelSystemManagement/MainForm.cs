@@ -22,7 +22,7 @@ namespace HotelSystemManagement
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            Form1 login = new Form1();
+            Start login = new Start();
             login.Show();
             this.Hide();
         }

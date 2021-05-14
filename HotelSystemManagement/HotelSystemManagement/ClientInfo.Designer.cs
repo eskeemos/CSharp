@@ -30,7 +30,8 @@ namespace HotelSystemManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientInfo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientID = new System.Windows.Forms.TextBox();
             this.Datetxt = new System.Windows.Forms.Label();
@@ -42,11 +43,13 @@ namespace HotelSystemManagement
             this.AddBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ClientSearch = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -136,12 +139,12 @@ namespace HotelSystemManagement
             this.ClientCountry.ForeColor = System.Drawing.SystemColors.Window;
             this.ClientCountry.FormattingEnabled = true;
             this.ClientCountry.Items.AddRange(new object[] {
-            "POLAND",
-            "ENGLAND",
-            "GERMANY",
-            "FRANCE",
-            "USA",
-            "OTHER"});
+            "Poland",
+            "England",
+            "Germany",
+            "France",
+            "Usa",
+            "Other"});
             this.ClientCountry.Location = new System.Drawing.Point(39, 242);
             this.ClientCountry.Margin = new System.Windows.Forms.Padding(10);
             this.ClientCountry.Name = "ClientCountry";
@@ -151,12 +154,12 @@ namespace HotelSystemManagement
             // 
             // ClientGridView
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Orange;
-            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Orange;
+            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ClientGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.ClientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ClientGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(34)))));
@@ -210,21 +213,22 @@ namespace HotelSystemManagement
             this.EditBtn.UseVisualStyleBackColor = false;
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
-            // textBox3
+            // ClientSearch
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.CausesValidation = false;
-            this.textBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Location = new System.Drawing.Point(383, 117);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "ClientName";
-            this.textBox3.Size = new System.Drawing.Size(222, 25);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClientSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.ClientSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ClientSearch.CausesValidation = false;
+            this.ClientSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ClientSearch.ForeColor = System.Drawing.SystemColors.Window;
+            this.ClientSearch.Location = new System.Drawing.Point(383, 117);
+            this.ClientSearch.Margin = new System.Windows.Forms.Padding(10);
+            this.ClientSearch.Multiline = true;
+            this.ClientSearch.Name = "ClientSearch";
+            this.ClientSearch.PlaceholderText = "ClientName";
+            this.ClientSearch.Size = new System.Drawing.Size(222, 25);
+            this.ClientSearch.TabIndex = 12;
+            this.ClientSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ClientSearch.TextChanged += new System.EventHandler(this.ClientSearch_TextChanged);
             // 
             // button4
             // 
@@ -238,10 +242,22 @@ namespace HotelSystemManagement
             this.button4.TabIndex = 13;
             this.button4.Text = "Search";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(698, 117);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // ClientInfo
             // 
@@ -249,8 +265,9 @@ namespace HotelSystemManagement
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
             this.ClientSize = new System.Drawing.Size(800, 532);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.ClientSearch);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AddBtn);
@@ -267,6 +284,7 @@ namespace HotelSystemManagement
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,7 +295,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ClientName;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox ClientCountry;
         private System.Windows.Forms.DataGridView Client;
         private System.Windows.Forms.Button AddBtn;
@@ -285,7 +302,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label Datetxt;
         private System.Windows.Forms.Button DeleteBtn;
@@ -293,5 +309,7 @@ namespace HotelSystemManagement
         private System.Windows.Forms.TextBox ClientPhone;
         private System.Windows.Forms.DataGridView ClientGridView;
         private System.Windows.Forms.TextBox ClientID;
+        private System.Windows.Forms.TextBox ClientSearch;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
