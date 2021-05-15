@@ -29,27 +29,29 @@ namespace HotelSystemManagement
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffInfo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.StaffID = new System.Windows.Forms.TextBox();
             this.ClientID = new System.Windows.Forms.TextBox();
-            this.Datetxt = new System.Windows.Forms.Label();
+            this.DateHms = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.StaffPhone = new System.Windows.Forms.TextBox();
             this.StaffName = new System.Windows.Forms.TextBox();
             this.StaffGender = new System.Windows.Forms.ComboBox();
-            this.ClientGridView = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.StaffGridView = new System.Windows.Forms.DataGridView();
+            this.Reset = new System.Windows.Forms.PictureBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.StaffSearch = new System.Windows.Forms.TextBox();
             this.EditBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
             this.StaffPassword = new System.Windows.Forms.TextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaffGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,7 +59,7 @@ namespace HotelSystemManagement
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.panel1.Controls.Add(this.StaffID);
             this.panel1.Controls.Add(this.ClientID);
-            this.panel1.Controls.Add(this.Datetxt);
+            this.panel1.Controls.Add(this.DateHms);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
@@ -96,21 +98,21 @@ namespace HotelSystemManagement
             this.ClientID.TabIndex = 1;
             this.ClientID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Datetxt
+            // DateHms
             // 
-            this.Datetxt.AutoSize = true;
-            this.Datetxt.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Datetxt.Location = new System.Drawing.Point(803, 73);
-            this.Datetxt.Name = "Datetxt";
-            this.Datetxt.Size = new System.Drawing.Size(52, 24);
-            this.Datetxt.TabIndex = 1;
-            this.Datetxt.Text = "Date";
+            this.DateHms.AutoSize = true;
+            this.DateHms.Font = new System.Drawing.Font("Bahnschrift SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DateHms.Location = new System.Drawing.Point(789, 73);
+            this.DateHms.Name = "DateHms";
+            this.DateHms.Size = new System.Drawing.Size(52, 24);
+            this.DateHms.TabIndex = 1;
+            this.DateHms.Text = "Date";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(292, 36);
+            this.label1.Location = new System.Drawing.Point(333, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 33);
             this.label1.TabIndex = 0;
@@ -162,49 +164,51 @@ namespace HotelSystemManagement
             this.StaffGender.Name = "StaffGender";
             this.StaffGender.Size = new System.Drawing.Size(222, 29);
             this.StaffGender.TabIndex = 8;
-            this.StaffGender.Text = "Gender";
+            this.StaffGender.Text = "Chose gender";
             // 
-            // ClientGridView
+            // StaffGridView
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Orange;
-            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ClientGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.ClientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ClientGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(34)))));
-            this.ClientGridView.Location = new System.Drawing.Point(292, 152);
-            this.ClientGridView.Margin = new System.Windows.Forms.Padding(30);
-            this.ClientGridView.Name = "ClientGridView";
-            this.ClientGridView.RowTemplate.Height = 25;
-            this.ClientGridView.Size = new System.Drawing.Size(543, 341);
-            this.ClientGridView.TabIndex = 9;
-            this.ClientGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGridView_CellContentClick);
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Orange;
+            this.StaffGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.StaffGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.StaffGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StaffGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(34)))));
+            this.StaffGridView.Location = new System.Drawing.Point(292, 152);
+            this.StaffGridView.Margin = new System.Windows.Forms.Padding(30);
+            this.StaffGridView.Name = "StaffGridView";
+            this.StaffGridView.RowTemplate.Height = 25;
+            this.StaffGridView.Size = new System.Drawing.Size(543, 341);
+            this.StaffGridView.TabIndex = 9;
+            this.StaffGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StaffGridView_CellContentClick);
             // 
-            // pictureBox1
+            // Reset
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(803, 119);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
+            this.Reset.Image = ((System.Drawing.Image)(resources.GetObject("Reset.Image")));
+            this.Reset.Location = new System.Drawing.Point(803, 119);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(32, 25);
+            this.Reset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Reset.TabIndex = 17;
+            this.Reset.TabStop = false;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
-            // button4
+            // SearchBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.button4.Location = new System.Drawing.Point(723, 119);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(74, 25);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Search";
-            this.button4.UseVisualStyleBackColor = false;
+            this.SearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SearchBtn.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SearchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
+            this.SearchBtn.Location = new System.Drawing.Point(723, 119);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(74, 25);
+            this.SearchBtn.TabIndex = 16;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // StaffSearch
             // 
@@ -234,6 +238,7 @@ namespace HotelSystemManagement
             this.EditBtn.TabIndex = 20;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = false;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -247,6 +252,7 @@ namespace HotelSystemManagement
             this.DeleteBtn.TabIndex = 19;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // AddBtn
             // 
@@ -277,6 +283,10 @@ namespace HotelSystemManagement
             this.StaffPassword.Size = new System.Drawing.Size(222, 25);
             this.StaffPassword.TabIndex = 21;
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // StaffInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -287,10 +297,10 @@ namespace HotelSystemManagement
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.Reset);
+            this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.StaffSearch);
-            this.Controls.Add(this.ClientGridView);
+            this.Controls.Add(this.StaffGridView);
             this.Controls.Add(this.StaffGender);
             this.Controls.Add(this.StaffPhone);
             this.Controls.Add(this.StaffName);
@@ -302,8 +312,8 @@ namespace HotelSystemManagement
             this.Load += new System.EventHandler(this.StaffInfo_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ClientGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaffGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,13 +323,12 @@ namespace HotelSystemManagement
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox ClientID;
-        private System.Windows.Forms.Label Datetxt;
+        private System.Windows.Forms.Label DateHms;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ClientPhone;
         private System.Windows.Forms.TextBox StaffName;
-        private System.Windows.Forms.DataGridView ClientGridView;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DataGridView StaffGridView;
+        private System.Windows.Forms.PictureBox Reset;
+        private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.TextBox StaffSearch;
         private System.Windows.Forms.TextBox StaffPhone;
         private System.Windows.Forms.ComboBox StaffGender;
@@ -328,5 +337,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.TextBox StaffPassword;
         private System.Windows.Forms.TextBox StaffID;
+        private System.Windows.Forms.Timer timer;
     }
 }

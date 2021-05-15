@@ -20,25 +20,25 @@ namespace HotelSystemManagement
             SqlCommandBuilder getRows = new SqlCommandBuilder(getData);
             var getSpace = new DataSet();
             getData.Fill(getSpace);
-            ClientGridView.DataSource = getSpace.Tables[0];
+            StaffGridView.DataSource = getSpace.Tables[0];
             Con.Close();
+            ResetTextBox();
         }
         public StaffInfo()
         {
             InitializeComponent();
         }
-
         private void StaffInfo_Load(object sender, EventArgs e)
         {
             populate();
+            DateHms.Text = DateTime.Now.ToLongTimeString();
+            timer.Start();
         }
-
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            
-            if((StaffName.Text == "")||(StaffPhone.Text == "")||(StaffGender.SelectedItem.ToString() == "")||(StaffPassword.Text == ""))
+            if ((StaffName.Text == "") || (StaffPhone.Text == "") || (StaffGender.Text == "Chose gender") || (StaffPassword.Text == ""))
             {
-                MessageBox.Show("None of the input can be empty!");
+                MessageBox.Show("All input data must be filled and validated!");
             }
             else
             {
@@ -48,16 +48,58 @@ namespace HotelSystemManagement
                 Con.Close();
                 populate();
                 MessageBox.Show("Staff added successfully");
-            }  
+            }
         }
-
-        private void ClientGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void StaffGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            StaffID.Text = this.ClientGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            StaffName.Text = this.ClientGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-            StaffPhone.Text = this.ClientGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-            StaffGender.Text = this.ClientGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
-            StaffPassword.Text = this.ClientGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+            StaffID.Text       = this.StaffGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            StaffName.Text     = this.StaffGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            StaffPhone.Text    = this.StaffGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            StaffGender.Text   = this.StaffGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+            StaffPassword.Text = this.StaffGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+        }  
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            SqlCommand sql = new SqlCommand($"UPDATE Staff_tab SET StaffName = '{StaffName.Text}', StaffPhone = '{StaffPhone.Text}', StaffPassword = '{StaffPassword.Text}', StaffGender = '{StaffGender.SelectedItem.ToString()}' WHERE StaffID = {StaffID.Text}", Con);
+            sql.ExecuteNonQuery();
+            Con.Close();
+            populate();
+            MessageBox.Show("Staff edited successfully");
+        }
+        private void ResetTextBox()
+        {
+            StaffName.Text = StaffPhone.Text = StaffPassword.Text = StaffSearch.Text = ""; ;
+            StaffGender.Text = "Chose gender";
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            SqlCommand sql = new SqlCommand($"DELETE FROM Staff_tab WHERE StaffID = ${StaffID.Text}",Con);
+            sql.ExecuteNonQuery();
+            Con.Close();
+            populate();
+            MessageBox.Show("Staff deleted successfully");
+        }
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {        
+            Con.Open();
+            string sql = $"SELECT * FROM Staff_tab WHERE StaffName LIKE '%{StaffSearch.Text}%'";
+            SqlDataAdapter getData = new SqlDataAdapter(sql, Con);
+            SqlCommandBuilder getRows = new SqlCommandBuilder(getData);
+            var getSpace = new DataSet();
+            getData.Fill(getSpace);
+            StaffGridView.DataSource = getSpace.Tables[0];
+            Con.Close();
+            ResetText();
+        }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            populate();
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            DateHms.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }
