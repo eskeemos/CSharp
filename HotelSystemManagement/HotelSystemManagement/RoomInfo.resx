@@ -74,4 +74,7 @@
         fRaMQr/nXQzr/I79PQ+dcLEoFJ4AmdQGBr2aYqMAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="RoomGridView.Locked" type="System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>True</value>
+  </metadata>
 </root>

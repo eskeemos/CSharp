@@ -31,6 +31,8 @@ namespace HotelSystemManagement
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomInfo));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.YesRadio = new System.Windows.Forms.RadioButton();
+            this.NoRadio = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.StaffID = new System.Windows.Forms.TextBox();
             this.ClientID = new System.Windows.Forms.TextBox();
@@ -38,10 +40,8 @@ namespace HotelSystemManagement
             this.label1 = new System.Windows.Forms.Label();
             this.RoomPhone = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.YesRadio = new System.Windows.Forms.RadioButton();
             this.lbl1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.NoRadio = new System.Windows.Forms.RadioButton();
             this.RoomNumber = new System.Windows.Forms.TextBox();
             this.EditBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
@@ -54,6 +54,26 @@ namespace HotelSystemManagement
             ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoomGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // YesRadio
+            // 
+            this.YesRadio.AutoSize = true;
+            this.YesRadio.Location = new System.Drawing.Point(102, 235);
+            this.YesRadio.Name = "YesRadio";
+            this.YesRadio.Size = new System.Drawing.Size(14, 13);
+            this.YesRadio.TabIndex = 10;
+            this.YesRadio.UseVisualStyleBackColor = true;
+            // 
+            // NoRadio
+            // 
+            this.NoRadio.AutoSize = true;
+            this.NoRadio.Checked = true;
+            this.NoRadio.Location = new System.Drawing.Point(168, 235);
+            this.NoRadio.Name = "NoRadio";
+            this.NoRadio.Size = new System.Drawing.Size(14, 13);
+            this.NoRadio.TabIndex = 12;
+            this.NoRadio.TabStop = true;
+            this.NoRadio.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -144,15 +164,6 @@ namespace HotelSystemManagement
             this.label2.TabIndex = 9;
             this.label2.Text = "Free:";
             // 
-            // YesRadio
-            // 
-            this.YesRadio.AutoSize = true;
-            this.YesRadio.Location = new System.Drawing.Point(102, 235);
-            this.YesRadio.Name = "YesRadio";
-            this.YesRadio.Size = new System.Drawing.Size(14, 13);
-            this.YesRadio.TabIndex = 10;
-            this.YesRadio.UseVisualStyleBackColor = true;
-            // 
             // lbl1
             // 
             this.lbl1.AutoSize = true;
@@ -172,17 +183,6 @@ namespace HotelSystemManagement
             this.label4.Size = new System.Drawing.Size(35, 24);
             this.label4.TabIndex = 13;
             this.label4.Text = "No";
-            // 
-            // NoRadio
-            // 
-            this.NoRadio.AutoSize = true;
-            this.NoRadio.Checked = true;
-            this.NoRadio.Location = new System.Drawing.Point(168, 235);
-            this.NoRadio.Name = "NoRadio";
-            this.NoRadio.Size = new System.Drawing.Size(14, 13);
-            this.NoRadio.TabIndex = 12;
-            this.NoRadio.TabStop = true;
-            this.NoRadio.UseVisualStyleBackColor = true;
             // 
             // RoomNumber
             // 
@@ -211,6 +211,7 @@ namespace HotelSystemManagement
             this.EditBtn.TabIndex = 23;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = false;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -224,6 +225,7 @@ namespace HotelSystemManagement
             this.DeleteBtn.TabIndex = 22;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // AddBtn
             // 
