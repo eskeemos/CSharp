@@ -150,9 +150,10 @@ namespace HotelSystemManagement
             this.RoomPhone.Margin = new System.Windows.Forms.Padding(10);
             this.RoomPhone.Multiline = true;
             this.RoomPhone.Name = "RoomPhone";
-            this.RoomPhone.PlaceholderText = "Room Phone";
+            this.RoomPhone.PlaceholderText = "Enter Room Phone";
             this.RoomPhone.Size = new System.Drawing.Size(222, 25);
             this.RoomPhone.TabIndex = 7;
+            this.RoomPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -195,9 +196,10 @@ namespace HotelSystemManagement
             this.RoomNumber.Margin = new System.Windows.Forms.Padding(10);
             this.RoomNumber.Multiline = true;
             this.RoomNumber.Name = "RoomNumber";
-            this.RoomNumber.PlaceholderText = "Room Number";
+            this.RoomNumber.PlaceholderText = "Enter Room Number";
             this.RoomNumber.Size = new System.Drawing.Size(222, 25);
             this.RoomNumber.TabIndex = 14;
+            this.RoomNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // EditBtn
             // 
@@ -294,7 +296,9 @@ namespace HotelSystemManagement
             this.RoomGridView.Location = new System.Drawing.Point(289, 149);
             this.RoomGridView.Margin = new System.Windows.Forms.Padding(30);
             this.RoomGridView.Name = "RoomGridView";
+            this.RoomGridView.ReadOnly = true;
             this.RoomGridView.RowTemplate.Height = 25;
+            this.RoomGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.RoomGridView.Size = new System.Drawing.Size(543, 341);
             this.RoomGridView.TabIndex = 24;
             this.RoomGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoomGridView_CellContentClick);
