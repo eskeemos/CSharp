@@ -47,6 +47,8 @@ namespace HotelSystemManagement
         private void RoomInfo_Load(object sender, EventArgs e)
         {
             ShowRefreshData();
+            DateHms.Text = DateTime.Now.ToLongTimeString();
+            timer.Start();
         }
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
@@ -81,12 +83,21 @@ namespace HotelSystemManagement
                 {
                     isfree = "occupied";
                 }
+                string RoomNum = $"0{RoomNumber.Text.PadLeft(4, '0')}";
                 Con.Open();
-                SqlCommand sql = new SqlCommand($"INSERT INTO Room_tab VALUES('0{RoomNumber.Text.PadLeft(4, '0')}','{RoomPhone.Text}','{isfree}')", Con);
-                sql.ExecuteNonQuery();
-                Con.Close();
-                ShowRefreshData();
-                MessageBox.Show("Room added successfully");
+                if (ExistsID(RoomNum) == 0){
+                    MessageBox.Show("Room Number cannot be duplicated");
+                    Con.Close();
+                }
+                else
+                {
+                    SqlCommand sql = new SqlCommand($"INSERT INTO Room_tab VALUES('0{RoomNumber.Text.PadLeft(4, '0')}','{RoomPhone.Text.PadLeft(9, '0')}','{isfree}')", Con);
+                    sql.ExecuteNonQuery();
+                    Con.Close();
+                    ShowRefreshData();
+                    MessageBox.Show("Room added successfully");
+                }
+                
             }
         }
         private void EditBtn_Click(object sender, EventArgs e)
@@ -101,11 +112,45 @@ namespace HotelSystemManagement
                 isfree = "free";
             }
             Con.Open();
-            SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomID = {RoomNumber.Text}, RoomPhone = '{RoomPhone.Text}', RoomFree = '{isfree}'", Con);
+            SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomPhone = '{RoomPhone.Text}', RoomFree = '{isfree}' WHERE RoomID = '{RoomNumber.Text}'", Con);
             sql.ExecuteNonQuery();
             Con.Close();
             ShowRefreshData();
             MessageBox.Show("Room data updated successfully");
+        }
+        private int ExistsID(string value)
+        {
+            SqlCommand sql = new SqlCommand("SELECT RoomID from Room_tab", Con);
+            SqlDataReader read = sql.ExecuteReader();
+            while (read.Read())
+            {
+                if (Convert.ToString(read[0]) == value)
+                {
+                    read.Close();
+                    return 0;
+                }
+            }
+            read.Close();
+            return 1;
+        }
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            ShowRefreshData();
+        }
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            SqlDataAdapter getData = new SqlDataAdapter($"SELECT * FROM Room_tab WHERE RoomID = {RoomSearch.Text.PadLeft(4,'0')}", Con);
+            var getSpace = new DataSet();
+            getData.Fill(getSpace);
+            RoomGridView.DataSource = getSpace.Tables[0];
+            Con.Close();
+            ResetTextBoxes();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            DateHms.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }
