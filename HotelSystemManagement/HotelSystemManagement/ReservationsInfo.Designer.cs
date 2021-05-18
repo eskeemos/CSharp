@@ -38,7 +38,6 @@ namespace HotelSystemManagement
             this.label1 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.DateIn = new System.Windows.Forms.DateTimePicker();
-            this.ResevationID = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -139,27 +138,11 @@ namespace HotelSystemManagement
             this.DateIn.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateIn.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateIn.Font = new System.Drawing.Font("Century Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.DateIn.Location = new System.Drawing.Point(39, 299);
+            this.DateIn.Location = new System.Drawing.Point(39, 254);
             this.DateIn.Name = "DateIn";
             this.DateIn.Size = new System.Drawing.Size(247, 22);
             this.DateIn.TabIndex = 4;
             this.DateIn.ValueChanged += new System.EventHandler(this.DateIn_ValueChanged);
-            // 
-            // ResevationID
-            // 
-            this.ResevationID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.ResevationID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ResevationID.CausesValidation = false;
-            this.ResevationID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ResevationID.ForeColor = System.Drawing.SystemColors.Window;
-            this.ResevationID.Location = new System.Drawing.Point(39, 149);
-            this.ResevationID.Margin = new System.Windows.Forms.Padding(30, 10, 25, 10);
-            this.ResevationID.Multiline = true;
-            this.ResevationID.Name = "ResevationID";
-            this.ResevationID.PlaceholderText = "Reservation ID";
-            this.ResevationID.Size = new System.Drawing.Size(247, 25);
-            this.ResevationID.TabIndex = 15;
-            this.ResevationID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
@@ -258,7 +241,7 @@ namespace HotelSystemManagement
             this.ClientName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ClientName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ClientName.ForeColor = System.Drawing.SystemColors.Window;
-            this.ClientName.Location = new System.Drawing.Point(39, 194);
+            this.ClientName.Location = new System.Drawing.Point(39, 149);
             this.ClientName.Margin = new System.Windows.Forms.Padding(30, 10, 25, 10);
             this.ClientName.Name = "ClientName";
             this.ClientName.PlaceholderText = "Client Name";
@@ -273,7 +256,7 @@ namespace HotelSystemManagement
             this.RoomNumber.CausesValidation = false;
             this.RoomNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.RoomNumber.ForeColor = System.Drawing.SystemColors.Window;
-            this.RoomNumber.Location = new System.Drawing.Point(39, 239);
+            this.RoomNumber.Location = new System.Drawing.Point(39, 194);
             this.RoomNumber.Margin = new System.Windows.Forms.Padding(30, 10, 25, 10);
             this.RoomNumber.Multiline = true;
             this.RoomNumber.Name = "RoomNumber";
@@ -286,7 +269,7 @@ namespace HotelSystemManagement
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(39, 275);
+            this.label2.Location = new System.Drawing.Point(39, 230);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 21);
@@ -297,7 +280,7 @@ namespace HotelSystemManagement
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(39, 334);
+            this.label3.Location = new System.Drawing.Point(39, 289);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 21);
@@ -311,7 +294,7 @@ namespace HotelSystemManagement
             this.DateOut.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateOut.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateOut.Font = new System.Drawing.Font("Century Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.DateOut.Location = new System.Drawing.Point(39, 358);
+            this.DateOut.Location = new System.Drawing.Point(39, 313);
             this.DateOut.Name = "DateOut";
             this.DateOut.Size = new System.Drawing.Size(247, 22);
             this.DateOut.TabIndex = 37;
@@ -323,7 +306,7 @@ namespace HotelSystemManagement
             this.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EditBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EditBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.EditBtn.Location = new System.Drawing.Point(126, 397);
+            this.EditBtn.Location = new System.Drawing.Point(126, 352);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(10);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(68, 41);
@@ -337,7 +320,7 @@ namespace HotelSystemManagement
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DeleteBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.DeleteBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.DeleteBtn.Location = new System.Drawing.Point(212, 397);
+            this.DeleteBtn.Location = new System.Drawing.Point(212, 352);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(10);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(74, 41);
@@ -351,13 +334,14 @@ namespace HotelSystemManagement
             this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AddBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.AddBtn.Location = new System.Drawing.Point(39, 397);
+            this.AddBtn.Location = new System.Drawing.Point(39, 352);
             this.AddBtn.Margin = new System.Windows.Forms.Padding(10);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(68, 41);
             this.AddBtn.TabIndex = 39;
             this.AddBtn.Text = "ADD";
             this.AddBtn.UseVisualStyleBackColor = false;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // ReservationsInfo
             // 
@@ -377,7 +361,6 @@ namespace HotelSystemManagement
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.ReservationSearch);
-            this.Controls.Add(this.ResevationID);
             this.Controls.Add(this.DateIn);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -404,7 +387,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.DateTimePicker DateIn;
-        private System.Windows.Forms.TextBox ResevationID;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;

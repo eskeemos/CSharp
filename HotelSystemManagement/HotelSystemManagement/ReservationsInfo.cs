@@ -5,11 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace HotelSystemManagement
 {
     public partial class ReservationsInfo : Form
     {
+        SqlConnection Con = new SqlConnection(@"Data Source=DESKTOP-DABF71C;Initial Catalog=hotel_db;Integrated Security=True");
         public ReservationsInfo()
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace HotelSystemManagement
             int newDate = DateTime.Compare(DateIn.Value, today);   
             if(newDate < 0)
             {
-                MessageBox.Show("Wrong Date For Reservation");
+                MessageBox.Show("Enter correct DateIn");
             }
         }
 
@@ -47,8 +49,17 @@ namespace HotelSystemManagement
             int newDate = DateTime.Compare(DateOut.Value, DateIn.Value);
             if (newDate < 0)
             {
-                MessageBox.Show("Wrong Date For Reservation");
+                MessageBox.Show("Enter correct DateOut");
             }
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            SqlCommand sql = new SqlCommand($"INSERT INTO Reservation_tab VALUES('{ClientName.Text}',{RoomNumber.Text},'{DateIn.Text}','{DateOut.Text}')", Con);
+            sql.ExecuteNonQuery();
+            Con.Close();
+            MessageBox.Show("Reservation Added successfully");
         }
     }
 }
