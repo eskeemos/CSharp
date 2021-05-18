@@ -25,3 +25,4 @@ C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\De
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.StaffInfo.resources
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.Start.resources
 C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.RoomInfo.resources
+C:\Users\krzys\Desktop\CSharp\HotelSystemManagement\HotelSystemManagement\obj\Debug\netcoreapp3.1\HotelSystemManagement.ReservationsInfo.resources
