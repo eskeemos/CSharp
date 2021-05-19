@@ -176,6 +176,7 @@ namespace HotelSystemManagement
             this.SearchBtn.TabIndex = 30;
             this.SearchBtn.Text = "Search";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // ReservationSearch
             // 
@@ -254,6 +255,7 @@ namespace HotelSystemManagement
             this.EditBtn.TabIndex = 41;
             this.EditBtn.Text = "EDIT";
             this.EditBtn.UseVisualStyleBackColor = false;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // DeleteBtn
             // 
@@ -350,9 +352,9 @@ namespace HotelSystemManagement
             this.ClientSize = new System.Drawing.Size(900, 525);
             this.Controls.Add(this.RoomNumber);
             this.Controls.Add(this.ClientName);
+            this.Controls.Add(this.ReservationID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.ReservationID);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AddBtn);

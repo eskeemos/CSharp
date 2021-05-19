@@ -83,15 +83,14 @@ namespace HotelSystemManagement
                 {
                     isfree = "occupied";
                 }
-                string RoomNum = $"0{RoomNumber.Text.PadLeft(4, '0')}";
                 Con.Open();
-                if (ExistsID(RoomNum) == 0){
+                if (ExistsID(RoomNumber.Text) == 0){
                     MessageBox.Show("Room Number cannot be duplicated");
                     Con.Close();
                 }
                 else
                 {
-                    SqlCommand sql = new SqlCommand($"INSERT INTO Room_tab VALUES('0{RoomNumber.Text.PadLeft(4, '0')}','{RoomPhone.Text.PadLeft(9, '0')}','{isfree}')", Con);
+                    SqlCommand sql = new SqlCommand($"INSERT INTO Room_tab VALUES('{RoomNumber.Text}','{RoomPhone.Text.PadLeft(9, '0')}','{isfree}')", Con);
                     sql.ExecuteNonQuery();
                     Con.Close();
                     ShowRefreshData();

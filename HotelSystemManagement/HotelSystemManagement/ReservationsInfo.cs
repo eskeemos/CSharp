@@ -46,10 +46,10 @@ namespace HotelSystemManagement
             if (e.RowIndex >= 0)
             {
                 ReservationID.Text = ReservationGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-                //s.Text = ReservationGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-                //RoomNumbers.Text = ReservationGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                DateIn.Text = ReservationGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
-                DateOut.Text = ReservationGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+                ClientName.Text    = ReservationGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                RoomNumber.Text    = ReservationGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                DateIn.Text        = ReservationGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                DateOut.Text       = ReservationGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
         }
 
@@ -70,7 +70,8 @@ namespace HotelSystemManagement
         private void FillRoomCombo()
         {
             Con.Open();
-            SqlCommand sql = new SqlCommand("SELECT RoomID FROM Room_tab;", Con);
+            string roomState = "free";
+            SqlCommand sql = new SqlCommand($"SELECT RoomID FROM Room_tab WHERE RoomFree = '{roomState}'", Con);
             SqlDataReader getReader = sql.ExecuteReader();
             DataTable getPlace = new DataTable();
             getPlace.Columns.Add("RoomID", typeof(string));
@@ -78,6 +79,22 @@ namespace HotelSystemManagement
             RoomNumber.ValueMember = "RoomID";
             RoomNumber.DataSource = getPlace;
             Con.Close();
+        }
+        private void UpdateRoomState()
+        {
+            Con.Open();
+            SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomFree = 'occupied' WHERE RoomID = {Convert.ToInt32(RoomNumber.SelectedValue.ToString())}", Con);
+            sql.ExecuteNonQuery();
+            Con.Close();
+            FillRoomCombo();
+        }
+        private void UpdateRoomStateOnDelete()
+        {
+            Con.Open();
+            SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomFree = 'free' WHERE RoomID = {Convert.ToInt32(RoomNumber.SelectedValue.ToString())}", Con);
+            sql.ExecuteNonQuery();
+            Con.Close();
+            FillRoomCombo();
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
@@ -90,27 +107,51 @@ namespace HotelSystemManagement
             else
             {
                 Con.Open();
-                SqlCommand sql = new SqlCommand($"INSERT INTO Reservation_tab VALUES('{ClientName.SelectedItem.ToString()}',{RoomNumber.SelectedItem.ToString()},'{DateIn.Value.ToShortDateString()}','{DateOut.Value.ToShortDateString()}')", Con);
+                SqlCommand sql = new SqlCommand($"INSERT INTO Reservation_tab VALUES('{ClientName.SelectedValue.ToString()}',{RoomNumber.SelectedValue.ToString()},'{DateIn.Value.ToShortDateString()}','{DateOut.Value.ToShortDateString()}')", Con);
                 sql.ExecuteNonQuery();
                 Con.Close();
                 ShowRefreshData();
                 MessageBox.Show("Reservation Added successfully.");
+                UpdateRoomState();
             }
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
+            
             Con.Open();
             SqlCommand sql = new SqlCommand($"DELETE FROM Reservation_tab WHERE ResID = {ReservationID.Text}",Con);
             sql.ExecuteNonQuery();
             Con.Close();
             ShowRefreshData();
             MessageBox.Show("Reservation deleted successfully.");
+            UpdateRoomStateOnDelete();
         }
 
         private void Reset_Click(object sender, EventArgs e)
         {
             ShowRefreshData();
+        }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            SqlCommand sql = new SqlCommand($"UPDATE Reservation_tab SET Client = '{ClientName.Text}', Room = {RoomNumber.Text}, DateIn = '{DateIn.Value.ToShortDateString()}', DateOut = '{DateOut.Value.ToShortDateString()}' WHERE ResID = {ReservationID.Text}", Con);
+            sql.ExecuteNonQuery();
+            Con.Close();
+            ShowRefreshData();
+            MessageBox.Show("Reservation updated successfully.");
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            SqlDataAdapter getData = new SqlDataAdapter($"SELECT * FROM Reservation_tab WHERE ResID = {ReservationSearch.Text}",Con);
+            var getSpace = new DataSet();
+            getData.Fill(getSpace);
+            ReservationGridView.DataSource = getSpace.Tables[0];
+            Con.Close();
+            ReservationSearch.Text = "";
         }
     }
 }
