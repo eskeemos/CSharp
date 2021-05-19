@@ -32,8 +32,6 @@ namespace HotelSystemManagement
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReservationsInfo));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.StaffID = new System.Windows.Forms.TextBox();
-            this.ClientID = new System.Windows.Forms.TextBox();
             this.DateHms = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
@@ -45,14 +43,17 @@ namespace HotelSystemManagement
             this.SearchBtn = new System.Windows.Forms.Button();
             this.ReservationSearch = new System.Windows.Forms.TextBox();
             this.ReservationGridView = new System.Windows.Forms.DataGridView();
-            this.ClientName = new System.Windows.Forms.TextBox();
-            this.RoomNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.DateOut = new System.Windows.Forms.DateTimePicker();
             this.EditBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.AddBtn = new System.Windows.Forms.Button();
+            this.ReservationID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ClientName = new System.Windows.Forms.ComboBox();
+            this.RoomNumber = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
@@ -62,8 +63,6 @@ namespace HotelSystemManagement
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.panel1.Controls.Add(this.StaffID);
-            this.panel1.Controls.Add(this.ClientID);
             this.panel1.Controls.Add(this.DateHms);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -72,36 +71,6 @@ namespace HotelSystemManagement
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(900, 100);
             this.panel1.TabIndex = 3;
-            // 
-            // StaffID
-            // 
-            this.StaffID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.StaffID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StaffID.CausesValidation = false;
-            this.StaffID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StaffID.ForeColor = System.Drawing.SystemColors.Window;
-            this.StaffID.Location = new System.Drawing.Point(1, 1);
-            this.StaffID.Margin = new System.Windows.Forms.Padding(10);
-            this.StaffID.Multiline = true;
-            this.StaffID.Name = "StaffID";
-            this.StaffID.PlaceholderText = "StaffName";
-            this.StaffID.Size = new System.Drawing.Size(1, 1);
-            this.StaffID.TabIndex = 22;
-            // 
-            // ClientID
-            // 
-            this.ClientID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.ClientID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ClientID.CausesValidation = false;
-            this.ClientID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ClientID.ForeColor = System.Drawing.SystemColors.Window;
-            this.ClientID.Location = new System.Drawing.Point(1, 1);
-            this.ClientID.Margin = new System.Windows.Forms.Padding(10);
-            this.ClientID.Multiline = true;
-            this.ClientID.Name = "ClientID";
-            this.ClientID.Size = new System.Drawing.Size(1, 1);
-            this.ClientID.TabIndex = 1;
-            this.ClientID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DateHms
             // 
@@ -138,11 +107,10 @@ namespace HotelSystemManagement
             this.DateIn.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateIn.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateIn.Font = new System.Drawing.Font("Century Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.DateIn.Location = new System.Drawing.Point(39, 254);
+            this.DateIn.Location = new System.Drawing.Point(39, 274);
             this.DateIn.Name = "DateIn";
             this.DateIn.Size = new System.Drawing.Size(247, 22);
             this.DateIn.TabIndex = 4;
-            this.DateIn.ValueChanged += new System.EventHandler(this.DateIn_ValueChanged);
             // 
             // textBox1
             // 
@@ -186,13 +154,14 @@ namespace HotelSystemManagement
             // Reset
             // 
             this.Reset.Image = ((System.Drawing.Image)(resources.GetObject("Reset.Image")));
-            this.Reset.Location = new System.Drawing.Point(844, 112);
+            this.Reset.Location = new System.Drawing.Point(836, 112);
             this.Reset.Margin = new System.Windows.Forms.Padding(10, 15, 15, 15);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(32, 25);
             this.Reset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Reset.TabIndex = 31;
             this.Reset.TabStop = false;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
             // 
             // SearchBtn
             // 
@@ -200,7 +169,7 @@ namespace HotelSystemManagement
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SearchBtn.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SearchBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.SearchBtn.Location = new System.Drawing.Point(757, 113);
+            this.SearchBtn.Location = new System.Drawing.Point(749, 113);
             this.SearchBtn.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(74, 25);
@@ -215,7 +184,7 @@ namespace HotelSystemManagement
             this.ReservationSearch.CausesValidation = false;
             this.ReservationSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ReservationSearch.ForeColor = System.Drawing.SystemColors.Window;
-            this.ReservationSearch.Location = new System.Drawing.Point(515, 113);
+            this.ReservationSearch.Location = new System.Drawing.Point(507, 113);
             this.ReservationSearch.Margin = new System.Windows.Forms.Padding(10);
             this.ReservationSearch.Multiline = true;
             this.ReservationSearch.Name = "ReservationSearch";
@@ -226,50 +195,23 @@ namespace HotelSystemManagement
             // 
             // ReservationGridView
             // 
+            this.ReservationGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.ReservationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReservationGridView.Location = new System.Drawing.Point(326, 149);
             this.ReservationGridView.Margin = new System.Windows.Forms.Padding(15, 3, 15, 10);
             this.ReservationGridView.Name = "ReservationGridView";
+            this.ReservationGridView.ReadOnly = true;
             this.ReservationGridView.RowTemplate.Height = 25;
-            this.ReservationGridView.Size = new System.Drawing.Size(550, 350);
+            this.ReservationGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ReservationGridView.Size = new System.Drawing.Size(543, 350);
             this.ReservationGridView.TabIndex = 32;
             this.ReservationGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReservationGridView_CellContentClick);
-            // 
-            // ClientName
-            // 
-            this.ClientName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.ClientName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ClientName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ClientName.ForeColor = System.Drawing.SystemColors.Window;
-            this.ClientName.Location = new System.Drawing.Point(39, 149);
-            this.ClientName.Margin = new System.Windows.Forms.Padding(30, 10, 25, 10);
-            this.ClientName.Name = "ClientName";
-            this.ClientName.PlaceholderText = "Client Name";
-            this.ClientName.Size = new System.Drawing.Size(247, 27);
-            this.ClientName.TabIndex = 33;
-            this.ClientName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // RoomNumber
-            // 
-            this.RoomNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
-            this.RoomNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.RoomNumber.CausesValidation = false;
-            this.RoomNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.RoomNumber.ForeColor = System.Drawing.SystemColors.Window;
-            this.RoomNumber.Location = new System.Drawing.Point(39, 194);
-            this.RoomNumber.Margin = new System.Windows.Forms.Padding(30, 10, 25, 10);
-            this.RoomNumber.Multiline = true;
-            this.RoomNumber.Name = "RoomNumber";
-            this.RoomNumber.PlaceholderText = "Room Number";
-            this.RoomNumber.Size = new System.Drawing.Size(247, 25);
-            this.RoomNumber.TabIndex = 34;
-            this.RoomNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(39, 230);
+            this.label2.Location = new System.Drawing.Point(39, 250);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 21);
@@ -280,7 +222,7 @@ namespace HotelSystemManagement
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(39, 289);
+            this.label3.Location = new System.Drawing.Point(39, 309);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 21);
@@ -294,11 +236,10 @@ namespace HotelSystemManagement
             this.DateOut.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateOut.CalendarTrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
             this.DateOut.Font = new System.Drawing.Font("Century Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.DateOut.Location = new System.Drawing.Point(39, 313);
+            this.DateOut.Location = new System.Drawing.Point(39, 333);
             this.DateOut.Name = "DateOut";
             this.DateOut.Size = new System.Drawing.Size(247, 22);
             this.DateOut.TabIndex = 37;
-            this.DateOut.ValueChanged += new System.EventHandler(this.DateOut_ValueChanged);
             // 
             // EditBtn
             // 
@@ -306,7 +247,7 @@ namespace HotelSystemManagement
             this.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EditBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EditBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.EditBtn.Location = new System.Drawing.Point(126, 352);
+            this.EditBtn.Location = new System.Drawing.Point(126, 372);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(10);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(68, 41);
@@ -320,13 +261,14 @@ namespace HotelSystemManagement
             this.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DeleteBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.DeleteBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.DeleteBtn.Location = new System.Drawing.Point(212, 352);
+            this.DeleteBtn.Location = new System.Drawing.Point(212, 372);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(10);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(74, 41);
             this.DeleteBtn.TabIndex = 40;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // AddBtn
             // 
@@ -334,7 +276,7 @@ namespace HotelSystemManagement
             this.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AddBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.AddBtn.Location = new System.Drawing.Point(39, 352);
+            this.AddBtn.Location = new System.Drawing.Point(39, 372);
             this.AddBtn.Margin = new System.Windows.Forms.Padding(10);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(68, 41);
@@ -343,20 +285,80 @@ namespace HotelSystemManagement
             this.AddBtn.UseVisualStyleBackColor = false;
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
+            // ReservationID
+            // 
+            this.ReservationID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.ReservationID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ReservationID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ReservationID.ForeColor = System.Drawing.SystemColors.Window;
+            this.ReservationID.Location = new System.Drawing.Point(1, 1);
+            this.ReservationID.Margin = new System.Windows.Forms.Padding(30, 10, 25, 10);
+            this.ReservationID.Multiline = true;
+            this.ReservationID.Name = "ReservationID";
+            this.ReservationID.PlaceholderText = "Client Name";
+            this.ReservationID.Size = new System.Drawing.Size(1, 1);
+            this.ReservationID.TabIndex = 42;
+            this.ReservationID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(39, 199);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 21);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Room Number";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(39, 147);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 21);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "Client Name";
+            // 
+            // ClientName
+            // 
+            this.ClientName.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.ClientName.FormattingEnabled = true;
+            this.ClientName.Items.AddRange(new object[] {
+            "Select Client Name"});
+            this.ClientName.Location = new System.Drawing.Point(39, 171);
+            this.ClientName.Name = "ClientName";
+            this.ClientName.Size = new System.Drawing.Size(247, 24);
+            this.ClientName.TabIndex = 45;
+            // 
+            // RoomNumber
+            // 
+            this.RoomNumber.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.RoomNumber.FormattingEnabled = true;
+            this.RoomNumber.Location = new System.Drawing.Point(39, 223);
+            this.RoomNumber.Name = "RoomNumber";
+            this.RoomNumber.Size = new System.Drawing.Size(247, 24);
+            this.RoomNumber.TabIndex = 46;
+            // 
             // ReservationsInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
-            this.ClientSize = new System.Drawing.Size(900, 515);
+            this.ClientSize = new System.Drawing.Size(900, 525);
+            this.Controls.Add(this.RoomNumber);
+            this.Controls.Add(this.ClientName);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ReservationID);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.DateOut);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.RoomNumber);
-            this.Controls.Add(this.ClientName);
             this.Controls.Add(this.ReservationGridView);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.SearchBtn);
@@ -381,8 +383,6 @@ namespace HotelSystemManagement
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox StaffID;
-        private System.Windows.Forms.TextBox ClientID;
         private System.Windows.Forms.Label DateHms;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer;
@@ -394,13 +394,16 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.TextBox ReservationSearch;
         private System.Windows.Forms.DataGridView ReservationGridView;
-        private System.Windows.Forms.TextBox ClientName;
-        private System.Windows.Forms.TextBox RoomNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker DateOut;
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button AddBtn;
+        private System.Windows.Forms.TextBox ReservationID;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox ClientName;
+        private System.Windows.Forms.ComboBox RoomNumber;
     }
 }
