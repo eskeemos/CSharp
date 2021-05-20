@@ -101,5 +101,12 @@ namespace HotelSystemManagement
         {
             DateHms.Text = DateTime.Now.ToLongTimeString();
         }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainForm mf = new MainForm();
+            mf.Show();
+        }
     }
 }

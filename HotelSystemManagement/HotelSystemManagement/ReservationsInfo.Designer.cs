@@ -54,6 +54,7 @@ namespace HotelSystemManagement
             this.label5 = new System.Windows.Forms.Label();
             this.ClientName = new System.Windows.Forms.ComboBox();
             this.RoomNumber = new System.Windows.Forms.ComboBox();
+            this.BackBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
@@ -344,12 +345,27 @@ namespace HotelSystemManagement
             this.RoomNumber.Size = new System.Drawing.Size(247, 24);
             this.RoomNumber.TabIndex = 46;
             // 
+            // BackBtn
+            // 
+            this.BackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BackBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BackBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
+            this.BackBtn.Location = new System.Drawing.Point(12, 472);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(68, 41);
+            this.BackBtn.TabIndex = 47;
+            this.BackBtn.Text = "Back";
+            this.BackBtn.UseVisualStyleBackColor = false;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // ReservationsInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
             this.ClientSize = new System.Drawing.Size(900, 525);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.RoomNumber);
             this.Controls.Add(this.ClientName);
             this.Controls.Add(this.ReservationID);
@@ -407,5 +423,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox ClientName;
         private System.Windows.Forms.ComboBox RoomNumber;
+        private System.Windows.Forms.Button BackBtn;
     }
 }

@@ -101,6 +101,13 @@ namespace HotelSystemManagement
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             populate();
-        }    
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainForm mf = new MainForm();
+            mf.Show();
+        }
     }
 }

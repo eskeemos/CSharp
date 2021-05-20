@@ -19,7 +19,7 @@ namespace HotelSystemManagement
         private void ResetTextBoxes()
         {
             RoomNumber.Text = RoomPhone.Text = RoomSearch.Text = "";
-            NoRadio.Checked = true;
+            YesRadio.Checked = true;
         }
         private void ShowRefreshData()
         {
@@ -104,11 +104,11 @@ namespace HotelSystemManagement
             string isfree;
             if (YesRadio.Checked == true)
             {
-                isfree = "occupated";
+                isfree = "free";
             }
             else
             {
-                isfree = "free";
+                isfree = "occupied";
             }
             Con.Open();
             SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomPhone = '{RoomPhone.Text}', RoomFree = '{isfree}' WHERE RoomID = '{RoomNumber.Text}'", Con);
@@ -150,6 +150,13 @@ namespace HotelSystemManagement
         private void timer_Tick(object sender, EventArgs e)
         {
             DateHms.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainForm mf = new MainForm();
+            mf.Show();
         }
     }
 }

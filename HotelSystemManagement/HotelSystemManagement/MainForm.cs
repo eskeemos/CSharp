@@ -26,5 +26,33 @@ namespace HotelSystemManagement
             login.Show();
             this.Hide();
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            ClientInfo clientInfo = new ClientInfo();
+            clientInfo.Show();
+            this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            StaffInfo staffInfo = new StaffInfo();
+            staffInfo.Show();
+            this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            ReservationsInfo resInfo = new ReservationsInfo();
+            resInfo.Show();
+            this.Hide();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            RoomInfo roomInfo = new RoomInfo();
+            roomInfo.Show();
+            this.Hide();
+        }
     }
 }

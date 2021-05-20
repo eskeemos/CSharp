@@ -26,8 +26,8 @@ namespace HotelSystemManagement
             sda.Fill(dt);
             if(dt.Rows[0][0].ToString() == "1")
             {
-                MainForm mf = new MainForm();
-                mf.Show();
+                SplashForm sf = new SplashForm();
+                sf.Show();
                 this.Hide();
             }
             else
@@ -35,6 +35,11 @@ namespace HotelSystemManagement
                 MessageBox.Show("Wrong Username or Password. Try Again.");
             }
             Con.Close();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

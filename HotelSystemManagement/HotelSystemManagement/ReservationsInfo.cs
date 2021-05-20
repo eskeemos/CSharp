@@ -91,7 +91,7 @@ namespace HotelSystemManagement
         private void UpdateRoomStateOnDelete()
         {
             Con.Open();
-            SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomFree = 'free' WHERE RoomID = {Convert.ToInt32(RoomNumber.SelectedValue.ToString())}", Con);
+            SqlCommand sql = new SqlCommand($"UPDATE Room_tab SET RoomFree = 'free' WHERE RoomID = {Convert.ToInt32(RoomNumber.SelectedValue.ToString()) - 1}", Con);
             sql.ExecuteNonQuery();
             Con.Close();
             FillRoomCombo();
@@ -118,7 +118,6 @@ namespace HotelSystemManagement
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-            
             Con.Open();
             SqlCommand sql = new SqlCommand($"DELETE FROM Reservation_tab WHERE ResID = {ReservationID.Text}",Con);
             sql.ExecuteNonQuery();
@@ -152,6 +151,13 @@ namespace HotelSystemManagement
             ReservationGridView.DataSource = getSpace.Tables[0];
             Con.Close();
             ReservationSearch.Text = "";
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainForm mf = new MainForm();
+            mf.Show();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace HotelSystemManagement
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReservationsInfo());
+            Application.Run(new Start());
         }
     }
 }

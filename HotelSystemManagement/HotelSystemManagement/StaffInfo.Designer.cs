@@ -49,6 +49,7 @@ namespace HotelSystemManagement
             this.AddBtn = new System.Windows.Forms.Button();
             this.StaffPassword = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.BackBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StaffGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Reset)).BeginInit();
@@ -287,12 +288,27 @@ namespace HotelSystemManagement
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // BackBtn
+            // 
+            this.BackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(32)))), ((int)(((byte)(34)))));
+            this.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BackBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BackBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
+            this.BackBtn.Location = new System.Drawing.Point(12, 479);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(68, 41);
+            this.BackBtn.TabIndex = 22;
+            this.BackBtn.Text = "Back";
+            this.BackBtn.UseVisualStyleBackColor = false;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // StaffInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(174)))), ((int)(((byte)(13)))));
             this.ClientSize = new System.Drawing.Size(871, 532);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.StaffPassword);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.DeleteBtn);
@@ -338,5 +354,6 @@ namespace HotelSystemManagement
         private System.Windows.Forms.TextBox StaffPassword;
         private System.Windows.Forms.TextBox StaffID;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button BackBtn;
     }
 }
