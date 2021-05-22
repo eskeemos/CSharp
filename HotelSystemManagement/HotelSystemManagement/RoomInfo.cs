@@ -33,16 +33,19 @@ namespace HotelSystemManagement
         }
         private void RoomGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            RoomNumber.Text = this.RoomGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            RoomPhone.Text = this.RoomGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-            if (this.RoomGridView.Rows[e.RowIndex].Cells[2].Value.ToString() == "occupied")
+            if(e.RowIndex >= 0)
             {
-                YesRadio.Checked = true;
-            }
-            else
-            {
-                NoRadio.Checked = true;
-            }
+                RoomNumber.Text = this.RoomGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                RoomPhone.Text = this.RoomGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                if (this.RoomGridView.Rows[e.RowIndex].Cells[2].Value.ToString() == "occupied")
+                {
+                    YesRadio.Checked = true;
+                }
+                else
+                {
+                    NoRadio.Checked = true;
+                }
+            }  
         }
         private void RoomInfo_Load(object sender, EventArgs e)
         {
@@ -146,12 +149,10 @@ namespace HotelSystemManagement
             Con.Close();
             ResetTextBoxes();
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             DateHms.Text = DateTime.Now.ToLongTimeString();
         }
-
         private void BackBtn_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -30,7 +30,10 @@ namespace HotelSystemManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientInfo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.ClientID = new System.Windows.Forms.TextBox();
@@ -112,7 +115,7 @@ namespace HotelSystemManagement
             this.ClientName.Margin = new System.Windows.Forms.Padding(10);
             this.ClientName.Multiline = true;
             this.ClientName.Name = "ClientName";
-            this.ClientName.PlaceholderText = "ClientName";
+            this.ClientName.PlaceholderText = "Client Name";
             this.ClientName.Size = new System.Drawing.Size(222, 25);
             this.ClientName.TabIndex = 4;
             // 
@@ -127,7 +130,7 @@ namespace HotelSystemManagement
             this.ClientPhone.Margin = new System.Windows.Forms.Padding(10);
             this.ClientPhone.Multiline = true;
             this.ClientPhone.Name = "ClientPhone";
-            this.ClientPhone.PlaceholderText = "ClientPhone";
+            this.ClientPhone.PlaceholderText = "Client Phone";
             this.ClientPhone.Size = new System.Drawing.Size(222, 25);
             this.ClientPhone.TabIndex = 3;
             // 
@@ -155,19 +158,45 @@ namespace HotelSystemManagement
             // 
             // ClientGridView
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Orange;
-            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Orange;
+            this.ClientGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ClientGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClientGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ClientGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ClientGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.ClientGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(34)))));
             this.ClientGridView.Location = new System.Drawing.Point(292, 152);
             this.ClientGridView.Margin = new System.Windows.Forms.Padding(30);
             this.ClientGridView.Name = "ClientGridView";
+            this.ClientGridView.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClientGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ClientGridView.RowTemplate.Height = 25;
+            this.ClientGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ClientGridView.Size = new System.Drawing.Size(443, 341);
             this.ClientGridView.TabIndex = 8;
             this.ClientGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientGridView_CellContentClick);
@@ -225,7 +254,7 @@ namespace HotelSystemManagement
             this.ClientSearch.Margin = new System.Windows.Forms.Padding(10);
             this.ClientSearch.Multiline = true;
             this.ClientSearch.Name = "ClientSearch";
-            this.ClientSearch.PlaceholderText = "ClientName";
+            this.ClientSearch.PlaceholderText = "Client Search";
             this.ClientSearch.Size = new System.Drawing.Size(222, 25);
             this.ClientSearch.TabIndex = 12;
             this.ClientSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -242,7 +271,7 @@ namespace HotelSystemManagement
             this.button4.TabIndex = 13;
             this.button4.Text = "Search";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.SearchButton);
             // 
             // timer
             // 
@@ -257,7 +286,7 @@ namespace HotelSystemManagement
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.Refresh);
             // 
             // BackBtn
             // 

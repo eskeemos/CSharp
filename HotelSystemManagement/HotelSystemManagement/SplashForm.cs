@@ -25,7 +25,6 @@ namespace HotelSystemManagement
                 mf.Show();
             }
         }
-
         private void SplashForm_Load(object sender, EventArgs e)
         {
             timer1.Start();

@@ -30,10 +30,8 @@ namespace HotelSystemManagement
         {
             DateHms.Text = DateTime.Now.ToLongTimeString();
         }
-
         private void ReservationsInfo_Load(object sender, EventArgs e)
         {
-
             DateHms.Text = DateTime.Now.ToLongTimeString();
             ShowRefreshData();
             timer.Start();
@@ -52,10 +50,8 @@ namespace HotelSystemManagement
                 DateOut.Text       = ReservationGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
             }
         }
-
         private void FillNameCombo()
         {
-            
             Con.Open();
             SqlCommand sql = new SqlCommand("SELECT DISTINCT ClientName FROM Client_tab;", Con);
             SqlDataReader getReader = sql.ExecuteReader();
@@ -65,13 +61,11 @@ namespace HotelSystemManagement
             ClientName.ValueMember = "ClientName";
             ClientName.DataSource = getPlace;
             Con.Close();
-            
         }
         private void FillRoomCombo()
         {
             Con.Open();
-            string roomState = "free";
-            SqlCommand sql = new SqlCommand($"SELECT RoomID FROM Room_tab WHERE RoomFree = '{roomState}'", Con);
+            SqlCommand sql = new SqlCommand($"SELECT RoomID FROM Room_tab WHERE RoomFree = 'free'", Con);
             SqlDataReader getReader = sql.ExecuteReader();
             DataTable getPlace = new DataTable();
             getPlace.Columns.Add("RoomID", typeof(string));
@@ -98,16 +92,15 @@ namespace HotelSystemManagement
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            int w1 = DateTime.Compare(DateIn.Value, today);
-            int w2 = DateTime.Compare(DateOut.Value, DateIn.Value);
-            if((w1 < 0)||(w2 < 0))
+            if((DateTime.Compare(DateIn.Value, today) < 0) || (DateTime.Compare(DateOut.Value, DateIn.Value) < 0))
             {
                 MessageBox.Show("Enter correct Date data");
             }
             else
             {
                 Con.Open();
-                SqlCommand sql = new SqlCommand($"INSERT INTO Reservation_tab VALUES('{ClientName.SelectedValue.ToString()}',{RoomNumber.SelectedValue.ToString()},'{DateIn.Value.ToShortDateString()}','{DateOut.Value.ToShortDateString()}')", Con);
+                string query = $"INSERT INTO Reservation_tab VALUES('{ClientName.SelectedValue.ToString()}',{RoomNumber.SelectedValue.ToString()},'{DateIn.Value.ToShortDateString()}','{DateOut.Value.ToShortDateString()}')";
+                SqlCommand sql = new SqlCommand(query, Con);
                 sql.ExecuteNonQuery();
                 Con.Close();
                 ShowRefreshData();
@@ -115,7 +108,6 @@ namespace HotelSystemManagement
                 UpdateRoomState();
             }
         }
-
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             Con.Open();
@@ -126,12 +118,10 @@ namespace HotelSystemManagement
             MessageBox.Show("Reservation deleted successfully.");
             UpdateRoomStateOnDelete();
         }
-
         private void Reset_Click(object sender, EventArgs e)
         {
             ShowRefreshData();
         }
-
         private void EditBtn_Click(object sender, EventArgs e)
         {
             Con.Open();
@@ -141,7 +131,6 @@ namespace HotelSystemManagement
             ShowRefreshData();
             MessageBox.Show("Reservation updated successfully.");
         }
-
         private void SearchBtn_Click(object sender, EventArgs e)
         {
             Con.Open();
@@ -152,7 +141,6 @@ namespace HotelSystemManagement
             Con.Close();
             ReservationSearch.Text = "";
         }
-
         private void BackBtn_Click(object sender, EventArgs e)
         {
             this.Hide();

@@ -12,12 +12,11 @@ namespace HotelSystemManagement
     public partial class StaffInfo : Form
     {
         SqlConnection Con = new SqlConnection(@"Data Source=DESKTOP-DABF71C;Initial Catalog=hotel_db;Integrated Security=True");
-        public void populate()
+        public void ShowRefreshData()
         {
             Con.Open();
             string sql = "SELECT * FROM Staff_tab";
             SqlDataAdapter getData = new SqlDataAdapter(sql, Con);
-            SqlCommandBuilder getRows = new SqlCommandBuilder(getData);
             var getSpace = new DataSet();
             getData.Fill(getSpace);
             StaffGridView.DataSource = getSpace.Tables[0];
@@ -30,7 +29,7 @@ namespace HotelSystemManagement
         }
         private void StaffInfo_Load(object sender, EventArgs e)
         {
-            populate();
+            ShowRefreshData();
             DateHms.Text = DateTime.Now.ToLongTimeString();
             timer.Start();
         }
@@ -46,17 +45,20 @@ namespace HotelSystemManagement
                 SqlCommand sql = new SqlCommand($"INSERT INTO Staff_tab(StaffName, StaffPhone, StaffGender, StaffPassword) VALUES ('{StaffName.Text}','{StaffPhone.Text}','{StaffGender.SelectedItem.ToString()}','{StaffPassword.Text}')", Con);
                 sql.ExecuteNonQuery();
                 Con.Close();
-                populate();
+                ShowRefreshData();
                 MessageBox.Show("Staff added successfully");
             }
         }
         private void StaffGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            StaffID.Text       = this.StaffGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            StaffName.Text     = this.StaffGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-            StaffPhone.Text    = this.StaffGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-            StaffGender.Text   = this.StaffGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
-            StaffPassword.Text = this.StaffGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+            if(e.RowIndex >= 0)
+            {
+                StaffID.Text       = this.StaffGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                StaffName.Text     = this.StaffGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                StaffPhone.Text    = this.StaffGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                StaffGender.Text   = this.StaffGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                StaffPassword.Text = this.StaffGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+            }
         }  
         private void EditBtn_Click(object sender, EventArgs e)
         {
@@ -64,7 +66,7 @@ namespace HotelSystemManagement
             SqlCommand sql = new SqlCommand($"UPDATE Staff_tab SET StaffName = '{StaffName.Text}', StaffPhone = '{StaffPhone.Text}', StaffPassword = '{StaffPassword.Text}', StaffGender = '{StaffGender.SelectedItem.ToString()}' WHERE StaffID = {StaffID.Text}", Con);
             sql.ExecuteNonQuery();
             Con.Close();
-            populate();
+            ShowRefreshData();
             MessageBox.Show("Staff edited successfully");
         }
         private void ResetTextBox()
@@ -78,7 +80,7 @@ namespace HotelSystemManagement
             SqlCommand sql = new SqlCommand($"DELETE FROM Staff_tab WHERE StaffID = ${StaffID.Text}",Con);
             sql.ExecuteNonQuery();
             Con.Close();
-            populate();
+            ShowRefreshData();
             MessageBox.Show("Staff deleted successfully");
         }
         private void SearchBtn_Click(object sender, EventArgs e)
@@ -86,7 +88,6 @@ namespace HotelSystemManagement
             Con.Open();
             string sql = $"SELECT * FROM Staff_tab WHERE StaffName LIKE '%{StaffSearch.Text}%'";
             SqlDataAdapter getData = new SqlDataAdapter(sql, Con);
-            SqlCommandBuilder getRows = new SqlCommandBuilder(getData);
             var getSpace = new DataSet();
             getData.Fill(getSpace);
             StaffGridView.DataSource = getSpace.Tables[0];
@@ -95,13 +96,12 @@ namespace HotelSystemManagement
         }
         private void Reset_Click(object sender, EventArgs e)
         {
-            populate();
+            ShowRefreshData();
         }
         private void timer_Tick(object sender, EventArgs e)
         {
             DateHms.Text = DateTime.Now.ToLongTimeString();
         }
-
         private void BackBtn_Click(object sender, EventArgs e)
         {
             this.Hide();

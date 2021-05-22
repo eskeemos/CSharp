@@ -17,8 +17,7 @@ namespace HotelSystemManagement
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Login(object sender, EventArgs e)
         {
             Con.Open();
             SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Staff_tab " + "WHERE " +"StaffName = '"+ username.Text +"' AND StaffPassword = '" + password.Text + "'",Con);
@@ -36,8 +35,7 @@ namespace HotelSystemManagement
             }
             Con.Close();
         }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void Exit(object sender, EventArgs e)
         {
             Application.Exit();
         }
