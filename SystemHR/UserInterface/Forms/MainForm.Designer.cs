@@ -210,6 +210,7 @@ namespace SystemHR.UserInterface.Forms
             this.BtnContracts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnContracts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnContracts.UseVisualStyleBackColor = true;
+            this.BtnContracts.Click += new System.EventHandler(this.BtnContracts_Click);
             // 
             // splitter1
             // 

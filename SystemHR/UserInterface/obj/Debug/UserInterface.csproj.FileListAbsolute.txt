@@ -11,3 +11,5 @@ C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInte
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\UserInterface.csproj.CopyComplete
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.exe
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.pdb
+C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Employees.EmployeesForm.resources
+C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Contracts.ContractForm.resources
