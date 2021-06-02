@@ -183,6 +183,7 @@ namespace SystemHR.UserInterface.Forms
             this.BtnOrganizationStructure.Text = "Struktura organizacyjna";
             this.BtnOrganizationStructure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnOrganizationStructure.UseVisualStyleBackColor = true;
+            this.BtnOrganizationStructure.Click += new System.EventHandler(this.BtnOrganizationStructure_Click);
             // 
             // splitter2
             // 
@@ -299,11 +300,17 @@ namespace SystemHR.UserInterface.Forms
             // MainTab
             // 
             this.MainTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.MainTab.ItemSize = new System.Drawing.Size(100, 22);
             this.MainTab.Location = new System.Drawing.Point(0, 0);
             this.MainTab.Name = "MainTab";
+            this.MainTab.Padding = new System.Drawing.Point(20, 20);
             this.MainTab.SelectedIndex = 0;
             this.MainTab.Size = new System.Drawing.Size(1165, 631);
+            this.MainTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.MainTab.TabIndex = 0;
+            this.MainTab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MainTab_DrawItem);
+            this.MainTab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTab_MouseDown);
             // 
             // MainForm
             // 
