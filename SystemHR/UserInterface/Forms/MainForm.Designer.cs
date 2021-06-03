@@ -301,7 +301,7 @@ namespace SystemHR.UserInterface.Forms
             // 
             this.MainTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.MainTab.ItemSize = new System.Drawing.Size(100, 22);
+            this.MainTab.ItemSize = new System.Drawing.Size(115, 22);
             this.MainTab.Location = new System.Drawing.Point(0, 0);
             this.MainTab.Name = "MainTab";
             this.MainTab.Padding = new System.Drawing.Point(20, 20);
