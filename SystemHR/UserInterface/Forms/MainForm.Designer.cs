@@ -49,7 +49,7 @@ namespace SystemHR.UserInterface.Forms
             this.TsslDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.TsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.MainTab = new System.Windows.Forms.TabControl();
+            this.formArea = new System.Windows.Forms.TabControl();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.ssMain.SuspendLayout();
@@ -183,7 +183,6 @@ namespace SystemHR.UserInterface.Forms
             this.BtnOrganizationStructure.Text = "Struktura organizacyjna";
             this.BtnOrganizationStructure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnOrganizationStructure.UseVisualStyleBackColor = true;
-            this.BtnOrganizationStructure.Click += new System.EventHandler(this.BtnOrganizationStructure_Click);
             // 
             // splitter2
             // 
@@ -289,7 +288,7 @@ namespace SystemHR.UserInterface.Forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.panel1.Controls.Add(this.MainTab);
+            this.panel1.Controls.Add(this.formArea);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 81);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -299,18 +298,18 @@ namespace SystemHR.UserInterface.Forms
             // 
             // MainTab
             // 
-            this.MainTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTab.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.MainTab.ItemSize = new System.Drawing.Size(115, 22);
-            this.MainTab.Location = new System.Drawing.Point(0, 0);
-            this.MainTab.Name = "MainTab";
-            this.MainTab.Padding = new System.Drawing.Point(20, 20);
-            this.MainTab.SelectedIndex = 0;
-            this.MainTab.Size = new System.Drawing.Size(1165, 631);
-            this.MainTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.MainTab.TabIndex = 0;
-            this.MainTab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MainTab_DrawItem);
-            this.MainTab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTab_MouseDown);
+            this.formArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formArea.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.formArea.ItemSize = new System.Drawing.Size(115, 22);
+            this.formArea.Location = new System.Drawing.Point(0, 0);
+            this.formArea.Name = "MainTab";
+            this.formArea.Padding = new System.Drawing.Point(20, 20);
+            this.formArea.SelectedIndex = 0;
+            this.formArea.Size = new System.Drawing.Size(1165, 631);
+            this.formArea.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.formArea.TabIndex = 0;
+            this.formArea.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.MainTab_DrawItem);
+            this.formArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainTab_MouseDown);
             // 
             // MainForm
             // 
@@ -321,6 +320,7 @@ namespace SystemHR.UserInterface.Forms
             this.Controls.Add(this.ssMain);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -356,6 +356,6 @@ namespace SystemHR.UserInterface.Forms
         private System.Windows.Forms.ToolStripStatusLabel TsslVersion;
         private System.Windows.Forms.ToolStripStatusLabel TsslDatabase;
         private System.Windows.Forms.ToolStripStatusLabel TsslUser;
-        private System.Windows.Forms.TabControl MainTab;
+        private System.Windows.Forms.TabControl formArea;
     }
 }

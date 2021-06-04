@@ -12,12 +12,13 @@ namespace SystemHR.UserInterface.Forms.Contracts
 {
     public partial class ContractForm : Form
     {
+
+        private static ContractForm instance = null;
+
         private ContractForm()
         {
             InitializeComponent();
         }
-
-        private static ContractForm instance = null;
 
         public static ContractForm Instance
         {
@@ -30,6 +31,7 @@ namespace SystemHR.UserInterface.Forms.Contracts
                 return instance;
             }
         }
+
         public static bool IsNull
         {
             get

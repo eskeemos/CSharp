@@ -9,55 +9,50 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemHR.UserInterface.Forms.Contracts;
 using SystemHR.UserInterface.Forms.Employees;
+using SystemHR.UserInterface.Helpers;
 
 namespace SystemHR.UserInterface.Forms
 {
     public partial class MainForm : Form
     {
-        private string closeButtonFullPath = "C:\\Users\\krzys\\Desktop\\CSharp\\SystemHR\\resources\\esc.png";
+        #region Fields
+
         private TabPage tab_Employees;
         private TabPage tab_Contract;
+
+        #endregion
+        #region Ctor
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void ShowFormInTabPage(TabPage tabPage, Form form)
-        {
-            MainTab.Controls.Add(tabPage);
-
-            tabPage.Text = form.Text;
-            form.TopLevel = false;
-            form.Visible = true;
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill;
-            MainTab.TabPages[0].Controls.Add(form);
-            MainTab.SelectedTab = tabPage;
-        }
+        #endregion
+        #region Events
 
         private void BtnEmployees_Click(object sender, EventArgs e)
         {
-            if(EmployeesForm.IsNull)
+            if (EmployeesForm.IsNull)
             {
                 tab_Employees = new TabPage();
                 ShowFormInTabPage(tab_Employees, EmployeesForm.Instance);
             }
             else
             {
-                MainTab.SelectedTab = tab_Employees;
-            }        
+                formArea.SelectedTab = tab_Employees;
+            }
         }
 
         private void BtnContracts_Click(object sender, EventArgs e)
         {
-            if(ContractForm.IsNull)
+            if (ContractForm.IsNull)
             {
                 tab_Contract = new TabPage();
                 ShowFormInTabPage(tab_Contract, ContractForm.Instance);
-            }    
+            }
             else
             {
-                MainTab.SelectedTab = tab_Contract;
+                formArea.SelectedTab = tab_Contract;
             }
         }
 
@@ -65,13 +60,13 @@ namespace SystemHR.UserInterface.Forms
         {
             try
             {
-                var tabPage = this.MainTab.TabPages[e.Index];
-                var tabRect = this.MainTab.GetTabRect(e.Index);
+                var tabPage = this.formArea.TabPages[e.Index];
+                var tabRect = this.formArea.GetTabRect(e.Index);
                 tabRect.Inflate(-2, -2);
                 {
-                    var closeImage = new Bitmap(closeButtonFullPath);
-                    e.Graphics.DrawImage(closeImage,(tabRect.Right - closeImage.Width) - 5,tabRect.Top + (tabRect.Height - closeImage.Height) / 2);
-                    TextRenderer.DrawText(e.Graphics, tabPage.Text, tabPage.Font,tabRect, tabPage.ForeColor, TextFormatFlags.Left);
+                    var closeImage = new Bitmap($"{ResourcesHelper.ResourcesFilePath}\\{ResourcesHelper.CloseImage}");
+                    e.Graphics.DrawImage(closeImage, (tabRect.Right - closeImage.Width) - 5, tabRect.Top + (tabRect.Height - closeImage.Height) / 2);
+                    TextRenderer.DrawText(e.Graphics, tabPage.Text, tabPage.Font, tabRect, tabPage.ForeColor, TextFormatFlags.Left);
                 }
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
@@ -79,36 +74,38 @@ namespace SystemHR.UserInterface.Forms
 
         private void MainTab_MouseDown(object sender, MouseEventArgs e)
         {
-            for (var i = 0; i < this.MainTab.TabPages.Count; i++)
+            for (var i = 0; i < this.formArea.TabPages.Count; i++)
             {
-                var tabRect = this.MainTab.GetTabRect(i);
+                var tabRect = this.formArea.GetTabRect(i);
                 tabRect.Inflate(-2, -2);
-                var closeImage = new Bitmap(closeButtonFullPath);
-                var imageRect = new Rectangle((tabRect.Right - closeImage.Width),tabRect.Top + (tabRect.Height - closeImage.Height) / 2,closeImage.Width,closeImage.Height);
+                var closeImage = new Bitmap($"{ResourcesHelper.ResourcesFilePath}\\{ResourcesHelper.CloseImage}");
+                var imageRect = new Rectangle((tabRect.Right - closeImage.Width) - 5, tabRect.Top + (tabRect.Height - closeImage.Height) / 2, closeImage.Width, closeImage.Height);
                 if (imageRect.Contains(e.Location))
                 {
-                    var form = MainTab.TabPages[i].Controls[0] as Form;
+                    var form = formArea.TabPages[i].Controls[0] as Form;
                     form.Close();
-                    this.MainTab.TabPages.RemoveAt(i);
+                    this.formArea.TabPages.RemoveAt(i);
                     break;
                 }
             }
         }
 
-        private void BtnOrganizationStructure_Click(object sender, EventArgs e)
-        {
-            /*
-            TabPage tabPage = new TabPage();
-            MainTab.Controls.Add(tabPage);
+        #endregion
+        #region Private Methods
 
-            ContractForm form = new ContractForm();
+        private void ShowFormInTabPage(TabPage tabPage, Form form)
+        {
+            formArea.Controls.Add(tabPage);
+
             tabPage.Text = form.Text;
             form.TopLevel = false;
             form.Visible = true;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
-            MainTab.TabPages[0].Controls.Add(form);
-            */
+            tabPage.Controls.Add(form);
+            formArea.SelectedTab = tabPage;
         }
+
+        #endregion
     }
 }

@@ -12,12 +12,13 @@ namespace SystemHR.UserInterface.Forms.Employees
 {
     public partial class EmployeesForm : Form
     {
+
+        private static EmployeesForm instance = null;
+
         private EmployeesForm()
         {
             InitializeComponent();
         }
-
-        private static EmployeesForm instance = null;
 
         public static EmployeesForm Instance
         {
@@ -30,6 +31,7 @@ namespace SystemHR.UserInterface.Forms.Employees
                 return instance;
             }
         }
+
         public static bool IsNull
         {
             get
