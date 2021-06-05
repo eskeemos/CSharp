@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SysetemHR.DataAccessLayer.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,17 @@ namespace SystemHR.UserInterface.Forms.Employees
     {
 
         private static EmployeesForm instance = null;
+        private static IList<EmployeeViewModel> fakeEmployees;
 
         private EmployeesForm()
         {
             InitializeComponent();
+            fakeEmployees = GetFakeEmployees();
+        }
+
+        private IList<EmployeeViewModel> GetFakeEmployees()
+        {
+            throw new NotImplementedException();
         }
 
         public static EmployeesForm Instance

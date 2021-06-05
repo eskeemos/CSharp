@@ -296,13 +296,13 @@ namespace SystemHR.UserInterface.Forms
             this.panel1.Size = new System.Drawing.Size(1165, 631);
             this.panel1.TabIndex = 2;
             // 
-            // MainTab
+            // formArea
             // 
             this.formArea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.formArea.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.formArea.ItemSize = new System.Drawing.Size(115, 22);
             this.formArea.Location = new System.Drawing.Point(0, 0);
-            this.formArea.Name = "MainTab";
+            this.formArea.Name = "formArea";
             this.formArea.Padding = new System.Drawing.Point(20, 20);
             this.formArea.SelectedIndex = 0;
             this.formArea.Size = new System.Drawing.Size(1165, 631);
