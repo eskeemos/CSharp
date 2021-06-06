@@ -40,13 +40,12 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.btnModify = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.DGVEmployees = new System.Windows.Forms.DataGridView();
-            this.BSEmployees = new System.Windows.Forms.BindingSource(this.components);
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BSEmployees = new System.Windows.Forms.BindingSource(this.components);
             this.tabEmployees.SuspendLayout();
             this.panelEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVEmployees)).BeginInit();
@@ -174,7 +173,6 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.DGVEmployees.BackgroundColor = System.Drawing.Color.White;
             this.DGVEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
             this.colLastName,
             this.colFirstName,
             this.colCode,
@@ -186,21 +184,9 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.DGVEmployees.Name = "DGVEmployees";
             this.DGVEmployees.ReadOnly = true;
             this.DGVEmployees.RowHeadersVisible = false;
+            this.DGVEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVEmployees.Size = new System.Drawing.Size(794, 407);
             this.DGVEmployees.TabIndex = 1;
-            // 
-            // BSEmployees
-            // 
-            this.BSEmployees.DataSource = typeof(SysetemHR.DataAccessLayer.ViewModel.EmployeeViewModel);
-            // 
-            // colID
-            // 
-            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
             // 
             // colLastName
             // 
@@ -237,6 +223,10 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.colStatus.HeaderText = "Status Pracownika";
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
+            // 
+            // BSEmployees
+            // 
+            this.BSEmployees.DataSource = typeof(SysetemHR.DataAccessLayer.ViewModel.EmployeeViewModel);
             // 
             // EmployeesForm
             // 

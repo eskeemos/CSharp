@@ -9,6 +9,7 @@ namespace SysetemHR.DataAccessLayer.Models
 {
     public class EmployeeModel : EntityModel
     {
+        public int Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public int Code { get; set; }
@@ -18,14 +19,11 @@ namespace SysetemHR.DataAccessLayer.Models
         public string PhoneNumber { get; set; }
         public string EmailAdrress { get; set; }
         public string IdentityCardNumber { get; set; }
-        public DateTime? IssueDateIdentyCard { get; set; }
+        public DateTime? IssueDateIdentityCard { get; set; }
         public DateTime? ExpirationDateIdentityCard { get; set; }
         public string PassportNumber { get; set; }
         public DateTime? IssueDatePassport { get; set; }
         public DateTime? ExpirationDatePassport { get; set; }
-        public StatusModel Status { get; set; }
-
-
-
+        public StatusModel Status { get; set; }      
     }
 }

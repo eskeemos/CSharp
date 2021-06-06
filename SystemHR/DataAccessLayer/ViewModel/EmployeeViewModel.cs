@@ -14,8 +14,8 @@ namespace SysetemHR.DataAccessLayer.ViewModel
         private string lastName;
         public string LastName
         {
-            get { return LastName; }
-            set { LastName = value; }
+            get { return lastName; }
+            set { lastName = value; }
         }
 
         private string firstName;

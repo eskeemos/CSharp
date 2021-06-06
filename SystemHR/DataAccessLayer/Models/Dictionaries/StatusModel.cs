@@ -9,5 +9,14 @@ namespace SysetemHR.DataAccessLayer.Models.Dictionaries
     public class StatusModel : EntityModel
     {
         public string Value { get; set; }
+        public StatusModel(string value)
+        {
+            Value = value;
+        }
+        public override string ToString()
+        {
+            return Value;
+        }
+
     }
 }

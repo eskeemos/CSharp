@@ -9,5 +9,13 @@ namespace SysetemHR.DataAccessLayer.Models.Dictionaries
     public class GenderModel : EntityModel
     {
         public string Value { get; set; }
+        public GenderModel(string value)
+        {
+            Value = value;
+        }
+        public override string ToString()
+        {
+            return Value;
+        }
     }
 }
