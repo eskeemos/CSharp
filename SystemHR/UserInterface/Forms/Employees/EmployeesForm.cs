@@ -73,7 +73,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             {
                 new EmployeeModel()
                 {
-                    Id = 1,
+                    ID = 1,
                     LastName = "Karaś",
                     FirstName = "Ala",
                     Code = 1,
@@ -92,7 +92,7 @@ namespace SystemHR.UserInterface.Forms.Employees
                 },
                 new EmployeeModel()
                 {
-                    Id = 2,
+                    ID = 2,
                     LastName = "Benek",
                     FirstName = "Ewa",
                     Code = 2,
@@ -111,7 +111,7 @@ namespace SystemHR.UserInterface.Forms.Employees
                 },
                 new EmployeeModel()
                 {
-                    Id = 3,
+                    ID = 3,
                     LastName = "Marek",
                     FirstName = "Stan",
                     Code = 3,

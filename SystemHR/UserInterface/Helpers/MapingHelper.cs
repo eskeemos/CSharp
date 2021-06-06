@@ -18,7 +18,7 @@ namespace SystemHR.UserInterface.Helpers
             foreach (EmployeeModel item in employeesModels)
             {
                 EmployeeViewModel fakeEmployeeViewModel = new EmployeeViewModel();
-                fakeEmployeeViewModel.Id        = item.Id;
+                fakeEmployeeViewModel.Id        = item.ID;
                 fakeEmployeeViewModel.LastName  = item.LastName;
                 fakeEmployeeViewModel.FirstName = item.FirstName;
                 fakeEmployeeViewModel.Code      = item.Code.ToString();

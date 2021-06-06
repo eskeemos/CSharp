@@ -8,7 +8,7 @@ namespace SysetemHR.DataAccessLayer.Models.Dictionaries
 {
     public class StatusModel : EntityModel
     {
-        public string Value { get; set; }
+        public new string Value { get; set; }
         public StatusModel(string value)
         {
             Value = value;

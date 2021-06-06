@@ -8,7 +8,7 @@ namespace SysetemHR.DataAccessLayer.Models.Dictionaries
 {
     public class GenderModel : EntityModel
     {
-        public string Value { get; set; }
+        public new string Value { get; set; }
         public GenderModel(string value)
         {
             Value = value;
