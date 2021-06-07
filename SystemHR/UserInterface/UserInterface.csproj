@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Base\BaseAddEditButtons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\BaseAddEditButtons.Designer.cs">
+      <DependentUpon>BaseAddEditButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Base\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Base\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Contracts\ContractForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Contracts\ContractForm.Designer.cs">
       <DependentUpon>ContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employees\EmployeeAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employees\EmployeeAddForm.Designer.cs">
+      <DependentUpon>EmployeeAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Employees\EmployeesForm.cs">
       <SubType>Form</SubType>
@@ -68,8 +86,17 @@
     <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Base\BaseAddEditButtons.resx">
+      <DependentUpon>BaseAddEditButtons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Base\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Contracts\ContractForm.resx">
       <DependentUpon>ContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employees\EmployeeAddForm.resx">
+      <DependentUpon>EmployeeAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employees\EmployeesForm.resx">
       <DependentUpon>EmployeesForm.cs</DependentUpon>

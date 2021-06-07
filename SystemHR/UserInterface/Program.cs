@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemHR.UserInterface.Forms;
+using SystemHR.UserInterface.Forms.Employees;
 
 namespace UserInterface
 {

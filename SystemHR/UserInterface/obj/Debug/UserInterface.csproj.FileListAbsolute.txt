@@ -13,3 +13,6 @@ C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.exe
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.pdb
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Employees.EmployeesForm.resources
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Contracts.ContractForm.resources
+C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Employees.EmployeeAddForm.resources
+C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Base.BaseForm.resources
+C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Base.BaseAddEditButtons.resources

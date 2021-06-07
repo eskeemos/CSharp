@@ -10,11 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemHR.UserInterface.Forms.Base;
 using SystemHR.UserInterface.Helpers;
 
 namespace SystemHR.UserInterface.Forms.Employees
 {
-    public partial class EmployeesForm : Form
+    public partial class EmployeesForm : BaseForm
     {
         #region Fields
 
@@ -141,5 +142,11 @@ namespace SystemHR.UserInterface.Forms.Employees
         }
 
         #endregion
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            EmployeeAddForm form = new EmployeeAddForm();
+            form.ShowDialog();
+        }
     }
 }
