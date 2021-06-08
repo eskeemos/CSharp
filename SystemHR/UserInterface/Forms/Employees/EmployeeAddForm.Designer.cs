@@ -29,6 +29,7 @@ namespace SystemHR.UserInterface.Forms.Employees
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lDaneIdentyfikacyjne = new System.Windows.Forms.Label();
             this.gpDaneIdentyfikacyjne = new System.Windows.Forms.GroupBox();
             this.dtpDateBirth = new System.Windows.Forms.DateTimePicker();
@@ -36,6 +37,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.lPesel = new System.Windows.Forms.Label();
             this.lDateBirth = new System.Windows.Forms.Label();
             this.cbGender = new System.Windows.Forms.ComboBox();
+            this.bsGender = new System.Windows.Forms.BindingSource(this.components);
             this.lGender = new System.Windows.Forms.Label();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.lFirstName = new System.Windows.Forms.Label();
@@ -63,10 +65,17 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.bSave = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.epLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epFirstName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epPesel = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpDaneIdentyfikacyjne.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGender)).BeginInit();
             this.gbContact.SuspendLayout();
             this.gbIdentityCard.SuspendLayout();
             this.gbPassport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPesel)).BeginInit();
             this.SuspendLayout();
             // 
             // lDaneIdentyfikacyjne
@@ -95,7 +104,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.gpDaneIdentyfikacyjne.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gpDaneIdentyfikacyjne.Location = new System.Drawing.Point(24, 53);
             this.gpDaneIdentyfikacyjne.Name = "gpDaneIdentyfikacyjne";
-            this.gpDaneIdentyfikacyjne.Size = new System.Drawing.Size(267, 189);
+            this.gpDaneIdentyfikacyjne.Size = new System.Drawing.Size(271, 189);
             this.gpDaneIdentyfikacyjne.TabIndex = 1;
             this.gpDaneIdentyfikacyjne.TabStop = false;
             this.gpDaneIdentyfikacyjne.Text = "Ogólne";
@@ -110,6 +119,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.dtpDateBirth.Size = new System.Drawing.Size(125, 23);
             this.dtpDateBirth.TabIndex = 16;
             this.dtpDateBirth.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpDateBirth.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // tbPesel
             // 
@@ -118,6 +128,8 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.tbPesel.Name = "tbPesel";
             this.tbPesel.Size = new System.Drawing.Size(125, 23);
             this.tbPesel.TabIndex = 10;
+            this.tbPesel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPesel_KeyPress);
+            this.tbPesel.Validated += new System.EventHandler(this.tbPesel_Validated);
             // 
             // lPesel
             // 
@@ -143,11 +155,19 @@ namespace SystemHR.UserInterface.Forms.Employees
             // 
             // cbGender
             // 
+            this.cbGender.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bsGender, "Value", true));
+            this.cbGender.DataSource = this.bsGender;
+            this.cbGender.DisplayMember = "Value";
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Location = new System.Drawing.Point(128, 86);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(125, 24);
             this.cbGender.TabIndex = 2;
+            this.cbGender.ValueMember = "Value";
+            // 
+            // bsGender
+            // 
+            this.bsGender.DataSource = typeof(SysetemHR.DataAccessLayer.Models.Dictionaries.GenderModel);
             // 
             // lGender
             // 
@@ -166,15 +186,16 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(125, 23);
             this.tbFirstName.TabIndex = 5;
+            this.tbFirstName.TextChanged += new System.EventHandler(this.tbFirstName_TextChanged);
             // 
             // lFirstName
             // 
             this.lFirstName.AutoSize = true;
-            this.lFirstName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lFirstName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lFirstName.Location = new System.Drawing.Point(11, 60);
             this.lFirstName.Margin = new System.Windows.Forms.Padding(8);
             this.lFirstName.Name = "lFirstName";
-            this.lFirstName.Size = new System.Drawing.Size(35, 17);
+            this.lFirstName.Size = new System.Drawing.Size(36, 16);
             this.lFirstName.TabIndex = 4;
             this.lFirstName.Text = "Imię";
             // 
@@ -184,15 +205,16 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(125, 23);
             this.tbLastName.TabIndex = 3;
+            this.tbLastName.TextChanged += new System.EventHandler(this.tbLastName_TextChanged);
             // 
             // lLastName
             // 
             this.lLastName.AutoSize = true;
-            this.lLastName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lLastName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lLastName.Location = new System.Drawing.Point(11, 31);
             this.lLastName.Margin = new System.Windows.Forms.Padding(10);
             this.lLastName.Name = "lLastName";
-            this.lLastName.Size = new System.Drawing.Size(69, 17);
+            this.lLastName.Size = new System.Drawing.Size(69, 16);
             this.lLastName.TabIndex = 2;
             this.lLastName.Text = "Nazwisko";
             // 
@@ -205,7 +227,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.gbContact.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.gbContact.Location = new System.Drawing.Point(24, 246);
             this.gbContact.Name = "gbContact";
-            this.gbContact.Size = new System.Drawing.Size(267, 95);
+            this.gbContact.Size = new System.Drawing.Size(271, 95);
             this.gbContact.TabIndex = 2;
             this.gbContact.TabStop = false;
             this.gbContact.Text = "Kontakt";
@@ -255,7 +277,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.gbIdentityCard.Controls.Add(this.tbIdentityCardNumber);
             this.gbIdentityCard.Controls.Add(this.lIdentityCardNumber);
             this.gbIdentityCard.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.gbIdentityCard.Location = new System.Drawing.Point(305, 53);
+            this.gbIdentityCard.Location = new System.Drawing.Point(311, 53);
             this.gbIdentityCard.Name = "gbIdentityCard";
             this.gbIdentityCard.Size = new System.Drawing.Size(270, 120);
             this.gbIdentityCard.TabIndex = 3;
@@ -271,6 +293,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.dtpExpirationDateIdentity.Size = new System.Drawing.Size(125, 23);
             this.dtpExpirationDateIdentity.TabIndex = 10;
             this.dtpExpirationDateIdentity.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpExpirationDateIdentity.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // dtpIssueDateIdentity
             // 
@@ -281,6 +304,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.dtpIssueDateIdentity.Size = new System.Drawing.Size(125, 23);
             this.dtpIssueDateIdentity.TabIndex = 9;
             this.dtpIssueDateIdentity.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpIssueDateIdentity.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // lExpirationDateIdentityCard
             // 
@@ -328,7 +352,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.gbPassport.Controls.Add(this.tbPassportNumber);
             this.gbPassport.Controls.Add(this.lPassportNumber);
             this.gbPassport.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.gbPassport.Location = new System.Drawing.Point(305, 184);
+            this.gbPassport.Location = new System.Drawing.Point(311, 184);
             this.gbPassport.Name = "gbPassport";
             this.gbPassport.Size = new System.Drawing.Size(270, 126);
             this.gbPassport.TabIndex = 4;
@@ -344,6 +368,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.dtpExpirationDatePassport.Size = new System.Drawing.Size(125, 23);
             this.dtpExpirationDatePassport.TabIndex = 16;
             this.dtpExpirationDatePassport.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpExpirationDatePassport.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // dtpIssueDatePassport
             // 
@@ -354,6 +379,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.dtpIssueDatePassport.Size = new System.Drawing.Size(125, 23);
             this.dtpIssueDatePassport.TabIndex = 15;
             this.dtpIssueDatePassport.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpIssueDatePassport.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // lExpirationDatePassport
             // 
@@ -394,7 +420,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(305, 316);
+            this.bSave.Location = new System.Drawing.Point(311, 316);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(133, 40);
             this.bSave.TabIndex = 5;
@@ -404,7 +430,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             // 
             // bCancel
             // 
-            this.bCancel.Location = new System.Drawing.Point(444, 316);
+            this.bCancel.Location = new System.Drawing.Point(450, 316);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(131, 40);
             this.bCancel.TabIndex = 6;
@@ -420,11 +446,26 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.textBox3.Size = new System.Drawing.Size(1, 1);
             this.textBox3.TabIndex = 1;
             // 
+            // epLastName
+            // 
+            this.epLastName.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epLastName.ContainerControl = this;
+            // 
+            // epFirstName
+            // 
+            this.epFirstName.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epFirstName.ContainerControl = this;
+            // 
+            // epPesel
+            // 
+            this.epPesel.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epPesel.ContainerControl = this;
+            // 
             // EmployeeAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 368);
+            this.ClientSize = new System.Drawing.Size(594, 368);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bSave);
@@ -438,12 +479,16 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.Text = "Dodaj pracownika";
             this.gpDaneIdentyfikacyjne.ResumeLayout(false);
             this.gpDaneIdentyfikacyjne.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGender)).EndInit();
             this.gbContact.ResumeLayout(false);
             this.gbContact.PerformLayout();
             this.gbIdentityCard.ResumeLayout(false);
             this.gbIdentityCard.PerformLayout();
             this.gbPassport.ResumeLayout(false);
             this.gbPassport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPesel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,5 +530,9 @@ namespace SystemHR.UserInterface.Forms.Employees
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.Button bCancel;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.BindingSource bsGender;
+        private System.Windows.Forms.ErrorProvider epLastName;
+        private System.Windows.Forms.ErrorProvider epFirstName;
+        private System.Windows.Forms.ErrorProvider epPesel;
     }
 }
