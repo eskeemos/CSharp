@@ -44,8 +44,8 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.lLastName = new System.Windows.Forms.Label();
             this.gbContact = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbEmailAdress = new System.Windows.Forms.TextBox();
+            this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.lTelephoneNumber = new System.Windows.Forms.Label();
             this.lEmailAdrress = new System.Windows.Forms.Label();
             this.gbIdentityCard = new System.Windows.Forms.GroupBox();
@@ -220,8 +220,8 @@ namespace SystemHR.UserInterface.Forms.Employees
             // 
             // gbContact
             // 
-            this.gbContact.Controls.Add(this.textBox2);
-            this.gbContact.Controls.Add(this.textBox1);
+            this.gbContact.Controls.Add(this.tbEmailAdress);
+            this.gbContact.Controls.Add(this.tbPhoneNumber);
             this.gbContact.Controls.Add(this.lTelephoneNumber);
             this.gbContact.Controls.Add(this.lEmailAdrress);
             this.gbContact.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -232,19 +232,19 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.gbContact.TabStop = false;
             this.gbContact.Text = "Kontakt";
             // 
-            // textBox2
+            // tbEmailAdress
             // 
-            this.textBox2.Location = new System.Drawing.Point(128, 56);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 23);
-            this.textBox2.TabIndex = 6;
+            this.tbEmailAdress.Location = new System.Drawing.Point(128, 56);
+            this.tbEmailAdress.Name = "tbEmailAdress";
+            this.tbEmailAdress.Size = new System.Drawing.Size(125, 23);
+            this.tbEmailAdress.TabIndex = 6;
             // 
-            // textBox1
+            // tbPhoneNumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 23);
-            this.textBox1.TabIndex = 5;
+            this.tbPhoneNumber.Location = new System.Drawing.Point(128, 27);
+            this.tbPhoneNumber.Name = "tbPhoneNumber";
+            this.tbPhoneNumber.Size = new System.Drawing.Size(125, 23);
+            this.tbPhoneNumber.TabIndex = 5;
             // 
             // lTelephoneNumber
             // 
@@ -508,8 +508,8 @@ namespace SystemHR.UserInterface.Forms.Employees
         private System.Windows.Forms.TextBox tbPesel;
         private System.Windows.Forms.Label lPesel;
         private System.Windows.Forms.GroupBox gbContact;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbEmailAdress;
+        private System.Windows.Forms.TextBox tbPhoneNumber;
         private System.Windows.Forms.Label lTelephoneNumber;
         private System.Windows.Forms.Label lEmailAdrress;
         private System.Windows.Forms.GroupBox gbIdentityCard;

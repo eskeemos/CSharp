@@ -1,4 +1,5 @@
-﻿using SysetemHR.DataAccessLayer.Models.Dictionaries;
+﻿using SysetemHR.DataAccessLayer.Models;
+using SysetemHR.DataAccessLayer.Models.Dictionaries;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace SystemHR.UserInterface.Forms.Employees
         {
             if(string.IsNullOrWhiteSpace(tbLastName.Text))
             {
-                epLastName.SetError(tbLastName, "Pole 'Nazwisko' jest wymagane.");
+                epLastName.SetError(tbLastName, "Pole 'Nazwisko' jest wymagane.\n");
             }
             else
             {
@@ -67,9 +68,71 @@ namespace SystemHR.UserInterface.Forms.Employees
         }
         protected override void Save()
         {
-            MessageBox.Show("Pracownik został zapisany pomyślnie!");
-            Close();
+            if(ValidateForm())
+            {
+                EmployeeModel employee = new EmployeeModel()
+                {
+                    LastName = tbLastName.Text,
+                    FirstName = tbFirstName.Text,
+                    Gender = new GenderModel(cbGender.Text),
+                    DateBirth = dtpDateBirth.Value,
+                    PESEL = tbPesel.Text,
+                    PhoneNumber = tbPhoneNumber.Text,
+                    EmailAdrress = tbEmailAdress.Text,
+                    IdentityCardNumber = tbIdentityCardNumber.Text,
+                    IssueDateIdentityCard = dtpIssueDateIdentity.Value,
+                    ExpirationDateIdentityCard = dtpExpirationDateIdentity.Value,
+                    PassportNumber = tbPassportNumber.Text,
+                    IssueDatePassport = dtpIssueDatePassport.Value,
+                    ExpirationDatePassport = dtpExpirationDatePassport.Value,
+                    Status = new StatusModel("Wprowadzony")
+                };
+
+                // employee = CreateEmployee(employee)
+                employee.ID = 4;
+                employee.Code = 4;
+                Close();
+            }
         }
+
+        private bool ValidateForm()
+        {
+            StringBuilder sbErrorMessage = new StringBuilder();
+
+            string lastNameErrorMessage = epLastName.GetError(tbLastName);
+            if(!string.IsNullOrWhiteSpace(lastNameErrorMessage))
+            {
+                sbErrorMessage.Append(lastNameErrorMessage);
+            }
+            string firstNameErrorMessage = epFirstName.GetError(tbFirstName);
+            if (!string.IsNullOrWhiteSpace(firstNameErrorMessage))
+            {
+                sbErrorMessage.Append(firstNameErrorMessage);
+            }
+            if(sbErrorMessage.Length > 0)
+            {
+                MessageBox.Show(sbErrorMessage.ToString(),
+                    "Dodawanie pracownika",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
+            string peselWarningMessage = epPesel.GetError(tbPesel);
+            if (!string.IsNullOrWhiteSpace(peselWarningMessage))
+            {
+                DialogResult answer = MessageBox.Show(
+                    peselWarningMessage + Environment.NewLine + "Czy mimo to chcesz dodać pracownika?",
+                    "Dodawanie pracownika",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+                if(answer == DialogResult.No)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         protected override void Cancel()
         {
             MessageBox.Show("Operacja została anulowana!");
