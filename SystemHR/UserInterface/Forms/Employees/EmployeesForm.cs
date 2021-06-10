@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SystemHR.UserInterface.Classes;
 using SystemHR.UserInterface.Forms.Base;
 using SystemHR.UserInterface.Helpers;
 
@@ -140,13 +141,23 @@ namespace SystemHR.UserInterface.Forms.Employees
         {
             instance = null;
         }
-
-        #endregion
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
             EmployeeAddForm form = new EmployeeAddForm();
+            form.ReloadEmployees += (s, ea) =>
+            {
+                EmployeeEventArgs eventArgs = ea as EmployeeEventArgs;
+                if (eventArgs != null)
+                {
+                    EmployeeViewModel employee = MapingHelper.MapEmployeeModelToEmployeeViewModel(eventArgs.Employee);
+                    BSEmployees.Add(employee);
+
+                    DGVEmployees.ClearSelection();
+                    DGVEmployees.Rows[DGVEmployees.Rows.Count - 1].Selected = true;
+                }
+            };
             form.ShowDialog();
         }
+        #endregion
     }
 }

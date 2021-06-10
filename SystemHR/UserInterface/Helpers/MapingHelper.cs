@@ -28,6 +28,18 @@ namespace SystemHR.UserInterface.Helpers
                 fakeEmployeesViewModel.Add(fakeEmployeeViewModel);
             }
             return fakeEmployeesViewModel;
-        }   
+        }
+        public static EmployeeViewModel MapEmployeeModelToEmployeeViewModel(EmployeeModel employeeModel)
+        {
+            EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+            employeeViewModel.Id        = employeeModel.ID;
+            employeeViewModel.LastName  = employeeModel.LastName;
+            employeeViewModel.FirstName = employeeModel.FirstName;
+            employeeViewModel.Code      = employeeModel.Code.ToString();
+            employeeViewModel.Position  = string.Empty;
+            employeeViewModel.Status    = employeeModel.Status.ToString();
+
+            return employeeViewModel;
+        }
     }
 }
