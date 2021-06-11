@@ -172,7 +172,7 @@
         dUpoh1MAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnModify.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="bModify.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         xAAADsQBlSsOGwAAAaVJREFUSEu1lkFqwkAUhidRd0WKG7ddegaP4Amk5AzujNtsS+kBXLgRT+ABsnAj

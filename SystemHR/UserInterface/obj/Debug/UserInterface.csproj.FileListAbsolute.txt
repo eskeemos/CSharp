@@ -16,3 +16,4 @@ C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInte
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Employees.EmployeeAddForm.resources
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Base.BaseForm.resources
 C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Base.BaseAddEditButtons.resources
+C:\Users\krzys\Desktop\CSharp\SystemHR\UserInterface\obj\Debug\SystemHR.UserInterface.Forms.Employees.EmployeeEditForm.resources

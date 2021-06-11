@@ -39,7 +39,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnDismiss = new System.Windows.Forms.Button();
-            this.btnModify = new System.Windows.Forms.Button();
+            this.bModify = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.DGVEmployees = new System.Windows.Forms.DataGridView();
             this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,7 +76,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.panelEmployees.Controls.Add(this.btnRefresh);
             this.panelEmployees.Controls.Add(this.btnRemove);
             this.panelEmployees.Controls.Add(this.btnDismiss);
-            this.panelEmployees.Controls.Add(this.btnModify);
+            this.panelEmployees.Controls.Add(this.bModify);
             this.panelEmployees.Controls.Add(this.btnCreate);
             this.panelEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEmployees.Location = new System.Drawing.Point(4, 4);
@@ -145,20 +145,21 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.btnDismiss.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDismiss.UseVisualStyleBackColor = true;
             // 
-            // btnModify
+            // bModify
             // 
-            this.btnModify.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnModify.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnModify.Image = ((System.Drawing.Image)(resources.GetObject("btnModify.Image")));
-            this.btnModify.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModify.Location = new System.Drawing.Point(84, 0);
-            this.btnModify.Margin = new System.Windows.Forms.Padding(4);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(101, 40);
-            this.btnModify.TabIndex = 1;
-            this.btnModify.Text = "Modyfikuj";
-            this.btnModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnModify.UseVisualStyleBackColor = true;
+            this.bModify.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bModify.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bModify.Image = ((System.Drawing.Image)(resources.GetObject("bModify.Image")));
+            this.bModify.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bModify.Location = new System.Drawing.Point(84, 0);
+            this.bModify.Margin = new System.Windows.Forms.Padding(4);
+            this.bModify.Name = "bModify";
+            this.bModify.Size = new System.Drawing.Size(101, 40);
+            this.bModify.TabIndex = 1;
+            this.bModify.Text = "Modyfikuj";
+            this.bModify.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bModify.UseVisualStyleBackColor = true;
+            this.bModify.Click += new System.EventHandler(this.bModify_Click);
             // 
             // btnCreate
             // 
@@ -287,7 +288,7 @@ namespace SystemHR.UserInterface.Forms.Employees
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnDismiss;
-        private System.Windows.Forms.Button btnModify;
+        private System.Windows.Forms.Button bModify;
         private System.Windows.Forms.Button btnSendEmail;
         private System.Windows.Forms.DataGridView DGVEmployees;
         private System.Windows.Forms.BindingSource BSEmployees;

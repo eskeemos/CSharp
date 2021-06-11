@@ -465,7 +465,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 368);
+            this.ClientSize = new System.Drawing.Size(594, 371);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bSave);
