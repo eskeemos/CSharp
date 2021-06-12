@@ -19,15 +19,14 @@ namespace SystemHR.UserInterface.Forms.Employees
     public partial class EmployeeAddForm : BaseAddEditButtons
     {
         #region Fields
-            public EventHandler ReloadEmployees;
+        public EventHandler ReloadEmployees;
         #endregion
         #region Constructor
-            public EmployeeAddForm()
+        public EmployeeAddForm()
             {
                 InitializeComponent();
                 InitializeData();
                 ValidateControls();
-                ;
             }
         #endregion
         #region PrivateMethod
@@ -106,23 +105,19 @@ namespace SystemHR.UserInterface.Forms.Employees
                 DateTimePicker dtp = sender as DateTimePicker;
                 dtp.DateTimePickerValueChange();
             }
-
-            private void tbLastName_TextChanged(object sender, EventArgs e)
+        private void tbLastName_TextChanged(object sender, EventArgs e)
             {
                 ValidateControls();
             }
-
-            private void tbFirstName_TextChanged(object sender, EventArgs e)
+        private void tbFirstName_TextChanged(object sender, EventArgs e)
             {
                 ValidateControls();
             }
-
-            private void tbPesel_KeyPress(object sender, KeyPressEventArgs e)
-            {
-                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            }
-
-            private void tbPesel_Validated(object sender, EventArgs e)
+        private void tbPesel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void tbPesel_Validated(object sender, EventArgs e)
             {
                 string pesel = tbPesel.Text;
                 if (!string.IsNullOrWhiteSpace(pesel) && !ValidatorHelper.IsValidPESEL(pesel))
@@ -134,12 +129,11 @@ namespace SystemHR.UserInterface.Forms.Employees
                     epPesel.Clear();
                 }
             }
-            private void bSave_Click(object sender, EventArgs e)
+        private void bSave_Click(object sender, EventArgs e)
             {
                 Save();
             }
-
-            private void bCancel_Click(object sender, EventArgs e)
+        private void bCancel_Click(object sender, EventArgs e)
             {
                 Cancel();
             }
@@ -176,8 +170,7 @@ namespace SystemHR.UserInterface.Forms.Employees
                     Close();
                 }
             }
-
-            protected override void Cancel()
+        protected override void Cancel()
             {
                 MessageBox.Show("Operacja została anulowana!");
                 Close();

@@ -5,10 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SystemHR.UserInterface.Classes;
 using SystemHR.UserInterface.Forms.Base;
@@ -19,13 +16,10 @@ namespace SystemHR.UserInterface.Forms.Employees
     public partial class EmployeesForm : BaseForm
     {
         #region Fields
-
-            private static EmployeesForm instance = null;
-            private static IList<EmployeeViewModel> fakeEmployees;
-
+        private static EmployeesForm instance = null;
+        private static IList<EmployeeViewModel> fakeEmployees;
         #endregion
         #region Properties
-
         public static EmployeesForm Instance
         {
             get
@@ -37,7 +31,6 @@ namespace SystemHR.UserInterface.Forms.Employees
                 return instance;
             }
         }
-
         public static bool IsNull
         {
             get
@@ -49,7 +42,6 @@ namespace SystemHR.UserInterface.Forms.Employees
                 return false;
             }
         }
-
         #endregion
         #region Constructor
         private EmployeesForm()
@@ -58,17 +50,8 @@ namespace SystemHR.UserInterface.Forms.Employees
             fakeEmployees = GetFakeEmployees();
             PrepareEmployeesData();
         }
-
         #endregion
         #region PrivateMethods
-
-        private void PrepareEmployeesData()
-        {
-            var fakeEmployeesSorted = fakeEmployees.OrderBy((x) => x.Code).ToList();
-            BSEmployees.DataSource = new BindingList<EmployeeViewModel>(fakeEmployeesSorted);
-            DGVEmployees.DataSource = BSEmployees;
-        }
-
         private IList<EmployeeViewModel> GetFakeEmployees()
         {
             IList<EmployeeModel> fakeEmployeesModel = new List<EmployeeModel>()
@@ -76,67 +59,59 @@ namespace SystemHR.UserInterface.Forms.Employees
                 new EmployeeModel()
                 {
                     ID = 1,
-                    LastName = "Karaś",
-                    FirstName = "Ala",
+                    LastName = "Andrzejewski",
+                    FirstName = "Paweł",
                     Code = 1,
-                    Gender = new GenderModel("Kobieta"),
+                    Gender = new GenderModel("mężczyzna"),
                     DateBirth = new DateTime(1994,9,1),
-                    PESEL = "123456789",
-                    PhoneNumber = "333456727",
-                    EmailAdrress = "pKarasia@wp.pl",
-                    IdentityCardNumber = "AWF123",
-                    IssueDateIdentityCard = new DateTime(2012,9,12),
-                    ExpirationDateIdentityCard = new DateTime(2022,5,5),
-                    PassportNumber = "KSK221",
-                    IssueDatePassport = new DateTime(2012,6,8),
-                    ExpirationDatePassport = new DateTime(2031,2,2),
-                    Status = new StatusModel("Wprowadzono")
+                    PESEL = "94090142830",
+                    PhoneNumber = "665988254",
+                    EmailAdrress = "p.andrzejewski@gmail.com",
+                    IdentityCardNumber = "AWR204120",
+                    IssueDateIdentityCard = new DateTime(2012,9,15),
+                    ExpirationDateIdentityCard = new DateTime(2032,9,15),
+                    PassportNumber = "ER8984510",
+                    IssueDatePassport = new DateTime(2015,5,23),
+                    ExpirationDatePassport = new DateTime(2025,5,23),
+                    Status = new StatusModel("Wprowadzony")
                 },
-                new EmployeeModel()
+                 new EmployeeModel()
                 {
                     ID = 2,
-                    LastName = "Benek",
-                    FirstName = "Ewa",
+                    LastName = "Bedanerek",
+                    FirstName = "Damian",
                     Code = 2,
-                    Gender = new GenderModel("Kobieta"),
-                    DateBirth = new DateTime(1995,2,1),
-                    PESEL = "234567890",
-                    PhoneNumber = "444567912",
-                    EmailAdrress = "Benew@wp.pl",
-                    IdentityCardNumber = "ASD123",
-                    IssueDateIdentityCard = new DateTime(2015,2,7),
-                    ExpirationDateIdentityCard = new DateTime(2025,1,10),
-                    PassportNumber = "jkj221",
-                    IssueDatePassport = new DateTime(2013,5,1),
-                    ExpirationDatePassport = new DateTime(2021,6,6),
-                    Status = new StatusModel("Wprowadzono")
+                    Gender = new GenderModel("mężczyzna"),
+                    DateBirth = new DateTime(1990,9,14),
+                    PESEL = "90091444249",
+                    PhoneNumber = "754952134",
+                    EmailAdrress = "d.bednarek@gmail.com",
+                    Status = new StatusModel("Wprowadzony")
                 },
                 new EmployeeModel()
                 {
                     ID = 3,
-                    LastName = "Marek",
-                    FirstName = "Stan",
+                    LastName = "Szczepaniak",
+                    FirstName = "Katarzyna",
                     Code = 3,
-                    Gender = new GenderModel("Mężczyzna"),
-                    DateBirth = new DateTime(1996,1,6),
-                    PESEL = "345678901",
-                    PhoneNumber = "881199012",
-                    EmailAdrress = "StanMar@wp.pl",
-                    IdentityCardNumber = "OOP123",
-                    IssueDateIdentityCard = new DateTime(2010,9,12),
-                    ExpirationDateIdentityCard = new DateTime(2032,5,5),
-                    PassportNumber = "IOI123",
-                    IssueDatePassport = new DateTime(2011,6,8),
-                    ExpirationDatePassport = new DateTime(2035,2,2),
-                    Status = new StatusModel("Wprowadzono")
+                    Gender = new GenderModel("kobieta"),
+                    DateBirth = new DateTime(1995,10,13),
+                    PESEL = "95101361886",
+                    PhoneNumber = "852745984",
+                    EmailAdrress = "k.szczepaniak@gmail.com",
+                    Status = new StatusModel("Wprowadzony")
                 }
             };
             return MapingHelper.MapEmployeeModelToEmployeeViewModel(fakeEmployeesModel);
         }
-
+        private void PrepareEmployeesData()
+        {
+            var fakeEmployeesSorted = fakeEmployees.OrderBy((x) => x.Code).ToList();
+            BSEmployees.DataSource = new BindingList<EmployeeViewModel>(fakeEmployeesSorted);
+            DGVEmployees.DataSource = BSEmployees;
+        }
         #endregion
         #region Events
-
         private void EmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             instance = null;
@@ -158,12 +133,13 @@ namespace SystemHR.UserInterface.Forms.Employees
             };
             form.ShowDialog();
         }
-        #endregion
-
         private void bModify_Click(object sender, EventArgs e)
         {
-            EmployeeEditForm form = new EmployeeEditForm();
+            // int employeeID = (int)this.DGVEmployees.CurrentRow.Cells["Code"].Value;
+            int employeeID = 1;
+            EmployeeEditForm form = new EmployeeEditForm(employeeID);
             form.ShowDialog();
         }
+        #endregion
     }
 }
