@@ -405,6 +405,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             // 
             // cbGender
             // 
+            this.cbGender.DataSource = this.bsGender;
             this.cbGender.DisplayMember = "Value";
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Location = new System.Drawing.Point(128, 86);

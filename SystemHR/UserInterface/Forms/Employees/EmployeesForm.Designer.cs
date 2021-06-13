@@ -42,6 +42,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.bModify = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.DGVEmployees = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,6 +130,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.btnRemove.Text = "Usuń";
             this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnDismiss
             // 
@@ -195,6 +197,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.DGVEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGVEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
             this.colLastName,
             this.colFirstName,
             this.colCode,
@@ -220,6 +223,14 @@ namespace SystemHR.UserInterface.Forms.Employees
             this.DGVEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVEmployees.Size = new System.Drawing.Size(1059, 532);
             this.DGVEmployees.TabIndex = 1;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
             // 
             // colLastName
             // 
@@ -292,6 +303,7 @@ namespace SystemHR.UserInterface.Forms.Employees
         private System.Windows.Forms.Button btnSendEmail;
         private System.Windows.Forms.DataGridView DGVEmployees;
         private System.Windows.Forms.BindingSource BSEmployees;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCode;

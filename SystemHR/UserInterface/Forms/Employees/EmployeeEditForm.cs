@@ -26,9 +26,9 @@ namespace SystemHR.UserInterface.Forms.Employees
         public EmployeeEditForm(int employeeId)
             {
                 InitializeComponent();
+                InitializeData();
                 employee = GetFakeEmployee(employeeId);
                 PrepareEmployeeData(employee);
-                InitializeData();
                 ValidateControls();
             }
         private void PrepareEmployeeData(EmployeeModel employee)
@@ -41,17 +41,13 @@ namespace SystemHR.UserInterface.Forms.Employees
             tbPhoneNumber.Text        = employee.PhoneNumber;
             tbEmailAdress.Text        = employee.EmailAdrress;
             tbIdentityCardNumber.Text = employee.IdentityCardNumber;
-            dtpIssueDateIdentity.Value = employee.IssueDateIdentityCard.Value;
-            dtpExpirationDateIdentity.Value = employee.ExpirationDateIdentityCard.Value;
+            dtpIssueDateIdentity.SetDateTimePickerValue(employee.DateBirth);
+            dtpExpirationDateIdentity.SetDateTimePickerValue(employee.ExpirationDateIdentityCard);
             tbPassportNumber.Text = employee.PassportNumber;
-            dtpIssueDatePassport.Value = employee.IssueDatePassport.Value;
-            dtpExpirationDatePassport.Value = employee.ExpirationDatePassport.Value;
+            dtpIssueDatePassport.SetDateTimePickerValue(employee.IssueDatePassport);
+            dtpExpirationDatePassport.SetDateTimePickerValue(employee.ExpirationDatePassport);
 
             lEmployee.Text = $"{employee.FirstName} {employee.LastName} ({employee.Code.ToString().PadLeft(4,'0')}) - {employee.Status}";
-
-
-
-
         }
         #endregion
         #region PrivateMethod
@@ -187,6 +183,14 @@ namespace SystemHR.UserInterface.Forms.Employees
             {
                 epFirstName.Clear();
             }
+            if (!string.IsNullOrWhiteSpace(tbPesel.Text) && !ValidatorHelper.IsValidPESEL(tbPesel.Text))
+            {
+                epPesel.SetError(tbPesel, "Liczba cyfr dla numeru pesel jest nieprawidłowa.");
+            }
+            else
+            {
+                epPesel.Clear();
+            }
         }
         #endregion
         #region Events
@@ -195,22 +199,18 @@ namespace SystemHR.UserInterface.Forms.Employees
             DateTimePicker dtp = sender as DateTimePicker;
             dtp.DateTimePickerValueChange();
         }
-
         private void tbLastName_TextChanged(object sender, EventArgs e)
         {
             ValidateControls();
         }
-
         private void tbFirstName_TextChanged(object sender, EventArgs e)
         {
             ValidateControls();
         }
-
         private void tbPesel_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-
         private void tbPesel_Validated(object sender, EventArgs e)
         {
             string pesel = tbPesel.Text;
@@ -227,7 +227,6 @@ namespace SystemHR.UserInterface.Forms.Employees
         {
             Save();
         }
-
         private void bCancel_Click(object sender, EventArgs e)
         {
             Cancel();
@@ -256,15 +255,12 @@ namespace SystemHR.UserInterface.Forms.Employees
                 
 
                 // employee = CreateEmployee(employee)
-                employee.ID = 4;
-                employee.Code = 4;
 
                 ReloadEmployees?.Invoke(bSave, new EmployeeEventArgs(employee));
 
                 Close();
             }
         }
-
         protected override void Cancel()
         {
             MessageBox.Show("Operacja została anulowana!");
