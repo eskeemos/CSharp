@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 namespace SystemHR.UserInterface.Helpers
 {
     public class MapingHelper
-    {
-        
-        public static IList<EmployeeViewModel> MapEmployeeModelToEmployeeViewModel(IList<EmployeeModel> employeesModels)
+    { 
+        public static IList<EmployeeViewModel> MapEmployeeModelToEmployeeViewModel(IEnumerable<EmployeeModel> employeesModels)
         {
             IList<EmployeeViewModel> fakeEmployeesViewModel = new List<EmployeeViewModel>();
 

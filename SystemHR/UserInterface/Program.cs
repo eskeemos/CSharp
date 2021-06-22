@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SysetemHR.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,10 +19,11 @@ namespace UserInterface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            ConnectionType cnnType = GlobalConfig.CnnType;
+            GlobalConfig.InitializeConnection(ConnectionType.Sql);
+
             Application.Run(new MainForm());
         }
     }
 }
-/*
-    9 - 41:42
- */

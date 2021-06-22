@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SysetemHR.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace SystemHR.UserInterface.Forms.Base
 {
     public partial class BaseForm : Form
     {
+        protected SqlConnector sqlCon { get; private set; }
         public BaseForm()
         {
             InitializeComponent();
+            // sqlCon = new SqlConnector();
         }
     }
 }

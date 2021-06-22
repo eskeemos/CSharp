@@ -1,10 +1,12 @@
-﻿using SysetemHR.DataAccessLayer.Models;
+﻿using SysetemHR.DataAccessLayer;
+using SysetemHR.DataAccessLayer.Models;
 using SysetemHR.DataAccessLayer.Models.Dictionaries;
 using SysetemHR.DataAccessLayer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using SystemHR.UserInterface.Classes;
@@ -47,7 +49,8 @@ namespace SystemHR.UserInterface.Forms.Employees
         private EmployeesForm()
         {
             InitializeComponent();
-            fakeEmployees = GetFakeEmployees();
+            IEnumerable<EmployeeModel> employees = GlobalConfig.Connection.GetEmployees();
+            fakeEmployees = MapingHelper.MapEmployeeModelToEmployeeViewModel(employees.ToList());
             PrepareEmployeesData();
         }
         #endregion

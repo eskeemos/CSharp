@@ -1,4 +1,5 @@
-﻿using SysetemHR.DataAccessLayer.Models;
+﻿using SysetemHR.DataAccessLayer;
+using SysetemHR.DataAccessLayer.Models;
 using SysetemHR.DataAccessLayer.Models.Dictionaries;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace SystemHR.UserInterface.Forms.Employees
             {
                 InitializeComponent();
                 InitializeData();
-                employee = GetFakeEmployee(employeeId);
+                employee = GlobalConfig.Connection.GetEmployee(employeeId);
                 PrepareEmployeeData(employee);
                 ValidateControls();
             }
