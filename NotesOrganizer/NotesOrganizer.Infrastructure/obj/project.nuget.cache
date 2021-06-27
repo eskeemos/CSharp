@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "46sG6yWcdMhG6YtUjZPbSjrN+O/DcX5588jynShc2MqYIh9O4EmUnHdeGpVLZ/7i2TwUQsRUKRUIBerp5rWKSg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\krzys\\Desktop\\NotesOrganizer\\NotesOrganizer.Infrastructure\\NotesOrganizer.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\krzys\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\krzys\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\krzys\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
