@@ -21,13 +21,14 @@ namespace RestaurantAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddDbContext<RestaurantDbContext>();
             services.AddScoped<RestaurantSeeder>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IRestaurantService, RestaurantService>();
             services.AddScoped<ErrorHandlingMiddleware>();
+            services.AddScoped<TimeWatcher>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +41,16 @@ namespace RestaurantAPI
             }
 
             app.UseMiddleware<ErrorHandlingMiddleware>();
+
+            app.UseMiddleware<TimeWatcher>();
+
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestaurantAPI");
+            });
 
             app.UseRouting();
 
