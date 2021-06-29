@@ -1,0 +1,18 @@
+2021-06-29 18:18:56.6265|Info|Now listening on: https://localhost:5001
+2021-06-29 18:18:56.6716|Info|Now listening on: http://localhost:5000
+2021-06-29 18:18:56.6786|Info|Application started. Press Ctrl+C to shut down.
+2021-06-29 18:18:56.6786|Info|Hosting environment: Development
+2021-06-29 18:18:56.6786|Info|Content root path: C:\Users\krzys\Desktop\CSharp\RestaurantAPI\RestaurantAPI
+2021-06-29 18:19:02.9830|Warn|Restaurant with id : 808 DELETE action invoked
+2021-06-29 18:20:29.9693|Info|Now listening on: https://localhost:5001
+2021-06-29 18:20:30.0167|Info|Now listening on: http://localhost:5000
+2021-06-29 18:20:30.0167|Info|Application started. Press Ctrl+C to shut down.
+2021-06-29 18:20:30.0167|Info|Hosting environment: Development
+2021-06-29 18:20:30.0167|Info|Content root path: C:\Users\krzys\Desktop\CSharp\RestaurantAPI\RestaurantAPI
+2021-06-29 18:20:33.9942|Warn|Restaurant with id : 808 DELETE action invoked
+2021-06-29 18:22:55.1768|Info|Now listening on: https://localhost:5001
+2021-06-29 18:22:55.2232|Info|Now listening on: http://localhost:5000
+2021-06-29 18:22:55.2232|Info|Application started. Press Ctrl+C to shut down.
+2021-06-29 18:22:55.2369|Info|Hosting environment: Development
+2021-06-29 18:22:55.2369|Info|Content root path: C:\Users\krzys\Desktop\CSharp\RestaurantAPI\RestaurantAPI
+2021-06-29 18:22:57.9017|Warn|Restaurant with id : 808 DELETE action invoked

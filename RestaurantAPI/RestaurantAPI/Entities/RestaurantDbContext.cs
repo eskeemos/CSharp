@@ -8,7 +8,7 @@ namespace RestaurantAPI.Entities
 {
     public class RestaurantDbContext : DbContext
     {
-        private readonly string _connectionString = "Data Source=DESKTOP-DABF71C;Initial Catalog=Restaurant_db;Integrated Security=True";
+        private readonly string _connectionString = "Data Source=DESKTOP-DABF71C;Initial Catalog=Restaurant_dbd;Integrated Security=True";
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Dish> Dishes { get; set; }
