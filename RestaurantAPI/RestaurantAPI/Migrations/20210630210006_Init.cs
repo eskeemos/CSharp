@@ -7,26 +7,26 @@ namespace RestaurantAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "restaurants",
+                name: "Restaurants",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     category = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    hasDelivery = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    contectEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    hasDelivery = table.Column<bool>(type: "bit", nullable: false),
+                    contactEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     contactNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     addressID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_restaurants", x => x.ID);
+                    table.PrimaryKey("PK_Restaurants", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "addresses",
+                name: "Addresses",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -38,59 +38,59 @@ namespace RestaurantAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addresses", x => x.ID);
+                    table.PrimaryKey("PK_Addresses", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_addresses_restaurants_restaurantID",
+                        name: "FK_Addresses_Restaurants_restaurantID",
                         column: x => x.restaurantID,
-                        principalTable: "restaurants",
+                        principalTable: "Restaurants",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "dishes",
+                name: "Dishes",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<int>(type: "int", nullable: false),
-                    description = table.Column<int>(type: "int", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     restaurantID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_dishes", x => x.ID);
+                    table.PrimaryKey("PK_Dishes", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_dishes_restaurants_restaurantID",
+                        name: "FK_Dishes_Restaurants_restaurantID",
                         column: x => x.restaurantID,
-                        principalTable: "restaurants",
+                        principalTable: "Restaurants",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_addresses_restaurantID",
-                table: "addresses",
+                name: "IX_Addresses_restaurantID",
+                table: "Addresses",
                 column: "restaurantID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_dishes_restaurantID",
-                table: "dishes",
+                name: "IX_Dishes_restaurantID",
+                table: "Dishes",
                 column: "restaurantID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "addresses");
+                name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "dishes");
+                name: "Dishes");
 
             migrationBuilder.DropTable(
-                name: "restaurants");
+                name: "Restaurants");
         }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace RestaurantAPI.Tables
 {
-    public class DbConfig : DbContext
+    public class RestaurantDbContext : DbContext
     {
         private readonly string conString = "Data Source=DESKTOP-DABF71C;Initial Catalog=db_Restaurant;Integrated Security=True";
-        public DbSet<Restaurant> restaurants { get; set; }
-        public DbSet<Address> addresses { get; set; }
-        public DbSet<Dish> dishes { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

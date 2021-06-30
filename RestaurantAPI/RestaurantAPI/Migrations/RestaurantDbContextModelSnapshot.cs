@@ -2,17 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantAPI.Tables;
 
 namespace RestaurantAPI.Migrations
 {
-    [DbContext(typeof(DbConfig))]
-    [Migration("20210630132127_Init")]
-    partial class Init
+    [DbContext(typeof(RestaurantDbContext))]
+    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +42,7 @@ namespace RestaurantAPI.Migrations
                     b.HasIndex("restaurantID")
                         .IsUnique();
 
-                    b.ToTable("addresses");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("RestaurantAPI.Tables.Dish", b =>
@@ -54,11 +52,12 @@ namespace RestaurantAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("description")
-                        .HasColumnType("int");
+                    b.Property<string>("description")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("name")
-                        .HasColumnType("int");
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
@@ -70,7 +69,7 @@ namespace RestaurantAPI.Migrations
 
                     b.HasIndex("restaurantID");
 
-                    b.ToTable("dishes");
+                    b.ToTable("Dishes");
                 });
 
             modelBuilder.Entity("RestaurantAPI.Tables.Restaurant", b =>
@@ -86,17 +85,17 @@ namespace RestaurantAPI.Migrations
                     b.Property<string>("category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("contactNumber")
+                    b.Property<string>("contactEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("contectEmail")
+                    b.Property<string>("contactNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("hasDelivery")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("hasDelivery")
+                        .HasColumnType("bit");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -105,7 +104,7 @@ namespace RestaurantAPI.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("restaurants");
+                    b.ToTable("Restaurants");
                 });
 
             modelBuilder.Entity("RestaurantAPI.Tables.Address", b =>
