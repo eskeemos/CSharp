@@ -33,26 +33,25 @@ namespace RestaurantAPI
             {
                 new Restaurant()
                 {
-                name = "tst_name",
-                category = "tst_category",
-                description = "tst_description",
-                hasDelivery = true,
-                contactEmail = "tst_contactEmail",
-                contactNumber = "tst_contactNumber",
-                
+                Name = "tst_name",
+                Category = "tst_category",
+                Description = "tst_description",
+                HasDelivery = true,
+                ContactEmail = "tst_contactEmail",
+                ContactNumber = "tst_contactNumber",
                 address = new Address()
                     {
-                        city = "tst_city",
-                        street = "tst_street",
-                        postalCode = "tst_postalCode",
+                        City = "tst_city",
+                        Street = "tst_street",
+                        PostalCode = "tst_postalCode",
                     },
                 dishes = new List<Dish>()
                     {
                         new Dish()
                         {
-                            name = "tst_dishName",
-                            description = "tst_dishDescription",
-                            price = 99.99M
+                            Name = "tst_dishName",
+                            Description = "tst_dishDescription",
+                            Price = 99.99M
                         },
                     }
                 }

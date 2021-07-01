@@ -9,7 +9,7 @@ using RestaurantAPI.Tables;
 namespace RestaurantAPI.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20210630210006_Init")]
+    [Migration("20210701093433_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,22 +27,16 @@ namespace RestaurantAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("city")
+                    b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("postalCode")
+                    b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("restaurantID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("street")
+                    b.Property<string>("Street")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("restaurantID")
-                        .IsUnique();
 
                     b.ToTable("Addresses");
                 });
@@ -54,22 +48,22 @@ namespace RestaurantAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("price")
+                    b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("restaurantID")
+                    b.Property<int>("RestaurantID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("restaurantID");
+                    b.HasIndex("RestaurantID");
 
                     b.ToTable("Dishes");
                 });
@@ -81,50 +75,42 @@ namespace RestaurantAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("addressID")
+                    b.Property<int>("AddressID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("category")
+                    b.Property<string>("ContactEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("contactEmail")
+                    b.Property<string>("ContactNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("contactNumber")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("hasDelivery")
+                    b.Property<bool>("HasDelivery")
                         .HasColumnType("bit");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("AddressID")
+                        .IsUnique();
+
                     b.ToTable("Restaurants");
-                });
-
-            modelBuilder.Entity("RestaurantAPI.Tables.Address", b =>
-                {
-                    b.HasOne("RestaurantAPI.Tables.Restaurant", "restaurant")
-                        .WithOne("address")
-                        .HasForeignKey("RestaurantAPI.Tables.Address", "restaurantID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("restaurant");
                 });
 
             modelBuilder.Entity("RestaurantAPI.Tables.Dish", b =>
                 {
                     b.HasOne("RestaurantAPI.Tables.Restaurant", "restaurant")
                         .WithMany("dishes")
-                        .HasForeignKey("restaurantID")
+                        .HasForeignKey("RestaurantID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -133,8 +119,22 @@ namespace RestaurantAPI.Migrations
 
             modelBuilder.Entity("RestaurantAPI.Tables.Restaurant", b =>
                 {
-                    b.Navigation("address");
+                    b.HasOne("RestaurantAPI.Tables.Address", "address")
+                        .WithOne("restaurant")
+                        .HasForeignKey("RestaurantAPI.Tables.Restaurant", "AddressID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.Navigation("address");
+                });
+
+            modelBuilder.Entity("RestaurantAPI.Tables.Address", b =>
+                {
+                    b.Navigation("restaurant");
+                });
+
+            modelBuilder.Entity("RestaurantAPI.Tables.Restaurant", b =>
+                {
                     b.Navigation("dishes");
                 });
 #pragma warning restore 612, 618
