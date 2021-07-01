@@ -23,6 +23,13 @@ namespace RestaurantAPI.Controllers
             _restaurantService = restaurantService;
         }
 
+        [HttpPost]
+        public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto crd)
+        {
+            var id = _restaurantService.Create(crd);
+            return Created($"api/restaurant/{id}", null);
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<RestaurantDto>> GetAll()
         {
@@ -50,13 +57,6 @@ namespace RestaurantAPI.Controllers
         {
             _restaurantService.Update(id, urd);
             return Ok();
-        }
-
-        [HttpPost]
-        public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto crd)
-        {
-            var id = _restaurantService.Create(crd);
-            return Created($"api/restaurant/{id}", null);
         }
 
 

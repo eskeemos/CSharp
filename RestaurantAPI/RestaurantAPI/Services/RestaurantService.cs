@@ -80,6 +80,8 @@ namespace RestaurantAPI.Services
         }
         public void Update(int id, UpdateRestaurantDto urd)
         {
+            _logger.LogWarning($"Restaurant with id {id} UPDATE action invoked");
+
             var restaurant = _dbContext.Restaurants.FirstOrDefault((r) => r.ID == id);
 
             if (restaurant is null) throw new NotFoundException("Restaurant don't exist");
