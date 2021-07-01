@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantAPI.Models;
+using RestaurantAPI.Services;
 using RestaurantAPI.Tables;
 using System;
 using System.Collections.Generic;
@@ -13,39 +14,33 @@ namespace RestaurantAPI.Controllers
     [Route("api/restaurant")]
     public class RestaurantController : ControllerBase
     {
-        private readonly RestaurantDbContext _dbContext;
-        private readonly IMapper _mapper;
+        private readonly IRestaurantService _restaurantService;
 
-        public RestaurantController(RestaurantDbContext dbContext, IMapper mapper)
+        public RestaurantController(IRestaurantService restaurantService)
         {
-            _dbContext = dbContext;
-            _mapper = mapper;
+            _restaurantService = restaurantService;
         }
+
         [HttpGet]
         public ActionResult<IEnumerable<RestaurantDto>> GetAll()
         {
-            var restaurants = _dbContext
-                .Restaurants
-                .Include((a) => a.address)
-                .Include((d) => d.dishes)
-                .ToList();
-            var restaurantsDtos = _mapper.Map<List<RestaurantDto>>(restaurants);
-
+            var restaurantsDtos = _restaurantService.GetAll();
             return Ok(restaurantsDtos);
         }
+
         [HttpGet("{id}")]
         public ActionResult<RestaurantDto> GetSingle([FromRoute] int id)
         {
-            var restaurant = _dbContext
-                .Restaurants
-                .Include((a) => a.address)
-                .Include((d) => d.dishes)
-                .FirstOrDefault((r) => r.ID == id);
+            var restaurant = _restaurantService.GetSingle(id);
+            return restaurant;
+        }
 
-            var restaurantDtos = _mapper.Map<RestaurantDto>(restaurant);
-
-            if (restaurant is null) return NotFound();
-            return Ok(restaurantDtos);
+        [HttpPost]
+        public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto crd)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var id = _restaurantService.Create(crd);
+            return Created($"api/restaurant/{id}", null);
         }
     }
 }

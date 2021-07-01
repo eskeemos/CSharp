@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestaurantAPI.Services;
 using RestaurantAPI.Tables;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace RestaurantAPI
             services.AddDbContext<RestaurantDbContext>();
             services.AddScoped<ArtificalFillIn>();
             services.AddAutoMapper(this.GetType().Assembly);
+            services.AddScoped<IRestaurantService, RestaurantService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
