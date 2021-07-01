@@ -38,13 +38,6 @@ namespace RestaurantAPI.Controllers
             return Ok(restaurant);
         }
 
-        [HttpPost]
-        public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto crd)
-        {
-            var id = _restaurantService.Create(crd);
-            return Created($"api/restaurant/{id}", null);
-        }
-
         [HttpDelete("{id}")]
         public ActionResult DeleteRestaurant([FromRoute] int id)
         {
@@ -58,5 +51,16 @@ namespace RestaurantAPI.Controllers
             _restaurantService.Update(id, urd);
             return Ok();
         }
+
+        [HttpPost]
+        public ActionResult CreateRestaurant([FromBody] CreateRestaurantDto crd)
+        {
+            var id = _restaurantService.Create(crd);
+            return Created($"api/restaurant/{id}", null);
+        }
+
+
+
+
     }
 }
