@@ -42,5 +42,23 @@ namespace RestaurantAPI.Controllers
             var id = _restaurantService.Create(crd);
             return Created($"api/restaurant/{id}", null);
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteRestaurant([FromRoute] int id)
+        {
+            var isDeleted = _restaurantService.Delete(id);
+            if (isDeleted) return NoContent();
+            return NotFound();
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateRestaurant([FromRoute] int id, [FromBody] UpdateRestaurantDto urd)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var isUpdated = _restaurantService.Update(id, urd);
+            if (!isUpdated) return NotFound();
+            return Ok();
+        }
     }
 }
