@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using RestaurantAPI.Exceptions;
 using RestaurantAPI.Models;
 using RestaurantAPI.Tables;
 using System;
@@ -15,8 +16,8 @@ namespace RestaurantAPI.Services
         RestaurantDto GetSingle(int id);
         IEnumerable<RestaurantDto> GetAll();
         int Create(CreateRestaurantDto crd);
-        bool Delete(int id);
-        bool Update(int id, UpdateRestaurantDto urd);
+        void Delete(int id);
+        void Update(int id, UpdateRestaurantDto urd);
     }
     public class RestaurantService : IRestaurantService
     {
@@ -64,7 +65,7 @@ namespace RestaurantAPI.Services
 
             return restaurant.ID;
         }
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             _logger.LogWarning($"Restaurant with id {id} DELETE action invoked");
 
@@ -72,25 +73,22 @@ namespace RestaurantAPI.Services
                 .Restaurants
                 .FirstOrDefault((r) => r.ID == id);
 
-            if (restaurant is null) return false;
+            if (restaurant is null) throw new NotFoundException("Restaurant don't exist");
 
             _dbContext.Restaurants.Remove(restaurant);
             _dbContext.SaveChanges();
-            return true;
         }
-        public bool Update(int id, UpdateRestaurantDto urd)
+        public void Update(int id, UpdateRestaurantDto urd)
         {
             var restaurant = _dbContext.Restaurants.FirstOrDefault((r) => r.ID == id);
 
-            if (restaurant is null) return false;
+            if (restaurant is null) throw new NotFoundException("Restaurant don't exist");
 
             restaurant.Name = urd.Name;
             restaurant.Description = urd.Description;
             restaurant.HasDelivery = urd.HasDelivery;
 
             _dbContext.SaveChanges();
-
-            return true;
         }
     }
 }
