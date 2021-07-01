@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestaurantAPI.Middleware;
 using RestaurantAPI.Services;
 using RestaurantAPI.Tables;
 using System;
@@ -32,6 +33,7 @@ namespace RestaurantAPI
             services.AddScoped<ArtificalFillIn>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IRestaurantService, RestaurantService>();
+            services.AddScoped<ErrorHandle>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +44,7 @@ namespace RestaurantAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware<ErrorHandle>();
             app.UseHttpsRedirection();
 
             app.UseRouting();

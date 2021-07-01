@@ -1,0 +1,2 @@
+2021-07-01 19:21:37.2028||ERROR|RestaurantAPI.Middleware.ErrorHandle|Cannot open database "dbd_Restaurant" requested by the login. The login failed.
+Login failed for user 'DESKTOP-DABF71C\krzys'. 
