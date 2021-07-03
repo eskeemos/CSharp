@@ -19,3 +19,6 @@ C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windo
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.genruntimeconfig.cache
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.Properties.Resources.resources
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.TournamentCreate.resources
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.PrizeCreate.resources
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.TeamCreate.resources
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.TournamentDashboard.resources

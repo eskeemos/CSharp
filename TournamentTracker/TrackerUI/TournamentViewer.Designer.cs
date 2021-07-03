@@ -30,7 +30,6 @@ namespace TrackerUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TournamentViewer));
-            this.lheader = new System.Windows.Forms.Label();
             this.lTName = new System.Windows.Forms.Label();
             this.lRound = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -44,27 +43,20 @@ namespace TrackerUI
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lheader
-            // 
-            this.lheader.AutoSize = true;
-            this.lheader.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lheader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.lheader.Location = new System.Drawing.Point(19, 19);
-            this.lheader.Margin = new System.Windows.Forms.Padding(10);
-            this.lheader.Name = "lheader";
-            this.lheader.Size = new System.Drawing.Size(123, 24);
-            this.lheader.TabIndex = 0;
-            this.lheader.Text = "Tournament :";
             // 
             // lTName
             // 
             this.lTName.AutoSize = true;
             this.lTName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.lTName.Location = new System.Drawing.Point(150, 19);
+            this.lTName.Location = new System.Drawing.Point(301, 23);
             this.lTName.Margin = new System.Windows.Forms.Padding(0, 10, 10, 10);
             this.lTName.Name = "lTName";
             this.lTName.Size = new System.Drawing.Size(73, 22);
@@ -75,8 +67,8 @@ namespace TrackerUI
             // 
             this.lRound.AutoSize = true;
             this.lRound.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lRound.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.lRound.Location = new System.Drawing.Point(19, 66);
+            this.lRound.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lRound.Location = new System.Drawing.Point(33, 28);
             this.lRound.Margin = new System.Windows.Forms.Padding(10, 15, 10, 10);
             this.lRound.Name = "lRound";
             this.lRound.Size = new System.Drawing.Size(71, 22);
@@ -86,7 +78,7 @@ namespace TrackerUI
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(93, 64);
+            this.comboBox1.Location = new System.Drawing.Point(107, 27);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(130, 25);
             this.comboBox1.TabIndex = 3;
@@ -95,7 +87,8 @@ namespace TrackerUI
             // 
             this.cbUnplayedOnly.AutoSize = true;
             this.cbUnplayedOnly.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbUnplayedOnly.Location = new System.Drawing.Point(93, 97);
+            this.cbUnplayedOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.cbUnplayedOnly.Location = new System.Drawing.Point(107, 60);
             this.cbUnplayedOnly.Margin = new System.Windows.Forms.Padding(5);
             this.cbUnplayedOnly.Name = "cbUnplayedOnly";
             this.cbUnplayedOnly.Size = new System.Drawing.Size(136, 24);
@@ -107,7 +100,7 @@ namespace TrackerUI
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(19, 126);
+            this.listBox1.Location = new System.Drawing.Point(33, 99);
             this.listBox1.Margin = new System.Windows.Forms.Padding(10);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(209, 140);
@@ -116,8 +109,8 @@ namespace TrackerUI
             // lteamOne
             // 
             this.lteamOne.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lteamOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.lteamOne.Location = new System.Drawing.Point(243, 126);
+            this.lteamOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lteamOne.Location = new System.Drawing.Point(257, 169);
             this.lteamOne.Margin = new System.Windows.Forms.Padding(5);
             this.lteamOne.Name = "lteamOne";
             this.lteamOne.Size = new System.Drawing.Size(125, 25);
@@ -128,8 +121,8 @@ namespace TrackerUI
             // lTeamTwo
             // 
             this.lTeamTwo.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lTeamTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.lTeamTwo.Location = new System.Drawing.Point(243, 193);
+            this.lTeamTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lTeamTwo.Location = new System.Drawing.Point(395, 169);
             this.lTeamTwo.Margin = new System.Windows.Forms.Padding(5);
             this.lTeamTwo.Name = "lTeamTwo";
             this.lTeamTwo.Size = new System.Drawing.Size(125, 25);
@@ -141,8 +134,8 @@ namespace TrackerUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.label1.Location = new System.Drawing.Point(283, 161);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.label1.Location = new System.Drawing.Point(363, 137);
             this.label1.Margin = new System.Windows.Forms.Padding(5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 22);
@@ -151,21 +144,21 @@ namespace TrackerUI
             // 
             // tbTeamOne
             // 
-            this.tbTeamOne.Location = new System.Drawing.Point(376, 195);
+            this.tbTeamOne.Location = new System.Drawing.Point(418, 99);
             this.tbTeamOne.Name = "tbTeamOne";
-            this.tbTeamOne.Size = new System.Drawing.Size(60, 23);
+            this.tbTeamOne.Size = new System.Drawing.Size(64, 23);
             this.tbTeamOne.TabIndex = 12;
             // 
             // tbTeamTwo
             // 
-            this.tbTeamTwo.Location = new System.Drawing.Point(376, 128);
+            this.tbTeamTwo.Location = new System.Drawing.Point(288, 99);
             this.tbTeamTwo.Name = "tbTeamTwo";
-            this.tbTeamTwo.Size = new System.Drawing.Size(60, 23);
+            this.tbTeamTwo.Size = new System.Drawing.Size(64, 23);
             this.tbTeamTwo.TabIndex = 13;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(335, 236);
+            this.button1.Location = new System.Drawing.Point(335, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 30);
             this.button1.TabIndex = 14;
@@ -175,7 +168,7 @@ namespace TrackerUI
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(372, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(418, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -185,45 +178,77 @@ namespace TrackerUI
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(265, 34);
+            this.pictureBox2.Location = new System.Drawing.Point(288, 27);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 64);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lTName);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(534, 68);
+            this.panel1.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(175, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 22);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Tournament :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.panel2.Controls.Add(this.lRound);
+            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.tbTeamOne);
+            this.panel2.Controls.Add(this.tbTeamTwo);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.cbUnplayedOnly);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.lteamOne);
+            this.panel2.Controls.Add(this.lTeamTwo);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 68);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(534, 273);
+            this.panel2.TabIndex = 18;
+            // 
             // TournamentViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(464, 285);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.tbTeamTwo);
-            this.Controls.Add(this.tbTeamOne);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lTeamTwo);
-            this.Controls.Add(this.lteamOne);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.cbUnplayedOnly);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.lRound);
-            this.Controls.Add(this.lTName);
-            this.Controls.Add(this.lheader);
+            this.ClientSize = new System.Drawing.Size(534, 341);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "TournamentViewer";
             this.Text = "Tournament Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lheader;
         private System.Windows.Forms.Label lTName;
         private System.Windows.Forms.Label lRound;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -237,5 +262,8 @@ namespace TrackerUI
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
     }
 }
