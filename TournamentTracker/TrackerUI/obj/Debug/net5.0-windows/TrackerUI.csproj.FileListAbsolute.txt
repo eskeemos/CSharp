@@ -22,3 +22,6 @@ C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windo
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.PrizeCreate.resources
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.TeamCreate.resources
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.TournamentDashboard.resources
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\bin\Debug\net5.0-windows\TrackerLibrary.dll
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\bin\Debug\net5.0-windows\TrackerLibrary.pdb
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI\obj\Debug\net5.0-windows\TrackerUI.csproj.CopyComplete
