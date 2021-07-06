@@ -40,7 +40,7 @@ namespace TrackerUI
             this.label2 = new System.Windows.Forms.Label();
             this.tbPrizePercentage = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tbPlaceAmount = new System.Windows.Forms.TextBox();
+            this.tbPrizeAmount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbPlaceName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -127,7 +127,7 @@ namespace TrackerUI
             this.panel2.Controls.Add(this.tbPrizePercentage);
             this.panel2.Controls.Add(this.bCreatePrize);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.tbPlaceAmount);
+            this.panel2.Controls.Add(this.tbPrizeAmount);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.tbPlaceName);
             this.panel2.Controls.Add(this.label5);
@@ -158,6 +158,7 @@ namespace TrackerUI
             this.tbPrizePercentage.Name = "tbPrizePercentage";
             this.tbPrizePercentage.Size = new System.Drawing.Size(133, 23);
             this.tbPrizePercentage.TabIndex = 35;
+            this.tbPrizePercentage.Text = "0";
             // 
             // label10
             // 
@@ -171,12 +172,13 @@ namespace TrackerUI
             this.label10.TabIndex = 32;
             this.label10.Text = "Prize Amount";
             // 
-            // tbPlaceAmount
+            // tbPrizeAmount
             // 
-            this.tbPlaceAmount.Location = new System.Drawing.Point(262, 112);
-            this.tbPlaceAmount.Name = "tbPlaceAmount";
-            this.tbPlaceAmount.Size = new System.Drawing.Size(133, 23);
-            this.tbPlaceAmount.TabIndex = 33;
+            this.tbPrizeAmount.Location = new System.Drawing.Point(262, 112);
+            this.tbPrizeAmount.Name = "tbPrizeAmount";
+            this.tbPrizeAmount.Size = new System.Drawing.Size(133, 23);
+            this.tbPrizeAmount.TabIndex = 33;
+            this.tbPrizeAmount.Text = "0";
             // 
             // label8
             // 
@@ -219,17 +221,15 @@ namespace TrackerUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbPlaceNumber;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tbPlaceAmount;
+        private System.Windows.Forms.TextBox tbPrizeAmount;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbPlaceName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button bCreatePrize;
         private System.Windows.Forms.TextBox tbPrizePercentage;
     }
