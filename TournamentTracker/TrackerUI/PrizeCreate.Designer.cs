@@ -31,18 +31,18 @@ namespace TrackerUI
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tbPlaceNumber = new System.Windows.Forms.TextBox();
+            this.bCreatePrize = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tbPrizePercentage = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbPlaceAmount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbPlaceName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +52,7 @@ namespace TrackerUI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label1.Location = new System.Drawing.Point(100, 32);
+            this.label1.Location = new System.Drawing.Point(95, 32);
             this.label1.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 22);
@@ -70,23 +70,24 @@ namespace TrackerUI
             this.label5.TabIndex = 20;
             this.label5.Text = "-or-";
             // 
-            // textBox4
+            // tbPlaceNumber
             // 
-            this.textBox4.Location = new System.Drawing.Point(262, 30);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 23);
-            this.textBox4.TabIndex = 29;
+            this.tbPlaceNumber.Location = new System.Drawing.Point(262, 30);
+            this.tbPlaceNumber.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.tbPlaceNumber.Name = "tbPlaceNumber";
+            this.tbPlaceNumber.Size = new System.Drawing.Size(133, 23);
+            this.tbPlaceNumber.TabIndex = 29;
             // 
-            // button1
+            // bCreatePrize
             // 
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.button1.Location = new System.Drawing.Point(180, 224);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 43);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Create Prize";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bCreatePrize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.bCreatePrize.Location = new System.Drawing.Point(180, 224);
+            this.bCreatePrize.Name = "bCreatePrize";
+            this.bCreatePrize.Size = new System.Drawing.Size(154, 43);
+            this.bCreatePrize.TabIndex = 33;
+            this.bCreatePrize.Text = "Create Prize";
+            this.bCreatePrize.UseVisualStyleBackColor = true;
+            this.bCreatePrize.Click += new System.EventHandler(this.bCreatePrize_Click);
             // 
             // panel1
             // 
@@ -123,15 +124,15 @@ namespace TrackerUI
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Controls.Add(this.tbPrizePercentage);
+            this.panel2.Controls.Add(this.bCreatePrize);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.tbPlaceAmount);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.textBox5);
+            this.panel2.Controls.Add(this.tbPlaceName);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.tbPlaceNumber);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.panel2.Location = new System.Drawing.Point(0, 68);
@@ -144,58 +145,58 @@ namespace TrackerUI
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label2.Location = new System.Drawing.Point(100, 183);
+            this.label2.Location = new System.Drawing.Point(95, 185);
             this.label2.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(165, 22);
             this.label2.TabIndex = 34;
             this.label2.Text = "Prize Percentage";
             // 
-            // textBox1
+            // tbPrizePercentage
             // 
-            this.textBox1.Location = new System.Drawing.Point(262, 183);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 23);
-            this.textBox1.TabIndex = 35;
+            this.tbPrizePercentage.Location = new System.Drawing.Point(262, 185);
+            this.tbPrizePercentage.Name = "tbPrizePercentage";
+            this.tbPrizePercentage.Size = new System.Drawing.Size(133, 23);
+            this.tbPrizePercentage.TabIndex = 35;
             // 
-            // label9
+            // label10
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label9.Location = new System.Drawing.Point(100, 111);
-            this.label9.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 22);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "Place Amount";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.label10.Location = new System.Drawing.Point(95, 113);
+            this.label10.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(130, 22);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "Prize Amount";
             // 
-            // textBox6
+            // tbPlaceAmount
             // 
-            this.textBox6.Location = new System.Drawing.Point(262, 112);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(133, 23);
-            this.textBox6.TabIndex = 33;
+            this.tbPlaceAmount.Location = new System.Drawing.Point(262, 112);
+            this.tbPlaceAmount.Name = "tbPlaceAmount";
+            this.tbPlaceAmount.Size = new System.Drawing.Size(133, 23);
+            this.tbPlaceAmount.TabIndex = 33;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label8.Location = new System.Drawing.Point(100, 70);
+            this.label8.Location = new System.Drawing.Point(95, 70);
             this.label8.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(122, 22);
             this.label8.TabIndex = 30;
             this.label8.Text = "Place Name";
             // 
-            // textBox5
+            // tbPlaceName
             // 
-            this.textBox5.Location = new System.Drawing.Point(262, 71);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(133, 23);
-            this.textBox5.TabIndex = 31;
+            this.tbPlaceName.Location = new System.Drawing.Point(262, 71);
+            this.tbPlaceName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.tbPlaceName.Name = "tbPlaceName";
+            this.tbPlaceName.Size = new System.Drawing.Size(133, 23);
+            this.tbPlaceName.TabIndex = 31;
             // 
             // PrizeCreate
             // 
@@ -217,17 +218,19 @@ namespace TrackerUI
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbPlaceNumber;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbPlaceAmount;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbPlaceName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button bCreatePrize;
+        private System.Windows.Forms.TextBox tbPrizePercentage;
     }
 }
