@@ -4,12 +4,12 @@
     "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerUI\\TrackerUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary.csproj": {
+    "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary.csproj",
-        "projectName": "TrackerLibrary",
-        "projectPath": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary1.csproj",
+        "projectName": "TrackerLibrary1",
+        "projectPath": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary1.csproj",
         "packagesPath": "C:\\Users\\krzys\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\obj\\",
         "projectStyle": "PackageReference",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.90, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -82,8 +88,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary.csproj": {
-                "projectPath": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary.csproj"
+              "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary1.csproj": {
+                "projectPath": "C:\\Users\\krzys\\Desktop\\CSharp\\TournamentTracker\\TrackerLibrary\\TrackerLibrary1.csproj"
               }
             }
           }
