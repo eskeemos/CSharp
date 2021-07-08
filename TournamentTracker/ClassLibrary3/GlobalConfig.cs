@@ -6,24 +6,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary.DataAccess;
+using static TrackerLibrary.Enums;
 
 namespace TrackerLibrary
 {
     public static class GlobalConfig
     {
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
-        public static void InitializeConnections(bool database, bool textFiles)
+        public static IDataConnection Connection { get; private set; }
+        public static void InitializeConnections(DatabaseType db)
         {
-            if (database)
+            switch (db)
             {
-                SqlConnector sql = new SqlConnector();
-                Connections.Add(sql);
-            }
-
-            if (textFiles)
-            {
-                TextConnector txt = new TextConnector();
-                Connections.Add(txt);
+                case DatabaseType.Sql:
+                    SqlConnector sql = new SqlConnector();
+                    Connection = sql;
+                    break;
+                case DatabaseType.TextFiles:
+                    TextConnector txt = new TextConnector();
+                    Connection = txt;
+                    break;
+                default:
+                    break;
             }
         }
         public static string CnnString(string name)

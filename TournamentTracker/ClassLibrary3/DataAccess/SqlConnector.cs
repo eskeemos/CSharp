@@ -10,16 +10,16 @@ namespace TrackerLibrary.DataAccess
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("db_TournamentTracker")))
             {
-                var p = new DynamicParameters();
-                p.Add("@PlaceNumber", model.PlaceNumber);
-                p.Add("@PlaceName", model.PlaceName);
-                p.Add("@PrizeAmount", model.PrizeAmount);
-                p.Add("@PrizePercentage", model.PrizePercentage);
-                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                var dp = new DynamicParameters();
+                dp.Add("@PlaceNumber", model.PlaceNumber);
+                dp.Add("@PlaceName", model.PlaceName);
+                dp.Add("@PrizeAmount", model.PrizeAmount);
+                dp.Add("@PrizePercentage", model.PrizePercentage);
+                dp.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.procPrize_insert", p, commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.procPrizes_insert", dp, commandType: CommandType.StoredProcedure);
 
-                model.ID = p.Get<int>("@id");
+                model.ID = dp.Get<int>("@id");
 
                 return model;
             }

@@ -16,3 +16,5 @@ C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\bin\Debug\ClassLibrar
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI.csproj.CopyComplete
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI2.exe
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI2.pdb
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\bin\Debug\Dapper.dll
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\bin\Debug\Dapper.xml

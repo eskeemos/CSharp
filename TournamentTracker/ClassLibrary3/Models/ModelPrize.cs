@@ -13,13 +13,13 @@ namespace TrackerLibrary.Models
         public string PlaceName { get; set; }
         public int PrizeAmount { get; set; }
         public float PrizePercentage { get; set; }
-        public ModelPrize(string placeName, string placeNumber, string prizeAmount, string prizePercentage)
+        public ModelPrize(string placeNumber, string placeName, string prizeAmount, string prizePercentage)
         {
-            PlaceName = placeName;
-
             int placeNumberValid = 0;
             int.TryParse(placeNumber, out placeNumberValid);
             PlaceNumber = placeNumberValid;
+
+            PlaceName = placeName;
 
             int prizeAmountValid = 0;
             int.TryParse(prizeAmount, out prizeAmountValid);
