@@ -40,7 +40,25 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             return output;
         }
+        public static List<ModelPerson> ConvertToPersonModel(this List<string> lines)
+        {
+            List<ModelPerson> output = new List<ModelPerson>();
 
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+
+                ModelPerson m = new ModelPerson();
+                m.ID = int.Parse(cols[0]);
+                m.FirstName = cols[1];
+                m.LastName = cols[2];
+                m.EmailAddress = cols[3];
+                m.PhoneNumber = cols[4];
+                output.Add(m);
+            }
+
+            return output;
+        }
         public static void SaveToPrizeFile(this List<ModelPrize> models, string fileName)
         {
             List<string> lines = new List<string>();
@@ -48,6 +66,17 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             foreach (ModelPrize m in models)
             {
                 lines.Add($"{m.ID}, {m.PlaceNumber}, {m.PlaceName}, {m.PrizeAmount}, {m.PrizePercentage}");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
+        public static void SaveToPeopleFile(this List<ModelPerson> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (ModelPerson m in models)
+            {
+                lines.Add($"{m.ID}, {m.FirstName}, {m.LastName}, {m.EmailAddress}, {m.PhoneNumber}");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);

@@ -34,13 +34,14 @@ namespace TrackerUI
             this.cbTeams = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bCreateMember = new System.Windows.Forms.Button();
+            this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbEmailAddress = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbLastName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbTMembers = new System.Windows.Forms.ListBox();
             this.dDeletePrize = new System.Windows.Forms.Button();
@@ -49,10 +50,9 @@ namespace TrackerUI
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,7 +68,7 @@ namespace TrackerUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.label1.Location = new System.Drawing.Point(23, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
@@ -88,7 +88,7 @@ namespace TrackerUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.label2.Location = new System.Drawing.Point(23, 101);
             this.label2.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
@@ -99,16 +99,16 @@ namespace TrackerUI
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.bCreateMember);
+            this.groupBox1.Controls.Add(this.tbPhoneNumber);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tbEmailAddress);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.tbLastName);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.tbFirstName);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.groupBox1.Location = new System.Drawing.Point(23, 257);
             this.groupBox1.Name = "groupBox1";
@@ -117,17 +117,29 @@ namespace TrackerUI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Member";
             // 
-            // textBox1
+            // bCreateMember
             // 
-            this.textBox1.Location = new System.Drawing.Point(147, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 27);
-            this.textBox1.TabIndex = 22;
+            this.bCreateMember.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.bCreateMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.bCreateMember.Location = new System.Drawing.Point(45, 183);
+            this.bCreateMember.Name = "bCreateMember";
+            this.bCreateMember.Size = new System.Drawing.Size(194, 36);
+            this.bCreateMember.TabIndex = 32;
+            this.bCreateMember.Text = "Create Member";
+            this.bCreateMember.UseVisualStyleBackColor = true;
+            this.bCreateMember.Click += new System.EventHandler(this.bCreateMember_Click);
+            // 
+            // tbPhoneNumber
+            // 
+            this.tbPhoneNumber.Location = new System.Drawing.Point(147, 134);
+            this.tbPhoneNumber.Name = "tbPhoneNumber";
+            this.tbPhoneNumber.Size = new System.Drawing.Size(133, 27);
+            this.tbPhoneNumber.TabIndex = 22;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.label6.Location = new System.Drawing.Point(7, 138);
             this.label6.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
@@ -136,17 +148,17 @@ namespace TrackerUI
             this.label6.TabIndex = 25;
             this.label6.Text = "Phone Number";
             // 
-            // textBox2
+            // tbEmailAddress
             // 
-            this.textBox2.Location = new System.Drawing.Point(147, 101);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 27);
-            this.textBox2.TabIndex = 26;
+            this.tbEmailAddress.Location = new System.Drawing.Point(147, 101);
+            this.tbEmailAddress.Name = "tbEmailAddress";
+            this.tbEmailAddress.Size = new System.Drawing.Size(133, 27);
+            this.tbEmailAddress.TabIndex = 26;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.label5.Location = new System.Drawing.Point(8, 105);
             this.label5.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
@@ -155,17 +167,17 @@ namespace TrackerUI
             this.label5.TabIndex = 24;
             this.label5.Text = "Email Address";
             // 
-            // textBox3
+            // tbLastName
             // 
-            this.textBox3.Location = new System.Drawing.Point(147, 68);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(133, 27);
-            this.textBox3.TabIndex = 27;
+            this.tbLastName.Location = new System.Drawing.Point(147, 68);
+            this.tbLastName.Name = "tbLastName";
+            this.tbLastName.Size = new System.Drawing.Size(133, 27);
+            this.tbLastName.TabIndex = 27;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.label4.Location = new System.Drawing.Point(8, 73);
             this.label4.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
@@ -174,17 +186,17 @@ namespace TrackerUI
             this.label4.TabIndex = 23;
             this.label4.Text = "Last Name";
             // 
-            // textBox4
+            // tbFirstName
             // 
-            this.textBox4.Location = new System.Drawing.Point(147, 35);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(133, 27);
-            this.textBox4.TabIndex = 28;
+            this.tbFirstName.Location = new System.Drawing.Point(147, 35);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.Size = new System.Drawing.Size(133, 27);
+            this.tbFirstName.TabIndex = 28;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.label3.Location = new System.Drawing.Point(7, 40);
             this.label3.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
@@ -234,7 +246,7 @@ namespace TrackerUI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label7.Location = new System.Drawing.Point(201, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 22);
@@ -270,14 +282,15 @@ namespace TrackerUI
             this.panel2.Size = new System.Drawing.Size(534, 523);
             this.panel2.TabIndex = 31;
             // 
-            // listBox1
+            // button4
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(234, 15);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(288, 225);
-            this.listBox1.TabIndex = 30;
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.button4.Location = new System.Drawing.Point(23, 194);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(194, 46);
+            this.button4.TabIndex = 33;
+            this.button4.Text = "Add Member";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -288,25 +301,14 @@ namespace TrackerUI
             this.button2.Text = "Delete Selected";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // listBox1
             // 
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.button3.Location = new System.Drawing.Point(45, 183);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 36);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "Create Member";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.button4.Location = new System.Drawing.Point(23, 194);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(194, 46);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "Add Member";
-            this.button4.UseVisualStyleBackColor = true;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 17;
+            this.listBox1.Location = new System.Drawing.Point(234, 15);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(288, 225);
+            this.listBox1.TabIndex = 30;
             // 
             // TeamCreate
             // 
@@ -338,10 +340,10 @@ namespace TrackerUI
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbPhoneNumber;
+        private System.Windows.Forms.TextBox tbEmailAddress;
+        private System.Windows.Forms.TextBox tbLastName;
+        private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.ListBox lbTMembers;
         private System.Windows.Forms.Button dDeletePrize;
         private System.Windows.Forms.Button button1;
@@ -351,7 +353,7 @@ namespace TrackerUI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bCreateMember;
         private System.Windows.Forms.Button button4;
     }
 }
