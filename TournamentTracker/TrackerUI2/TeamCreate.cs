@@ -14,9 +14,34 @@ namespace TrackerUI
 {
     public partial class TeamCreate : BaseSets
     {
+        private List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersonAll();
+        private List<ModelPerson> selectedTeamMembers = new List<ModelPerson>();
+
         public TeamCreate()
         {
             InitializeComponent();
+
+            // CreateSampleData();
+
+            WireUpLists();
+        }
+        private void CreateSampleData()
+        {
+            availTeamMembers.Add(new ModelPerson { FirstName = "Tim", LastName = "Barney" });
+            availTeamMembers.Add(new ModelPerson { FirstName = "BIM", LastName = "Swedea" });
+
+            selectedTeamMembers.Add(new ModelPerson { FirstName = "Kakren", LastName = "Wires" });
+            selectedTeamMembers.Add(new ModelPerson { FirstName = "Madia", LastName = "Olkiem" });
+        }
+        private void WireUpLists()
+        {
+            cbSelectTeamMember.DataSource = null;
+            cbSelectTeamMember.DataSource = availTeamMembers;
+            cbSelectTeamMember.DisplayMember = "FullName";
+
+            lbTeamMembers.DataSource = null;
+            lbTeamMembers.DataSource = selectedTeamMembers;
+            lbTeamMembers.DisplayMember = "FullName";
         }
 
         private void bCreateMember_Click(object sender, EventArgs e)
@@ -30,7 +55,10 @@ namespace TrackerUI
                 m.EmailAddress = tbEmailAddress.Text;
                 m.PhoneNumber = tbPhoneNumber.Text;
 
-                GlobalConfig.Connection.CreatePerson(m);
+                m = GlobalConfig.Connection.CreatePerson(m);
+
+                selectedTeamMembers.Add(m);
+                WireUpLists();
 
                 tbFirstName.Text = tbLastName.Text = tbEmailAddress.Text = tbPhoneNumber.Text = "";
             }
@@ -60,6 +88,32 @@ namespace TrackerUI
 
 
             return true;
+        }
+
+        private void bAddMember_Click(object sender, EventArgs e)
+        {
+            ModelPerson m = (ModelPerson) cbSelectTeamMember.SelectedItem;
+
+            if (m != null)
+            {
+                availTeamMembers.Remove(m);
+                selectedTeamMembers.Add(m);
+
+                WireUpLists();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ModelPerson m = (ModelPerson)lbTeamMembers.SelectedItem;
+
+            if(m != null)
+            {
+                selectedTeamMembers.Remove(m);
+                availTeamMembers.Add(m);
+
+                WireUpLists();
+            }
         }
     }
 }

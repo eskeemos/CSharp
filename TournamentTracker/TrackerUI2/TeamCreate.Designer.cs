@@ -31,7 +31,7 @@ namespace TrackerUI
         {
             this.tbTName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbTeams = new System.Windows.Forms.ComboBox();
+            this.cbSelectTeamMember = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bCreateMember = new System.Windows.Forms.Button();
@@ -50,9 +50,9 @@ namespace TrackerUI
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.bAddMember = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbTeamMembers = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -77,13 +77,13 @@ namespace TrackerUI
             this.label1.TabIndex = 15;
             this.label1.Text = "Team Name";
             // 
-            // cbTeams
+            // cbSelectTeamMember
             // 
-            this.cbTeams.FormattingEnabled = true;
-            this.cbTeams.Location = new System.Drawing.Point(23, 138);
-            this.cbTeams.Name = "cbTeams";
-            this.cbTeams.Size = new System.Drawing.Size(194, 25);
-            this.cbTeams.TabIndex = 19;
+            this.cbSelectTeamMember.FormattingEnabled = true;
+            this.cbSelectTeamMember.Location = new System.Drawing.Point(23, 138);
+            this.cbSelectTeamMember.Name = "cbSelectTeamMember";
+            this.cbSelectTeamMember.Size = new System.Drawing.Size(194, 25);
+            this.cbSelectTeamMember.TabIndex = 19;
             // 
             // label2
             // 
@@ -266,31 +266,32 @@ namespace TrackerUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.bAddMember);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.lbTeamMembers);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.tbTName);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.lbTMembers);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.cbTeams);
+            this.panel2.Controls.Add(this.cbSelectTeamMember);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 68);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(534, 523);
             this.panel2.TabIndex = 31;
             // 
-            // button4
+            // bAddMember
             // 
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.button4.Location = new System.Drawing.Point(23, 194);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(194, 46);
-            this.button4.TabIndex = 33;
-            this.button4.Text = "Add Member";
-            this.button4.UseVisualStyleBackColor = true;
+            this.bAddMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.bAddMember.Location = new System.Drawing.Point(23, 194);
+            this.bAddMember.Name = "bAddMember";
+            this.bAddMember.Size = new System.Drawing.Size(194, 46);
+            this.bAddMember.TabIndex = 33;
+            this.bAddMember.Text = "Add Member";
+            this.bAddMember.UseVisualStyleBackColor = true;
+            this.bAddMember.Click += new System.EventHandler(this.bAddMember_Click);
             // 
             // button2
             // 
@@ -300,15 +301,16 @@ namespace TrackerUI
             this.button2.TabIndex = 31;
             this.button2.Text = "Delete Selected";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // listBox1
+            // lbTeamMembers
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Location = new System.Drawing.Point(234, 15);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(288, 225);
-            this.listBox1.TabIndex = 30;
+            this.lbTeamMembers.FormattingEnabled = true;
+            this.lbTeamMembers.ItemHeight = 17;
+            this.lbTeamMembers.Location = new System.Drawing.Point(234, 15);
+            this.lbTeamMembers.Name = "lbTeamMembers";
+            this.lbTeamMembers.Size = new System.Drawing.Size(288, 225);
+            this.lbTeamMembers.TabIndex = 30;
             // 
             // TeamCreate
             // 
@@ -333,7 +335,7 @@ namespace TrackerUI
         #endregion
         private System.Windows.Forms.TextBox tbTName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbTeams;
+        private System.Windows.Forms.ComboBox cbSelectTeamMember;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
@@ -352,8 +354,8 @@ namespace TrackerUI
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbTeamMembers;
         private System.Windows.Forms.Button bCreateMember;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button bAddMember;
     }
 }

@@ -1,14 +1,17 @@
 ﻿using Dapper;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
+        private const string db = "db_TournamentTracker";
         public ModelPerson CreatePerson(ModelPerson model)
         {
-            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("db_TournamentTracker")))
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var dp = new DynamicParameters();
                 dp.Add("@FirstName", model.FirstName);
@@ -27,7 +30,7 @@ namespace TrackerLibrary.DataAccess
 
         public ModelPrize CreatePrize(ModelPrize model)
         {
-            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("db_TournamentTracker")))
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var dp = new DynamicParameters();
                 dp.Add("@PlaceNumber", model.PlaceNumber);
@@ -42,6 +45,16 @@ namespace TrackerLibrary.DataAccess
 
                 return model;
             }
+        }
+
+        public List<ModelPerson> GetPersonAll()
+        {
+            List<ModelPerson> output;
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = conn.Query<ModelPerson>("dbo.procPeople_getAll").ToList();
+            }
+            return output;
         }
     }
 }
