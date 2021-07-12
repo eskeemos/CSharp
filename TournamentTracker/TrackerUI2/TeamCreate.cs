@@ -103,17 +103,29 @@ namespace TrackerUI
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bDeleteSelected_Click(object sender, EventArgs e)
         {
             ModelPerson m = (ModelPerson)lbTeamMembers.SelectedItem;
 
-            if(m != null)
+            if (m != null)
             {
                 selectedTeamMembers.Remove(m);
                 availTeamMembers.Add(m);
 
                 WireUpLists();
             }
+        }
+
+        private void bCreateTeam_Click(object sender, EventArgs e)
+        {
+            ModelTeam m = new ModelTeam();
+
+            m.TeamName = tbTeamName.Text;
+            m.TeamMembers = selectedTeamMembers;
+
+            GlobalConfig.Connection.CreateTeam(m);
+
+            tbTeamName.Text = "";
         }
     }
 }
