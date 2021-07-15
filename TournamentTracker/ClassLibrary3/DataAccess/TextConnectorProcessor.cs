@@ -59,6 +59,44 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             return output;
         }
+        public static List<ModelTeam> ConvertToTeamModel(this List<string> lines, string peopleFile)
+        {
+            List<ModelTeam> output = new List<ModelTeam>();
+            List<ModelPerson> people = peopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
+
+            foreach (string line in lines)
+            {
+                string[] cols = line.Split(',');
+
+                ModelTeam m = new ModelTeam();
+                m.ID = int.Parse(cols[0]);
+                m.TeamName = cols[1];
+
+                string[] personIDs = cols[2].Split('|');
+
+                foreach (string ID in personIDs)
+                {
+                    m.TeamMembers.Add(people.Where((x) => x.ID == int.Parse(ID)).FirstOrDefault());
+                }
+            }
+            return output;
+        }
+        private static string ConvertPeopleListString(List<ModelPerson> people)
+        {
+            string output = "";
+
+            if (people.Count == 0)
+            {
+                return output;
+            }
+
+            foreach (ModelPerson m in people)
+            {
+                output += $"{m.ID}|";
+            }
+
+            return output.Substring(0, output.Length - 1);
+        }
         public static void SaveToPrizeFile(this List<ModelPrize> models, string fileName)
         {
             List<string> lines = new List<string>();
@@ -81,5 +119,17 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
+        public static void SaveToTeamFile(this List<ModelTeam> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (ModelTeam m in models)
+            {
+                lines.Add($"{m.ID},{m.TeamName},{ConvertPeopleListString(m.TeamMembers)}");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
+        
     }
 }
