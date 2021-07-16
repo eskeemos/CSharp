@@ -38,7 +38,7 @@ namespace TrackerUI
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.bAddTeam = new System.Windows.Forms.Button();
             this.bCreatePrize = new System.Windows.Forms.Button();
-            this.lbPlayers = new System.Windows.Forms.ListBox();
+            this.lbTeams = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbPrizes = new System.Windows.Forms.ListBox();
@@ -55,7 +55,7 @@ namespace TrackerUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label1.Location = new System.Drawing.Point(20, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(11);
@@ -74,7 +74,7 @@ namespace TrackerUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label2.Location = new System.Drawing.Point(22, 100);
             this.label2.Margin = new System.Windows.Forms.Padding(11);
@@ -89,11 +89,12 @@ namespace TrackerUI
             this.tbEntryFee.Name = "tbEntryFee";
             this.tbEntryFee.Size = new System.Drawing.Size(110, 23);
             this.tbEntryFee.TabIndex = 16;
+            this.tbEntryFee.Text = "0";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label3.Location = new System.Drawing.Point(30, 139);
             this.label3.Margin = new System.Windows.Forms.Padding(11);
@@ -113,7 +114,7 @@ namespace TrackerUI
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.linkLabel1.Location = new System.Drawing.Point(137, 139);
             this.linkLabel1.Name = "linkLabel1";
@@ -130,6 +131,7 @@ namespace TrackerUI
             this.bAddTeam.TabIndex = 20;
             this.bAddTeam.Text = "Add Team";
             this.bAddTeam.UseVisualStyleBackColor = true;
+            this.bAddTeam.Click += new System.EventHandler(this.bAddTeam_Click);
             // 
             // bCreatePrize
             // 
@@ -140,19 +142,19 @@ namespace TrackerUI
             this.bCreatePrize.Text = "Create Prize";
             this.bCreatePrize.UseVisualStyleBackColor = true;
             // 
-            // lbPlayers
+            // lbTeams
             // 
-            this.lbPlayers.FormattingEnabled = true;
-            this.lbPlayers.ItemHeight = 17;
-            this.lbPlayers.Location = new System.Drawing.Point(307, 63);
-            this.lbPlayers.Name = "lbPlayers";
-            this.lbPlayers.Size = new System.Drawing.Size(169, 89);
-            this.lbPlayers.TabIndex = 22;
+            this.lbTeams.FormattingEnabled = true;
+            this.lbTeams.ItemHeight = 17;
+            this.lbTeams.Location = new System.Drawing.Point(307, 63);
+            this.lbTeams.Name = "lbTeams";
+            this.lbTeams.Size = new System.Drawing.Size(169, 89);
+            this.lbTeams.TabIndex = 22;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label4.Location = new System.Drawing.Point(307, 27);
             this.label4.Margin = new System.Windows.Forms.Padding(11);
@@ -164,14 +166,14 @@ namespace TrackerUI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label5.Location = new System.Drawing.Point(307, 208);
             this.label5.Margin = new System.Windows.Forms.Padding(11);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 22);
+            this.label5.Size = new System.Drawing.Size(57, 22);
             this.label5.TabIndex = 26;
-            this.label5.Text = "Teams / Players";
+            this.label5.Text = "Prizes";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbPrizes
@@ -214,7 +216,7 @@ namespace TrackerUI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label6.Location = new System.Drawing.Point(177, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(191, 22);
@@ -235,7 +237,7 @@ namespace TrackerUI
             this.panel2.Controls.Add(this.lbPrizes);
             this.panel2.Controls.Add(this.bAddTeam);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.lbPlayers);
+            this.panel2.Controls.Add(this.lbTeams);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.tbEntryFee);
             this.panel2.Controls.Add(this.label3);
@@ -284,7 +286,7 @@ namespace TrackerUI
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button bAddTeam;
         private System.Windows.Forms.Button bCreatePrize;
-        private System.Windows.Forms.ListBox lbPlayers;
+        private System.Windows.Forms.ListBox lbTeams;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox lbPrizes;

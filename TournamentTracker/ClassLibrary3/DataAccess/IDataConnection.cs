@@ -13,5 +13,6 @@ namespace TrackerLibrary.DataAccess
         ModelPerson CreatePerson(ModelPerson model);
         List<ModelPerson> GetPersonAll();
         ModelTeam CreateTeam(ModelTeam model);
+        List<ModelTeam> GetTeamAll();
     }
 }
