@@ -35,7 +35,7 @@ namespace TrackerUI
             this.tbEntryFee = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbTeams = new System.Windows.Forms.ComboBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.llCreateTeam = new System.Windows.Forms.LinkLabel();
             this.bAddTeam = new System.Windows.Forms.Button();
             this.bCreatePrize = new System.Windows.Forms.Button();
             this.lbTeams = new System.Windows.Forms.ListBox();
@@ -47,7 +47,7 @@ namespace TrackerUI
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bDeletePrizes = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -111,17 +111,18 @@ namespace TrackerUI
             this.cbTeams.Size = new System.Drawing.Size(218, 25);
             this.cbTeams.TabIndex = 18;
             // 
-            // linkLabel1
+            // llCreateTeam
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.linkLabel1.Location = new System.Drawing.Point(137, 139);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(92, 17);
-            this.linkLabel1.TabIndex = 19;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Create Team";
+            this.llCreateTeam.AutoSize = true;
+            this.llCreateTeam.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.llCreateTeam.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.llCreateTeam.Location = new System.Drawing.Point(137, 139);
+            this.llCreateTeam.Name = "llCreateTeam";
+            this.llCreateTeam.Size = new System.Drawing.Size(92, 17);
+            this.llCreateTeam.TabIndex = 19;
+            this.llCreateTeam.TabStop = true;
+            this.llCreateTeam.Text = "Create Team";
+            this.llCreateTeam.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCreateTeam_LinkClicked);
             // 
             // bAddTeam
             // 
@@ -141,6 +142,7 @@ namespace TrackerUI
             this.bCreatePrize.TabIndex = 21;
             this.bCreatePrize.Text = "Create Prize";
             this.bCreatePrize.UseVisualStyleBackColor = true;
+            this.bCreatePrize.Click += new System.EventHandler(this.bCreatePrize_Click);
             // 
             // lbTeams
             // 
@@ -193,6 +195,7 @@ namespace TrackerUI
             this.bDeletePlayers.TabIndex = 28;
             this.bDeletePlayers.Text = "Delete Selected";
             this.bDeletePlayers.UseVisualStyleBackColor = true;
+            this.bDeletePlayers.Click += new System.EventHandler(this.bDeletePlayers_Click);
             // 
             // button1
             // 
@@ -227,7 +230,7 @@ namespace TrackerUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.bDeletePrizes);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.tbTName);
             this.panel2.Controls.Add(this.button1);
@@ -241,7 +244,7 @@ namespace TrackerUI
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.tbEntryFee);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.linkLabel1);
+            this.panel2.Controls.Add(this.llCreateTeam);
             this.panel2.Controls.Add(this.cbTeams);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 68);
@@ -249,14 +252,15 @@ namespace TrackerUI
             this.panel2.Size = new System.Drawing.Size(533, 403);
             this.panel2.TabIndex = 31;
             // 
-            // button2
+            // bDeletePrizes
             // 
-            this.button2.Location = new System.Drawing.Point(307, 339);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(169, 33);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Delete Selected";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bDeletePrizes.Location = new System.Drawing.Point(307, 339);
+            this.bDeletePrizes.Name = "bDeletePrizes";
+            this.bDeletePrizes.Size = new System.Drawing.Size(169, 33);
+            this.bDeletePrizes.TabIndex = 30;
+            this.bDeletePrizes.Text = "Delete Selected";
+            this.bDeletePrizes.UseVisualStyleBackColor = true;
+            this.bDeletePrizes.Click += new System.EventHandler(this.bDeletePrizes_Click);
             // 
             // TournamentCreate
             // 
@@ -283,7 +287,7 @@ namespace TrackerUI
         private System.Windows.Forms.TextBox tbEntryFee;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbTeams;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel llCreateTeam;
         private System.Windows.Forms.Button bAddTeam;
         private System.Windows.Forms.Button bCreatePrize;
         private System.Windows.Forms.ListBox lbTeams;
@@ -295,6 +299,6 @@ namespace TrackerUI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button bDeletePrizes;
     }
 }

@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
+using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class TournamentCreate : BaseSets
+    public partial class TournamentCreate : BaseSets, IPrizeRequestor, ITeamRequestor
     {
         List<ModelTeam> availTeams = GlobalConfig.Connection.GetTeamAll();
         List<ModelTeam> selectedTeams = new List<ModelTeam>();
@@ -32,7 +33,7 @@ namespace TrackerUI
             lbTeams.DisplayMember = "TeamName";
 
             lbPrizes.DataSource = selectedPrizes;
-            lbPrizes.DisplayMember = "PrizeName";
+            lbPrizes.DisplayMember = "PlaceName";
         }
 
         private void bAddTeam_Click(object sender, EventArgs e)
@@ -60,7 +61,54 @@ namespace TrackerUI
 
             lbPrizes.DataSource = null;
             lbPrizes.DataSource = selectedPrizes;
-            lbPrizes.DisplayMember = "PrizeName";
+            lbPrizes.DisplayMember = "PlaceName";
+        }
+
+        private void llCreateTeam_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TeamCreate form = new TeamCreate(this);
+            form.Show();
+        }
+
+        private void bCreatePrize_Click(object sender, EventArgs e)
+        {
+            PrizeCreate form = new PrizeCreate(this);
+            form.Show();
+        }
+
+        public void PrizeComplete(ModelPrize model)
+        {
+            selectedPrizes.Add(model);
+            WireUpLists();
+        }
+
+        public void TeamComplete(ModelTeam model)
+        {
+            selectedTeams.Add(model);
+            WireUpLists();
+        }
+
+        private void bDeletePlayers_Click(object sender, EventArgs e)
+        {
+            ModelTeam model = (ModelTeam)lbTeams.SelectedItem;
+            if(model != null)
+            {
+                selectedTeams.Remove(model);
+                availTeams.Add(model);
+
+                WireUpLists();
+            }
+        }
+
+        private void bDeletePrizes_Click(object sender, EventArgs e)
+        {
+            ModelPrize model = (ModelPrize)lbPrizes.SelectedItem;
+            if(model != null)
+            {
+                selectedPrizes.Remove(model);
+
+                WireUpLists();
+            }
         }
     }
 }

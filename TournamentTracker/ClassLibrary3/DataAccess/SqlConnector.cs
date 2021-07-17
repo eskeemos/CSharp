@@ -27,7 +27,6 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
-
         public ModelPrize CreatePrize(ModelPrize model)
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
@@ -46,7 +45,6 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
-
         public ModelTeam CreateTeam(ModelTeam model)
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
@@ -70,7 +68,6 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
-
         public List<ModelPerson> GetPersonAll()
         {
             List<ModelPerson> output;
@@ -80,7 +77,6 @@ namespace TrackerLibrary.DataAccess
             }
             return output;
         }
-
         public List<ModelTeam> GetTeamAll()
         {
             List<ModelTeam> output;

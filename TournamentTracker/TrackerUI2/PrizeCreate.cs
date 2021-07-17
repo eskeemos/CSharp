@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
-using TrackerLibrary.DataAccess;
 using TrackerLibrary.Models;
+using TrackerUI2;
 
 namespace TrackerUI
 {
     public partial class PrizeCreate : BaseSets
     {
-        public PrizeCreate()
+        IPrizeRequestor _caller;
+        public PrizeCreate(IPrizeRequestor caller)
         {
             InitializeComponent();
+            _caller = caller;
         }
 
         private void bCreatePrize_Click(object sender, EventArgs e)
@@ -31,6 +26,9 @@ namespace TrackerUI
                     tbPrizePercentage.Text);
 
                 GlobalConfig.Connection.CreatePrize(model);
+
+                _caller.PrizeComplete(model);
+                this.Close();
                 
                 tbPlaceNumber.Text = tbPlaceName.Text = "";
                 tbPrizeAmount.Text = tbPrizePercentage.Text = "0";

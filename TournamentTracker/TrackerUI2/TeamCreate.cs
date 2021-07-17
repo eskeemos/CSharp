@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
+using TrackerUI2;
 
 namespace TrackerUI
 {
@@ -16,13 +17,14 @@ namespace TrackerUI
     {
         private List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersonAll();
         private List<ModelPerson> selectedTeamMembers = new List<ModelPerson>();
+        private ITeamRequestor _caller;
 
-        public TeamCreate()
+        public TeamCreate(ITeamRequestor caller)
         {
             InitializeComponent();
 
             // CreateSampleData();
-
+            _caller = caller;
             WireUpLists();
         }
         private void CreateSampleData()
@@ -125,7 +127,9 @@ namespace TrackerUI
 
             GlobalConfig.Connection.CreateTeam(m);
 
-            tbTeamName.Text = "";
+            _caller.TeamComplete(m);
+
+            this.Close();
         }
     }
 }
