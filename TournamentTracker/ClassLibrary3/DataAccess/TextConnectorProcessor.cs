@@ -78,6 +78,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
                 {
                     m.TeamMembers.Add(people.Where((x) => x.ID == int.Parse(ID)).FirstOrDefault());
                 }
+                output.Add(m);
             }
             return output;
         }
