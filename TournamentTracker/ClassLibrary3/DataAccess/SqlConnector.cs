@@ -68,6 +68,44 @@ namespace TrackerLibrary.DataAccess
                 return model;
             }
         }
+
+        public ModelTournament CreateTournament(ModelTournament model)
+        {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var dp = new DynamicParameters();
+                dp.Add("@TournamentName",model.TournamentName);
+                dp.Add("@EntryFee", model.EntryFee);
+                dp.Add("@id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                conn.Execute("dbo.procTournaments_insert", dp, commandType: CommandType.StoredProcedure);
+
+                model.ID = dp.Get<int>("@id");
+
+                foreach (ModelPrize prize in model.Prizes)
+                {
+                    dp = new DynamicParameters();
+                    dp.Add("@TournamentID", model.ID);
+                    dp.Add("PrizeID", prize.ID);
+                    dp.Add("@id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                    conn.Execute("dbo.procTournamentPrizes",dp,commandType: CommandType.StoredProcedure);
+                }
+
+                foreach (ModelTeam team in model.EnteredTeams)
+                {
+                    dp = new DynamicParameters();
+                    dp.Add("@TournamentID", model.ID);
+                    dp.Add("TeamID", team.ID);
+                    dp.Add("@id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                    conn.Execute("dbo.procTournamentPrizes_insert", dp, commandType: CommandType.StoredProcedure);
+                }
+
+
+            }
+            
+
+            return model;
+        }
+
         public List<ModelPerson> GetPersonAll()
         {
             List<ModelPerson> output;
