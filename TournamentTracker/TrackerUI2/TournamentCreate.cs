@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary3;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -128,7 +129,7 @@ namespace TrackerUI
             model.Prizes = selectedPrizes;
             model.EnteredTeams = selectedTeams;
 
-
+            TournamentLogic.CreateRounds(model);
 
             GlobalConfig.Connection.CreateTournament(model);
         }
