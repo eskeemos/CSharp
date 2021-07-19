@@ -127,6 +127,10 @@ namespace TrackerUI
             model.EntryFee = fee;
             model.Prizes = selectedPrizes;
             model.EnteredTeams = selectedTeams;
+
+
+
+            GlobalConfig.Connection.CreateTournament(model);
         }
     }
 }
