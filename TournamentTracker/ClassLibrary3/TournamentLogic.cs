@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using TrackerLibrary.Models;
 
 namespace ClassLibrary3
@@ -14,10 +15,8 @@ namespace ClassLibrary3
             List<ModelTeam> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
             int rounds = FindNumberOfRounds(randomizedTeams.Count);
             int byes = FindNumberOfByes(rounds, randomizedTeams.Count);
-
             model.Rounds.Add(CreateFirstRound(byes, randomizedTeams));
             CreateOtherRounds(model, rounds);
-
         }
         private static void CreateOtherRounds(ModelTournament model, int rounds)
         {
@@ -67,7 +66,7 @@ namespace ClassLibrary3
         {
             int output = 0;
             int totalTeams = 1;
-            for (int i = 1; i < rounds; i++)
+            for (int i = 1; i <= rounds; i++)
             {
                 totalTeams *= 2;
             }
