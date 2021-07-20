@@ -1,4 +1,6 @@
-﻿namespace TrackerLibrary.Models
+﻿using System;
+
+namespace TrackerLibrary.Models
 {
     public class ModelMatchupEntry
     {
