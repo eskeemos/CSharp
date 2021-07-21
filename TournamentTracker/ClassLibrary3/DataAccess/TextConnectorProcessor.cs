@@ -118,9 +118,9 @@ namespace ClassLibrary3.DataAccess.TextHelpers
         }
         private static string ConvertPrizeListToString(List<ModelPrize> prizes)
         {
-            string output = "0";
+            string output = "";
 
-            if (prizes.Count == 0) return output;
+            if (prizes.Count == 0) return "0";
 
             foreach (ModelPrize prize in prizes)
             {
@@ -142,7 +142,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
                 ModelTournament mt = new ModelTournament();
                 mt.Id = int.Parse(cols[0]);
                 mt.TournamentName = cols[1];
-                mt.EntryFee = decimal.Parse(cols[2]); // 15 55 33
+                mt.EntryFee = decimal.Parse(cols[2]);
 
                 string[] teamIds = cols[3].Split('|');
                 foreach(string id in teamIds)
@@ -150,10 +150,15 @@ namespace ClassLibrary3.DataAccess.TextHelpers
                     mt.EnteredTeams.Add(teams.Where((x) => x.ID == int.Parse(id)).First());
                 }
                 
-                string[] prizeIds = cols[4].Split('|');
-                foreach (string id in prizeIds)
                 {
-                    mt.Prizes.Add(prizes.Where((x) => x.ID == int.Parse(id)).First());
+                    string[] prizeIds = cols[4].Split('|');
+                    if(int.Parse(prizeIds[0]) != 0)
+                    {
+                        foreach (string id in prizeIds)
+                        {
+                            mt.Prizes.Add(prizes.Where((x) => x.ID == int.Parse(id)).First());
+                        }
+                    }
                 }
 
                 string[] rounds = cols[5].Split('|');
@@ -217,7 +222,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             foreach (ModelPrize m in models)
             {
-                lines.Add($"{m.ID}, {m.PlaceNumber}, {m.PlaceName}, {m.PrizeAmount}, {m.PrizePercentage}");
+                lines.Add($"{m.ID},{m.PlaceNumber},{m.PlaceName},{m.PrizeAmount},{m.PrizePercentage}");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
@@ -228,7 +233,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             foreach (ModelPerson m in models)
             {
-                lines.Add($"{m.ID}, {m.FirstName}, {m.LastName}, {m.EmailAddress}, {m.PhoneNumber}");
+                lines.Add($"{m.ID},{m.FirstName},{m.LastName},{m.EmailAddress},{m.PhoneNumber}");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
@@ -278,7 +283,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             foreach (string team in teams)
             {
-                string[] cols = team.Split();
+                string[] cols = team.Split(',');
 
                 if(cols[0] == id)
                 {
@@ -392,7 +397,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             {
                 string winnerId = "0";
                 if (m.Winner != null) winnerId = m.Winner.ID.ToString();
-                lines.Add($"{m.Id}, {ConvertMatchupEntryListToString(m.Entries)}, {winnerId}, {m.MatchupRound}");
+                lines.Add($"{m.Id},{ConvertMatchupEntryListToString(m.Entries)},{winnerId},{m.MatchupRound}");
             }
             File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
             // Id, EntryIds, WinnerId, RoundId
@@ -432,7 +437,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
                 if (e.ParentMatchup != null) parentMatchupId = e.ParentMatchup.Id.ToString();
                 string teamCompetingId = "0";
                 if (e.TeamCompeting != null) teamCompetingId = e.TeamCompeting.ID.ToString();
-                lines.Add($"{e.Id}, {teamCompetingId}, {e.Score}, {parentMatchupId}");
+                lines.Add($"{e.Id},{teamCompetingId},{e.Score},{parentMatchupId}");
             }
 
             File.WriteAllLines(GlobalConfig.MatchupEntryModels.FullFilePath(), lines);
