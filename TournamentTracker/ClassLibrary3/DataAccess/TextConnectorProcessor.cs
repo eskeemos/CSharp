@@ -185,6 +185,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             foreach (ModelTournament mt in models)
             {
+                // 1,TournamentName,25,1|2|3,1|2,1^2|3
                 lines.Add($"{ mt.Id },{mt.TournamentName},{mt.EntryFee},{ConvertTeamListToString(mt.EnteredTeams)},{ConvertPrizeListToString(mt.Prizes)},{ConvertRoundListToString(mt.Rounds)}");
             }
 
@@ -301,7 +302,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
             foreach (string match in matchups)
             {
-                string[] cols = match.Split();
+                string[] cols = match.Split(',');
 
                 if(cols[0] == Convert.ToString(id))
                 {
