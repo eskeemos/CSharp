@@ -35,7 +35,7 @@ namespace TrackerUI
             this.panel2 = new System.Windows.Forms.Panel();
             this.bCreateTournament = new System.Windows.Forms.Button();
             this.bLoadTournament = new System.Windows.Forms.Button();
-            this.cbLoadTournamenst = new System.Windows.Forms.ComboBox();
+            this.cbLoadTournaments = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -56,7 +56,7 @@ namespace TrackerUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F);
-            this.label2.Location = new System.Drawing.Point(153, 25);
+            this.label2.Location = new System.Drawing.Point(25, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 22);
             this.label2.TabIndex = 1;
@@ -77,7 +77,7 @@ namespace TrackerUI
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.panel2.Controls.Add(this.bCreateTournament);
             this.panel2.Controls.Add(this.bLoadTournament);
-            this.panel2.Controls.Add(this.cbLoadTournamenst);
+            this.panel2.Controls.Add(this.cbLoadTournaments);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 68);
@@ -103,14 +103,15 @@ namespace TrackerUI
             this.bLoadTournament.TabIndex = 2;
             this.bLoadTournament.Text = "Load Tournament";
             this.bLoadTournament.UseVisualStyleBackColor = true;
+            this.bLoadTournament.Click += new System.EventHandler(this.bLoadTournament_Click);
             // 
-            // cbLoadTournamenst
+            // cbLoadTournaments
             // 
-            this.cbLoadTournamenst.FormattingEnabled = true;
-            this.cbLoadTournamenst.Location = new System.Drawing.Point(172, 70);
-            this.cbLoadTournamenst.Name = "cbLoadTournamenst";
-            this.cbLoadTournamenst.Size = new System.Drawing.Size(190, 25);
-            this.cbLoadTournamenst.TabIndex = 1;
+            this.cbLoadTournaments.FormattingEnabled = true;
+            this.cbLoadTournaments.Location = new System.Drawing.Point(172, 70);
+            this.cbLoadTournaments.Name = "cbLoadTournaments";
+            this.cbLoadTournaments.Size = new System.Drawing.Size(190, 25);
+            this.cbLoadTournaments.TabIndex = 1;
             // 
             // label3
             // 
@@ -147,7 +148,7 @@ namespace TrackerUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button bCreateTournament;
-        private System.Windows.Forms.ComboBox cbLoadTournamenst;
+        private System.Windows.Forms.ComboBox cbLoadTournaments;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bLoadTournament;
     }

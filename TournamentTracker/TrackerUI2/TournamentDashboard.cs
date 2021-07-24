@@ -24,13 +24,20 @@ namespace TrackerUI
         }
         private void WireUpLists()
         {
-            cbLoadTournamenst.DataSource = tournaments;
-            cbLoadTournamenst.DisplayMember = "TournamentName";
+            cbLoadTournaments.DataSource = tournaments;
+            cbLoadTournaments.DisplayMember = "TournamentName";
         }
 
         private void bCreateTournament_Click(object sender, EventArgs e)
         {
             TournamentCreate form = new TournamentCreate();
+            form.Show();
+        }
+
+        private void bLoadTournament_Click(object sender, EventArgs e)
+        {
+            ModelTournament model = (ModelTournament)cbLoadTournaments.SelectedItem;
+            TournamentViewer form = new TournamentViewer(model);
             form.Show();
         }
     }
