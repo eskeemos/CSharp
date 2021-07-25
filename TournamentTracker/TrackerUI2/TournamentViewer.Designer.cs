@@ -38,8 +38,8 @@ namespace TrackerUI
             this.lteamOne = new System.Windows.Forms.Label();
             this.lTeamTwo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbTeamOne = new System.Windows.Forms.TextBox();
             this.tbTeamTwo = new System.Windows.Forms.TextBox();
+            this.tbTeamOne = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -106,6 +106,7 @@ namespace TrackerUI
             this.lbRounds.Name = "lbRounds";
             this.lbRounds.Size = new System.Drawing.Size(209, 140);
             this.lbRounds.TabIndex = 5;
+            this.lbRounds.SelectedIndexChanged += new System.EventHandler(this.lbRounds_SelectedIndexChanged);
             // 
             // lteamOne
             // 
@@ -116,7 +117,7 @@ namespace TrackerUI
             this.lteamOne.Name = "lteamOne";
             this.lteamOne.Size = new System.Drawing.Size(125, 25);
             this.lteamOne.TabIndex = 8;
-            this.lteamOne.Text = "<team one>";
+            this.lteamOne.Text = "<bot>";
             this.lteamOne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lTeamTwo
@@ -128,7 +129,7 @@ namespace TrackerUI
             this.lTeamTwo.Name = "lTeamTwo";
             this.lTeamTwo.Size = new System.Drawing.Size(125, 25);
             this.lTeamTwo.TabIndex = 9;
-            this.lTeamTwo.Text = "<team two>";
+            this.lTeamTwo.Text = "<bot>";
             this.lTeamTwo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -143,21 +144,23 @@ namespace TrackerUI
             this.label1.TabIndex = 10;
             this.label1.Text = "-VS-";
             // 
-            // tbTeamOne
-            // 
-            this.tbTeamOne.Location = new System.Drawing.Point(418, 99);
-            this.tbTeamOne.Name = "tbTeamOne";
-            this.tbTeamOne.Size = new System.Drawing.Size(64, 23);
-            this.tbTeamOne.TabIndex = 12;
-            this.tbTeamOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // tbTeamTwo
             // 
-            this.tbTeamTwo.Location = new System.Drawing.Point(288, 99);
+            this.tbTeamTwo.Location = new System.Drawing.Point(418, 99);
             this.tbTeamTwo.Name = "tbTeamTwo";
             this.tbTeamTwo.Size = new System.Drawing.Size(64, 23);
-            this.tbTeamTwo.TabIndex = 13;
+            this.tbTeamTwo.TabIndex = 12;
+            this.tbTeamTwo.Text = "0";
             this.tbTeamTwo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbTeamOne
+            // 
+            this.tbTeamOne.Location = new System.Drawing.Point(288, 99);
+            this.tbTeamOne.Name = "tbTeamOne";
+            this.tbTeamOne.Size = new System.Drawing.Size(64, 23);
+            this.tbTeamOne.TabIndex = 13;
+            this.tbTeamOne.Text = "0";
+            this.tbTeamOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button1
             // 
@@ -217,8 +220,8 @@ namespace TrackerUI
             this.panel2.Controls.Add(this.cbRounds);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.tbTeamOne);
             this.panel2.Controls.Add(this.tbTeamTwo);
+            this.panel2.Controls.Add(this.tbTeamOne);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.cbUnplayedOnly);
             this.panel2.Controls.Add(this.label1);
@@ -260,8 +263,8 @@ namespace TrackerUI
         private System.Windows.Forms.Label lteamOne;
         private System.Windows.Forms.Label lTeamTwo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbTeamOne;
         private System.Windows.Forms.TextBox tbTeamTwo;
+        private System.Windows.Forms.TextBox tbTeamOne;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

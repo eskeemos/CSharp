@@ -14,14 +14,16 @@ namespace TrackerUI
     public partial class TournamentViewer : BaseSets
     {
         private ModelTournament _tournament;
-        List<int> rounds = new List<int>();
-        List<ModelMatchup> selectedMatchups = new List<ModelMatchup>();
+        BindingList<int> rounds = new BindingList<int>();
+        BindingList<ModelMatchup> selectedMatchups = new BindingList<ModelMatchup>();
 
         public TournamentViewer(ModelTournament tournament)
         {
             InitializeComponent();
 
             _tournament = tournament;
+
+            WireUpLists();
 
             LoadFormData();
 
@@ -32,20 +34,16 @@ namespace TrackerUI
             lTournamentName.Text = _tournament.TournamentName;
 
         }
-        private void WireUpRoundsLists()
+        private void WireUpLists()
         {
-            cbRounds.DataSource = null;
             cbRounds.DataSource = rounds;
-        }
-        private void WireUpMatchupsLists()
-        {
-            lbRounds.DataSource = null;
             lbRounds.DataSource = selectedMatchups;
             lbRounds.DisplayMember = "DisplayName";
         }
         private void LoadRounds()
         {
-            rounds = new List<int>();
+            rounds.Clear();
+
             rounds.Add(1);
             int currRound = 1;
 
@@ -57,28 +55,67 @@ namespace TrackerUI
                     rounds.Add(currRound);
                 }
             }
-
-            WireUpRoundsLists();
+            LoadMatchupList(1);
         }
-        private void LoadMatchupList()
+        private void LoadMatchupList(int round)
         {
-            int round = (int)cbRounds.SelectedItem;
-
             foreach (List<ModelMatchup> matchups in _tournament.Rounds)
             {
                 if (matchups.First().MatchupRound == round)
                 {
-                    selectedMatchups = matchups;
+                    selectedMatchups.Clear();
+                    foreach (ModelMatchup model in matchups)
+                    {
+                        selectedMatchups.Add(model);
+                    }
                 }
             }
 
-            WireUpMatchupsLists();
-
+            LoadMatchup(selectedMatchups.First());
         }
 
         private void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMatchupList();
+            LoadMatchupList((int)cbRounds.SelectedItem);
+        }
+        private void lbRounds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMatchup((ModelMatchup)lbRounds.SelectedItem);
+        }
+        private void LoadMatchup(ModelMatchup model)
+        {
+            for (int i = 0; i < model.Entries.Count; i++)
+            {
+                if (i == 0) 
+                { 
+                    if(model.Entries[0].TeamCompeting != null)
+                    {
+                        lteamOne.Text = model.Entries[0].TeamCompeting.TeamName;
+                        tbTeamOne.Text = model.Entries[0].Score.ToString();
+
+                        lTeamTwo.Text = "<bot>";
+                        tbTeamTwo.Text = "0";
+                    }
+                    else
+                    {
+                        lteamOne.Text = "Not Yet Set";
+                        tbTeamOne.Text = "";
+                    }
+                }
+                if (i == 1)
+                {
+                    if (model.Entries[1].TeamCompeting != null)
+                    {
+                        lTeamTwo.Text = model.Entries[1].TeamCompeting.TeamName; ;
+                        tbTeamTwo.Text = model.Entries[1].Score.ToString();
+                    }
+                    else
+                    {
+                        lTeamTwo.Text = "Not Yet Set";
+                        tbTeamTwo.Text = "";
+                    }
+                }
+            }
         }
     }
 }
