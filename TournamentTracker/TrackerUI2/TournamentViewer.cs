@@ -84,35 +84,38 @@ namespace TrackerUI
         }
         private void LoadMatchup(ModelMatchup model)
         {
-            for (int i = 0; i < model.Entries.Count; i++)
+            if(model != null)
             {
-                if (i == 0) 
-                { 
-                    if(model.Entries[0].TeamCompeting != null)
-                    {
-                        lteamOne.Text = model.Entries[0].TeamCompeting.TeamName;
-                        tbTeamOne.Text = model.Entries[0].Score.ToString();
-
-                        lTeamTwo.Text = "<bot>";
-                        tbTeamTwo.Text = "0";
-                    }
-                    else
-                    {
-                        lteamOne.Text = "Not Yet Set";
-                        tbTeamOne.Text = "";
-                    }
-                }
-                if (i == 1)
+                for (int i = 0; i < model.Entries.Count; i++)
                 {
-                    if (model.Entries[1].TeamCompeting != null)
+                    if (i == 0)
                     {
-                        lTeamTwo.Text = model.Entries[1].TeamCompeting.TeamName; ;
-                        tbTeamTwo.Text = model.Entries[1].Score.ToString();
+                        if (model.Entries[0].TeamCompeting != null)
+                        {
+                            lteamOne.Text = model.Entries[0].TeamCompeting.TeamName;
+                            tbTeamOne.Text = model.Entries[0].Score.ToString();
+
+                            lTeamTwo.Text = "<bot>";
+                            tbTeamTwo.Text = "0";
+                        }
+                        else
+                        {
+                            lteamOne.Text = "Not Yet Set";
+                            tbTeamOne.Text = "";
+                        }
                     }
-                    else
+                    if (i == 1)
                     {
-                        lTeamTwo.Text = "Not Yet Set";
-                        tbTeamTwo.Text = "";
+                        if (model.Entries[1].TeamCompeting != null)
+                        {
+                            lTeamTwo.Text = model.Entries[1].TeamCompeting.TeamName; ;
+                            tbTeamTwo.Text = model.Entries[1].Score.ToString();
+                        }
+                        else
+                        {
+                            lTeamTwo.Text = "Not Yet Set";
+                            tbTeamTwo.Text = "";
+                        }
                     }
                 }
             }
