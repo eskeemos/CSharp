@@ -37,15 +37,16 @@ namespace TrackerUI
             this.lbRounds = new System.Windows.Forms.ListBox();
             this.lteamOne = new System.Windows.Forms.Label();
             this.lTeamTwo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lVersus = new System.Windows.Forms.Label();
             this.tbTeamTwo = new System.Windows.Forms.TextBox();
             this.tbTeamOne = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bScore = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lNoneSelected = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -96,6 +97,7 @@ namespace TrackerUI
             this.cbUnplayedOnly.TabIndex = 4;
             this.cbUnplayedOnly.Text = "Unplayed Only";
             this.cbUnplayedOnly.UseVisualStyleBackColor = true;
+            this.cbUnplayedOnly.CheckedChanged += new System.EventHandler(this.cbUnplayedOnly_CheckedChanged);
             // 
             // lbRounds
             // 
@@ -132,17 +134,17 @@ namespace TrackerUI
             this.lTeamTwo.Text = "<bot>";
             this.lTeamTwo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lVersus
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label1.Location = new System.Drawing.Point(363, 137);
-            this.label1.Margin = new System.Windows.Forms.Padding(5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 22);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "-VS-";
+            this.lVersus.AutoSize = true;
+            this.lVersus.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.lVersus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lVersus.Location = new System.Drawing.Point(363, 137);
+            this.lVersus.Margin = new System.Windows.Forms.Padding(5);
+            this.lVersus.Name = "lVersus";
+            this.lVersus.Size = new System.Drawing.Size(46, 22);
+            this.lVersus.TabIndex = 10;
+            this.lVersus.Text = "-VS-";
             // 
             // tbTeamTwo
             // 
@@ -162,14 +164,15 @@ namespace TrackerUI
             this.tbTeamOne.Text = "0";
             this.tbTeamOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
+            // bScore
             // 
-            this.button1.Location = new System.Drawing.Point(335, 209);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 30);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Score";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bScore.Location = new System.Drawing.Point(335, 209);
+            this.bScore.Name = "bScore";
+            this.bScore.Size = new System.Drawing.Size(101, 30);
+            this.bScore.TabIndex = 14;
+            this.bScore.Text = "Score";
+            this.bScore.UseVisualStyleBackColor = true;
+            this.bScore.Click += new System.EventHandler(this.bScore_Click);
             // 
             // pictureBox1
             // 
@@ -216,15 +219,16 @@ namespace TrackerUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.panel2.Controls.Add(this.lNoneSelected);
             this.panel2.Controls.Add(this.lRound);
             this.panel2.Controls.Add(this.cbRounds);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.bScore);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.tbTeamTwo);
             this.panel2.Controls.Add(this.tbTeamOne);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.cbUnplayedOnly);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lVersus);
             this.panel2.Controls.Add(this.lbRounds);
             this.panel2.Controls.Add(this.lteamOne);
             this.panel2.Controls.Add(this.lTeamTwo);
@@ -233,6 +237,19 @@ namespace TrackerUI
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(534, 273);
             this.panel2.TabIndex = 18;
+            // 
+            // lNoneSelected
+            // 
+            this.lNoneSelected.AutoSize = true;
+            this.lNoneSelected.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.lNoneSelected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.lNoneSelected.Location = new System.Drawing.Point(281, 137);
+            this.lNoneSelected.Margin = new System.Windows.Forms.Padding(5);
+            this.lNoneSelected.Name = "lNoneSelected";
+            this.lNoneSelected.Size = new System.Drawing.Size(212, 22);
+            this.lNoneSelected.TabIndex = 17;
+            this.lNoneSelected.Text = "No Matchup Selected";
+            this.lNoneSelected.Visible = false;
             // 
             // TournamentViewer
             // 
@@ -262,14 +279,15 @@ namespace TrackerUI
         private System.Windows.Forms.ListBox lbRounds;
         private System.Windows.Forms.Label lteamOne;
         private System.Windows.Forms.Label lTeamTwo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lVersus;
         private System.Windows.Forms.TextBox tbTeamTwo;
         private System.Windows.Forms.TextBox tbTeamOne;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bScore;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lNoneSelected;
     }
 }

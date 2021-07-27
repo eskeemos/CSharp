@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary;
 using TrackerLibrary.Models;
 
 namespace TrackerUI
@@ -66,12 +67,29 @@ namespace TrackerUI
                     selectedMatchups.Clear();
                     foreach (ModelMatchup model in matchups)
                     {
-                        selectedMatchups.Add(model);
+                        if(model.Winner == null || !cbUnplayedOnly.Checked)
+                        {
+                            selectedMatchups.Add(model);
+                        }
+                        
                     }
                 }
             }
+            if(selectedMatchups.Count > 0)
+            {
+                LoadMatchup(selectedMatchups.First());
+            }
+            DisplayMatchupInfo();
+        }
 
-            LoadMatchup(selectedMatchups.First());
+        private void DisplayMatchupInfo()
+        {
+            bool isVisible = (selectedMatchups.Count > 0);
+
+            lteamOne.Visible = tbTeamOne.Visible = isVisible;
+            lTeamTwo.Visible = tbTeamTwo.Visible = isVisible;
+            lNoneSelected.Visible = !isVisible;
+
         }
 
         private void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,6 +137,87 @@ namespace TrackerUI
                     }
                 }
             }
+        }
+
+        private void cbUnplayedOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadMatchupList((int)cbRounds.SelectedItem);
+        }
+
+        private void bScore_Click(object sender, EventArgs e)
+        {
+            ModelMatchup model = (ModelMatchup)lbRounds.SelectedItem;
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
+
+            for (int i = 0; i < model.Entries.Count; i++)
+            {
+                if (i == 0)
+                {
+                    if(model.Entries[0].TeamCompeting != null)
+                    {
+                        bool validScore = double.TryParse(tbTeamOne.Text, out teamOneScore);
+                        if (validScore)
+                        {
+                            model.Entries[0].Score = teamOneScore;
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Please Enter A Valid Score For {lteamOne.Text}");
+                            return;
+                        }
+                    }
+                }
+                if (i == 1)
+                {
+                    if (model.Entries[1].TeamCompeting != null)
+                    {
+                        bool validScore = double.TryParse(tbTeamTwo.Text, out teamTwoScore);
+                        if (validScore)
+                        {
+                            model.Entries[1].Score = teamTwoScore;
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Please Enter A Valid Score For {lTeamTwo.Text}");
+                        }
+                    }
+                }
+            }
+            if(teamOneScore > teamTwoScore)
+            {
+                model.Winner = model.Entries[0].TeamCompeting;
+            }
+            else if(teamOneScore < teamTwoScore)
+            {
+                model.Winner = model.Entries[1].TeamCompeting;
+            }
+            else
+            {
+                MessageBox.Show("I don't hanle tie games");
+            }
+
+            foreach (List<ModelMatchup> lmm in _tournament.Rounds)
+            {
+                foreach (ModelMatchup mm in lmm)
+                {
+                    foreach (ModelMatchupEntry mme in mm.Entries)
+                    {
+                        if(mme.ParentMatchup != null)
+                        {
+                            if (mme.ParentMatchup.Id == model.Id)
+                            {
+                                mme.TeamCompeting = model.Winner;
+                                GlobalConfig.Connection.UpdateMatchup(mm);
+                            }
+                        }
+                    }
+                }
+            }
+
+            LoadMatchupList((int)cbRounds.SelectedItem);
+
+            GlobalConfig.Connection.UpdateMatchup(model);
         }
     }
 }

@@ -197,7 +197,7 @@ namespace TrackerLibrary.DataAccess
                 {
                     var dp = new DynamicParameters();
                     dp.Add("@TournamentId", tournament.Id);
-                    tournament.Prizes = conn.Query<ModelPrize>("dbo.proc_Prizes_getByTournament",dp, commandType: CommandType.StoredProcedure).ToList();
+                    tournament.Prizes = conn.Query<ModelPrize>("dbo.procPrizes_getByTournament",dp, commandType: CommandType.StoredProcedure).ToList();
 
                      dp = new DynamicParameters();
                     dp.Add("@TournamentId", tournament.Id);
@@ -258,6 +258,30 @@ namespace TrackerLibrary.DataAccess
                 }
             }   
             return tournaments;
+        }
+        public void UpdateMatchup(ModelMatchup model)
+        {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var dp = new DynamicParameters();
+                if(model.Winner != null)
+                {
+                    dp.Add("id", model.Id);
+                    dp.Add("WinnerId", model.Winner.ID);
+                    conn.Execute("dbo.procMatchups_update", dp, commandType: CommandType.StoredProcedure);
+                }
+                foreach (ModelMatchupEntry mme in model.Entries)
+                {
+                    if (mme.TeamCompeting != null)
+                    {
+                        dp = new DynamicParameters();
+                        dp.Add("Id", mme.Id);
+                        dp.Add("TeamCompetingId", mme.TeamCompeting.ID);
+                        dp.Add("Score", mme.Score);
+                        conn.Execute("dbo.MatchupEntries_update", dp, commandType: CommandType.StoredProcedure);
+                    }
+                }
+            }
         }
     }
 }
