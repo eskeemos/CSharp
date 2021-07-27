@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1hgpxhDpn+3jobDzeH6nLAG+LG6CzkPZufrtL2LvrtSQMiCpUb7S6H6P5EhBH+eXSwlnJB4xw7km88jSAxQGBQ==",
+  "dgSpecHash": "aHvF+qED2upUiA4SPWu6xXcXD1JAFK/pwNIjmADmdIifhf1zpkOq/IEkwJzpCq32AGS9o38dgq/gc4+DDkajkA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI\\RestaurantAPI\\RestaurantAPI.csproj",
+  "projectFilePath": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI_yt\\RestaurantAPI\\RestaurantAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\krzys\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\krzys\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

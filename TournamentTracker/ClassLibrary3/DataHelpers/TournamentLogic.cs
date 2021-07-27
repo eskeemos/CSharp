@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary;
 using TrackerLibrary.Models;
 
 namespace ClassLibrary3
@@ -90,6 +92,89 @@ namespace ClassLibrary3
         private static List<ModelTeam> RandomizeTeamOrder(List<ModelTeam> enteredTeams)
         {
             return enteredTeams.OrderBy((x) => Guid.NewGuid()).ToList();
+        }
+        public static void UpdateTournamentResults(ModelTournament model)
+        {
+            List<ModelMatchup> toScore = new List<ModelMatchup>();
+
+            foreach (List<ModelMatchup> matchupList in model.Rounds)
+            {
+                foreach (ModelMatchup matchup in matchupList)
+                {
+                    if((matchup.Winner == null)&&(matchup.Entries.Any((x) => x.Score != 0))||(matchup.Entries.Count == 1))
+                    {
+                        toScore.Add(matchup);
+                    }
+                }
+            }
+
+            ScoreMatchups(toScore);
+            
+            
+
+            //foreach (List<ModelMatchup> matchupList in model.Rounds)
+            //{
+            //    foreach (ModelMatchup matchup in matchupList)
+            //    {
+            //        foreach (ModelMatchupEntry entry in matchup.Entries)
+            //        {
+            //            if (entry.ParentMatchup != null)
+            //            {
+            //                if (entry.ParentMatchup.Id == model.Id)
+            //                {
+            //                    entry.TeamCompeting = model.Winner;
+            //                    GlobalConfig.Connection.UpdateMatchup(matchup);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //GlobalConfig.Connection.UpdateMatchup(model);
+        }
+        private static void ScoreMatchups(List<ModelMatchup> models)
+        {
+            string scoreDirection = ConfigurationManager.AppSettings["greatherWins"];
+
+            foreach (ModelMatchup matchup in models)
+            {
+                if(matchup.Entries.Count == 1)
+                {
+                    matchup.Winner = matchup.Entries[0].TeamCompeting;
+                    continue;
+                }
+                if (scoreDirection == "0")
+                {
+                    if (matchup.Entries[0].Score < matchup.Entries[1].Score)
+                    {
+                        matchup.Winner = matchup.Entries[0].TeamCompeting;
+                    }
+                    else if (matchup.Entries[1].Score < matchup.Entries[0].Score)
+                    {
+                        matchup.Winner = matchup.Entries[0].TeamCompeting;
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            
+            //if (teamOneScore > teamTwoScore)
+            //{
+            //    model.Winner = model.Entries[0].TeamCompeting;
+            //}
+            //else if (teamOneScore < teamTwoScore)
+            //{
+            //    model.Winner = model.Entries[1].TeamCompeting;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("I don't hanle tie games");
+            //}
         }
     }
 }

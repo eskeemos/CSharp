@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibrary3;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,15 +15,15 @@ namespace TrackerUI
 {
     public partial class TournamentViewer : BaseSets
     {
-        private ModelTournament _tournament;
+        private ModelTournament tournament;
         BindingList<int> rounds = new BindingList<int>();
         BindingList<ModelMatchup> selectedMatchups = new BindingList<ModelMatchup>();
 
-        public TournamentViewer(ModelTournament tournament)
+        public TournamentViewer(ModelTournament _tournament)
         {
             InitializeComponent();
 
-            _tournament = tournament;
+            tournament = _tournament;
 
             WireUpLists();
 
@@ -32,7 +33,7 @@ namespace TrackerUI
         }
         private void LoadFormData()
         {
-            lTournamentName.Text = _tournament.TournamentName;
+            lTournamentName.Text = tournament.TournamentName;
 
         }
         private void WireUpLists()
@@ -48,7 +49,7 @@ namespace TrackerUI
             rounds.Add(1);
             int currRound = 1;
 
-            foreach (List<ModelMatchup> matchups in _tournament.Rounds)
+            foreach (List<ModelMatchup> matchups in tournament.Rounds)
             {
                 if(matchups.First().MatchupRound > currRound)
                 {
@@ -60,7 +61,7 @@ namespace TrackerUI
         }
         private void LoadMatchupList(int round)
         {
-            foreach (List<ModelMatchup> matchups in _tournament.Rounds)
+            foreach (List<ModelMatchup> matchups in tournament.Rounds)
             {
                 if (matchups.First().MatchupRound == round)
                 {
@@ -184,40 +185,9 @@ namespace TrackerUI
                     }
                 }
             }
-            if(teamOneScore > teamTwoScore)
-            {
-                model.Winner = model.Entries[0].TeamCompeting;
-            }
-            else if(teamOneScore < teamTwoScore)
-            {
-                model.Winner = model.Entries[1].TeamCompeting;
-            }
-            else
-            {
-                MessageBox.Show("I don't hanle tie games");
-            }
-
-            foreach (List<ModelMatchup> lmm in _tournament.Rounds)
-            {
-                foreach (ModelMatchup mm in lmm)
-                {
-                    foreach (ModelMatchupEntry mme in mm.Entries)
-                    {
-                        if(mme.ParentMatchup != null)
-                        {
-                            if (mme.ParentMatchup.Id == model.Id)
-                            {
-                                mme.TeamCompeting = model.Winner;
-                                GlobalConfig.Connection.UpdateMatchup(mm);
-                            }
-                        }
-                    }
-                }
-            }
+            TournamentLogic.UpdateTournamentResults(tournament);
 
             LoadMatchupList((int)cbRounds.SelectedItem);
-
-            GlobalConfig.Connection.UpdateMatchup(model);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace TrackerUI
 {
     public partial class TournamentDashboard : BaseSets
     {
-        List<ModelTournament> tournaments = GlobalConfig.Connection.getTournamentsAll();
+        List<ModelTournament> tournaments = GlobalConfig.Connection.GetTournamentsAll();
         public TournamentDashboard()
         {
             InitializeComponent();

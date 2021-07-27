@@ -12,6 +12,13 @@ namespace TrackerLibrary
 {
     public static class GlobalConfig
     {
+        public const string
+            PrizesFile = "PrizeModels.csv",
+            PeopleFile = "PersonModels.csv",
+            TeamFile = "TeamModel.csv",
+            TournamentFile = "TournamentModels.csv",
+            MatchupFile = "MatchupModels.csv",
+            MatchupEntryModels = "MatchupEntryModels.csv";
         public static IDataConnection Connection { get; private set; }
         public static void InitializeConnections(DatabaseType db)
         {
@@ -33,11 +40,5 @@ namespace TrackerLibrary
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
-        public const string PrizesFile = "PrizeModels.csv";
-        public const string PeopleFile = "PersonModels.csv";
-        public const string TeamFile = "TeamModel.csv";
-        public const string TournamentFile = "TournamentModels.csv";
-        public const string MatchupFile = "MatchupModels.csv";
-        public const string MatchupEntryModels = "MatchupEntryModels.csv";
     }
 }

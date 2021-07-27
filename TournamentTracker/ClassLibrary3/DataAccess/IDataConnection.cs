@@ -9,13 +9,13 @@ namespace TrackerLibrary.DataAccess
 {
     public interface IDataConnection
     {
-        ModelPrize CreatePrize(ModelPrize model);
-        ModelPerson CreatePerson(ModelPerson model);
-        ModelTeam CreateTeam(ModelTeam model);
+        void CreatePrize(ModelPrize model);
+        void CreatePerson(ModelPerson model);
+        void CreateTeam(ModelTeam model);
         void CreateTournament(ModelTournament model);
+        void UpdateMatchup(ModelMatchup model);
         List<ModelPerson> GetPersonAll();
         List<ModelTeam> GetTeamAll();
-        List<ModelTournament> getTournamentsAll();
-        void UpdateMatchup(ModelMatchup model);
+        List<ModelTournament> GetTournamentsAll();
     }
 }

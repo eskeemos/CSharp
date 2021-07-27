@@ -6179,11 +6179,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI\\RestaurantAPI\\RestaurantAPI.csproj",
+      "projectUniqueName": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI_yt\\RestaurantAPI\\RestaurantAPI.csproj",
       "projectName": "RestaurantAPI",
-      "projectPath": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI\\RestaurantAPI\\RestaurantAPI.csproj",
+      "projectPath": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI_yt\\RestaurantAPI\\RestaurantAPI.csproj",
       "packagesPath": "C:\\Users\\krzys\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI\\RestaurantAPI\\obj\\",
+      "outputPath": "C:\\Users\\krzys\\Desktop\\CSharp\\RestaurantAPI_yt\\RestaurantAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\krzys\\AppData\\Roaming\\NuGet\\NuGet.Config",

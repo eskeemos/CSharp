@@ -57,7 +57,7 @@ namespace TrackerUI
                 m.EmailAddress = tbEmailAddress.Text;
                 m.PhoneNumber = tbPhoneNumber.Text;
 
-                m = GlobalConfig.Connection.CreatePerson(m);
+                GlobalConfig.Connection.CreatePerson(m);
 
                 selectedTeamMembers.Add(m);
                 WireUpLists();
