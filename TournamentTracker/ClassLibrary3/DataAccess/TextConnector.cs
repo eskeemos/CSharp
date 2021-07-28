@@ -2,6 +2,7 @@
 using ClassLibrary3.DataAccess.TextHelpers;
 using System.Collections.Generic;
 using System.Linq;
+using ClassLibrary3;
 
 namespace TrackerLibrary.DataAccess
 {
@@ -64,6 +65,8 @@ namespace TrackerLibrary.DataAccess
             tournaments.Add(model);
 
             tournaments.SaveToTournamentFile();
+
+            TournamentLogic.UpdateTournamentResults(model);
         }
         public void UpdateMatchup(ModelMatchup model)
         {

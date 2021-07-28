@@ -19,6 +19,7 @@ namespace ClassLibrary3
             int byes = FindNumberOfByes(rounds, randomizedTeams.Count);
             model.Rounds.Add(CreateFirstRound(byes, randomizedTeams));
             CreateOtherRounds(model, rounds);
+
         }
         private static void CreateOtherRounds(ModelTournament model, int rounds)
         {
@@ -93,11 +94,11 @@ namespace ClassLibrary3
         {
             return enteredTeams.OrderBy((x) => Guid.NewGuid()).ToList();
         }
-        public static void UpdateTournamentResults(ModelTournament model)
+        public static void UpdateTournamentResults(ModelTournament tournament)
         {
             List<ModelMatchup> toScore = new List<ModelMatchup>();
 
-            foreach (List<ModelMatchup> matchupList in model.Rounds)
+            foreach (List<ModelMatchup> matchupList in tournament.Rounds)
             {
                 foreach (ModelMatchup matchup in matchupList)
                 {
@@ -108,30 +109,35 @@ namespace ClassLibrary3
                 }
             }
 
-            ScoreMatchups(toScore);
-            
-            
+            MarkWinnerInMatchup(toScore);
 
-            //foreach (List<ModelMatchup> matchupList in model.Rounds)
-            //{
-            //    foreach (ModelMatchup matchup in matchupList)
-            //    {
-            //        foreach (ModelMatchupEntry entry in matchup.Entries)
-            //        {
-            //            if (entry.ParentMatchup != null)
-            //            {
-            //                if (entry.ParentMatchup.Id == model.Id)
-            //                {
-            //                    entry.TeamCompeting = model.Winner;
-            //                    GlobalConfig.Connection.UpdateMatchup(matchup);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            //GlobalConfig.Connection.UpdateMatchup(model);
+            AdvanceWinners(toScore, tournament);
+
+            toScore.ForEach((x) => GlobalConfig.Connection.UpdateMatchup(x));
         }
-        private static void ScoreMatchups(List<ModelMatchup> models)
+
+        private static void AdvanceWinners(List<ModelMatchup> matchupList, ModelTournament tournament)
+        {
+            foreach (ModelMatchup parentMatchup in matchupList)
+            {
+                foreach (List<ModelMatchup> listOfMatchups in tournament.Rounds)
+                {
+                    foreach (ModelMatchup matchup in listOfMatchups)
+                    {
+                        foreach (ModelMatchupEntry entry in matchup.Entries)
+                        {
+                            if((entry.ParentMatchup != null)&&(entry.ParentMatchup.Id == parentMatchup.Id))
+                            {
+                                entry.TeamCompeting = parentMatchup.Winner;
+                                GlobalConfig.Connection.UpdateMatchup(matchup);
+                            }
+                        }
+                    }        
+                }
+            }
+        }
+
+        private static void MarkWinnerInMatchup(List<ModelMatchup> models)
         {
             string scoreDirection = ConfigurationManager.AppSettings["greatherWins"];
 
@@ -150,16 +156,27 @@ namespace ClassLibrary3
                     }
                     else if (matchup.Entries[1].Score < matchup.Entries[0].Score)
                     {
-                        matchup.Winner = matchup.Entries[0].TeamCompeting;
+                        matchup.Winner = matchup.Entries[1].TeamCompeting;
                     }
                     else
                     {
-
+                        throw new Exception("We don't allow ties in this App.");
                     }
                 }
                 else
                 {
-
+                    if (matchup.Entries[0].Score > matchup.Entries[1].Score)
+                    {
+                        matchup.Winner = matchup.Entries[0].TeamCompeting;
+                    }
+                    else if (matchup.Entries[1].Score > matchup.Entries[0].Score)
+                    {
+                        matchup.Winner = matchup.Entries[1].TeamCompeting;
+                    }
+                    else
+                    {
+                        throw new Exception("We don't allow ties in this App.");
+                    }
                 }
             }
             

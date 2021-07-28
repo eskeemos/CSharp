@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using ClassLibrary3;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -81,6 +82,8 @@ namespace TrackerLibrary.DataAccess
                 SaveTournamentEntries(conn, model);
 
                 SaveTournamentRounds(conn, model);
+
+                TournamentLogic.UpdateTournamentResults(model);
             }
         }
         public void UpdateMatchup(ModelMatchup model)

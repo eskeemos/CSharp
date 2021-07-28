@@ -132,6 +132,10 @@ namespace TrackerUI
             TournamentLogic.CreateRounds(model);
 
             GlobalConfig.Connection.CreateTournament(model);
+
+            TournamentViewer form = new TournamentViewer(model);
+            form.Show();
+            this.Close();
         }
     }
 }
