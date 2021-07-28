@@ -1,4 +1,4 @@
-﻿using ClassLibrary3;
+﻿using LogicLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

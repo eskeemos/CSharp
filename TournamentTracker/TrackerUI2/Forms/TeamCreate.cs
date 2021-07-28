@@ -15,7 +15,7 @@ namespace TrackerUI
 {
     public partial class TeamCreate : BaseSets
     {
-        private List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersonAll();
+        private List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersons();
         private List<ModelPerson> selectedTeamMembers = new List<ModelPerson>();
         private ITeamRequestor _caller;
 

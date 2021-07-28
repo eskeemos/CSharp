@@ -6,7 +6,7 @@ using System.Linq;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
-namespace ClassLibrary3.DataAccess.TextHelpers
+namespace LogicLibrary.DataAccess.TextHelpers
 {
     public static class TextConnectorProcessor
     {
@@ -20,12 +20,14 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             {
                 string[] cols = line.Split(',');
 
-                ModelPrize m = new ModelPrize();
-                m.ID = int.Parse(cols[0]);
-                m.PlaceNumber = int.Parse(cols[1]);
-                m.PlaceName = cols[2];
-                m.PrizeAmount = decimal.Parse(cols[3]);
-                m.PrizePercentage = double.Parse(cols[4]);
+                ModelPrize m = new ModelPrize
+                {
+                    ID = int.Parse(cols[0]),
+                    PlaceNumber = int.Parse(cols[1]),
+                    PlaceName = cols[2],
+                    PrizeAmount = decimal.Parse(cols[3]),
+                    PrizePercentage = double.Parse(cols[4])
+                };
                 output.Add(m);
             }
 
@@ -39,12 +41,14 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             {
                 string[] cols = line.Split(',');
 
-                ModelPerson m = new ModelPerson();
-                m.ID = int.Parse(cols[0]);
-                m.FirstName = cols[1];
-                m.LastName = cols[2];
-                m.EmailAddress = cols[3];
-                m.PhoneNumber = cols[4];
+                ModelPerson m = new ModelPerson
+                {
+                    ID = int.Parse(cols[0]),
+                    FirstName = cols[1],
+                    LastName = cols[2],
+                    EmailAddress = cols[3],
+                    PhoneNumber = cols[4]
+                };
                 output.Add(m);
             }
 
@@ -59,9 +63,11 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             {
                 string[] cols = line.Split(',');
 
-                ModelTeam m = new ModelTeam();
-                m.ID = int.Parse(cols[0]);
-                m.TeamName = cols[1];
+                ModelTeam m = new ModelTeam
+                {
+                    ID = int.Parse(cols[0]),
+                    TeamName = cols[1]
+                };
 
                 string[] personIDs = cols[2].Split('|');
 
@@ -84,10 +90,12 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             {
                 string[] cols = line.Split(',');
 
-                ModelTournament mt = new ModelTournament();
-                mt.Id = int.Parse(cols[0]);
-                mt.TournamentName = cols[1];
-                mt.EntryFee = decimal.Parse(cols[2]);
+                ModelTournament mt = new ModelTournament
+                {
+                    Id = int.Parse(cols[0]),
+                    TournamentName = cols[1],
+                    EntryFee = decimal.Parse(cols[2])
+                };
 
                 string[] teamIds = cols[3].Split('|');
                 foreach (string id in teamIds)
@@ -132,11 +140,13 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             {
                 string[] cols = line.Split(',');
 
-                ModelMatchup mm = new ModelMatchup();
-                mm.Id = int.Parse(cols[0]);
-                mm.Entries = ConvertStringToMatchupEntryModel(cols[1]);
-                mm.Winner = LookeupTeamId(cols[2]);
-                mm.MatchupRound = int.Parse(cols[3]);
+                ModelMatchup mm = new ModelMatchup
+                {
+                    Id = int.Parse(cols[0]),
+                    Entries = ConvertStringToMatchupEntryModel(cols[1]),
+                    Winner = LookeupTeamId(cols[2]),
+                    MatchupRound = int.Parse(cols[3])
+                };
                 output.Add(mm);
             }
 
@@ -149,8 +159,10 @@ namespace ClassLibrary3.DataAccess.TextHelpers
             foreach (string line in lines)
             {
                 string[] cols = line.Split(',');
-                ModelMatchupEntry m = new ModelMatchupEntry();
-                m.Id = int.Parse(cols[0]);
+                ModelMatchupEntry m = new ModelMatchupEntry
+                {
+                    Id = int.Parse(cols[0])
+                };
 
                 if (cols[1].Length == 0)
                 {
@@ -163,8 +175,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
                 m.Score = double.Parse(cols[2]);
 
-                int pId = 0;
-                if (int.TryParse(cols[3], out pId))
+                if (int.TryParse(cols[3], out int pId))
                 {
                     m.ParentMatchup = LookupMatchupId(pId);
                 }
@@ -468,7 +479,6 @@ namespace ClassLibrary3.DataAccess.TextHelpers
         private static List<ModelMatchupEntry> ConvertStringToMatchupEntryModel(string input)
         {
             string[] ids = input.Split('|');
-            List<ModelMatchupEntry> output = new List<ModelMatchupEntry>();
             List<string> entries = GlobalConfig.MatchupEntryModels.FullFilePath().LoadFile();
             List<string> matchingEntries = new List<string>();
 
@@ -485,7 +495,7 @@ namespace ClassLibrary3.DataAccess.TextHelpers
                 }
             }
 
-            output = matchingEntries.ConvertToMatchupEntryModels();
+            List<ModelMatchupEntry> output = matchingEntries.ConvertToMatchupEntryModels();
 
             return output;
         }
@@ -499,8 +509,10 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
                 if (cols[0] == id)
                 {
-                    List<string> matchItem = new List<string>();
-                    matchItem.Add(team);
+                    List<string> matchItem = new List<string>
+                    {
+                        team
+                    };
                     return matchItem.ConvertToTeamModel().First();
                 }
             }
@@ -517,8 +529,10 @@ namespace ClassLibrary3.DataAccess.TextHelpers
 
                 if (cols[0] == Convert.ToString(id))
                 {
-                    List<string> matchItem = new List<string>();
-                    matchItem.Add(match);
+                    List<string> matchItem = new List<string>
+                    {
+                        match
+                    };
                     return matchItem.ConvertToMatchupModels().First();
                 }
             }

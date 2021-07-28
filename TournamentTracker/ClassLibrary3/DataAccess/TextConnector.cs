@@ -1,8 +1,8 @@
 ﻿using TrackerLibrary.Models;
-using ClassLibrary3.DataAccess.TextHelpers;
+using LogicLibrary.DataAccess.TextHelpers;
 using System.Collections.Generic;
 using System.Linq;
-using ClassLibrary3;
+using LogicLibrary;
 
 namespace TrackerLibrary.DataAccess
 {
@@ -72,15 +72,15 @@ namespace TrackerLibrary.DataAccess
         {
             model.UpdateMatchupToFile();
         }
-        public List<ModelPerson> GetPersonAll()
+        public List<ModelPerson> GetPersons()
         {
             return GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
         }
-        public List<ModelTeam> GetTeamAll()
+        public List<ModelTeam> GetTeams()
         {
             return GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModel();
         }
-        public List<ModelTournament> GetTournamentsAll()
+        public List<ModelTournament> GetTournaments()
         {
             return GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
         }

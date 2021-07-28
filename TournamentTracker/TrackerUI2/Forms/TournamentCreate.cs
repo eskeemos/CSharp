@@ -1,4 +1,4 @@
-﻿using ClassLibrary3;
+﻿using LogicLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,7 @@ namespace TrackerUI
 {
     public partial class TournamentCreate : BaseSets, IPrizeRequestor, ITeamRequestor
     {
-        List<ModelTeam> availTeams = GlobalConfig.Connection.GetTeamAll();
+        List<ModelTeam> availTeams = GlobalConfig.Connection.GetTeams();
         List<ModelTeam> selectedTeams = new List<ModelTeam>();
         List<ModelPrize> selectedPrizes = new List<ModelPrize>();
 

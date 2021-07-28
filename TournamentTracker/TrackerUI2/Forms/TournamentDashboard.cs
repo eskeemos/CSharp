@@ -1,4 +1,4 @@
-﻿using ClassLibrary3.DataAccess.TextHelpers;
+﻿using LogicLibrary.DataAccess.TextHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ namespace TrackerUI
 {
     public partial class TournamentDashboard : BaseSets
     {
-        List<ModelTournament> tournaments = GlobalConfig.Connection.GetTournamentsAll();
+        List<ModelTournament> tournaments = GlobalConfig.Connection.GetTournaments();
         public TournamentDashboard()
         {
             InitializeComponent();

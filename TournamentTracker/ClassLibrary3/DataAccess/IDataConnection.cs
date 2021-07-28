@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
@@ -14,8 +10,8 @@ namespace TrackerLibrary.DataAccess
         void CreateTeam(ModelTeam model);
         void CreateTournament(ModelTournament model);
         void UpdateMatchup(ModelMatchup model);
-        List<ModelPerson> GetPersonAll();
-        List<ModelTeam> GetTeamAll();
-        List<ModelTournament> GetTournamentsAll();
+        List<ModelPerson> GetPersons();
+        List<ModelTeam> GetTeams();
+        List<ModelTournament> GetTournaments();
     }
 }

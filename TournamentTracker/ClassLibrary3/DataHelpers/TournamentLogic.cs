@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
-namespace ClassLibrary3
+namespace LogicLibrary
 {
     public static class TournamentLogic
     {
@@ -67,13 +67,12 @@ namespace ClassLibrary3
         }
         private static int FindNumberOfByes(int rounds, int numberOfTeams)
         {
-            int output = 0;
             int totalTeams = 1;
             for (int i = 1; i <= rounds; i++)
             {
                 totalTeams *= 2;
             }
-            output = totalTeams - numberOfTeams;
+            int output = totalTeams - numberOfTeams;
 
             return output;
         }
