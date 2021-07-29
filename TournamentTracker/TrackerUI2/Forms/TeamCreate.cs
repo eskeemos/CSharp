@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
@@ -13,27 +7,19 @@ using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class TeamCreate : BaseSets
+    public partial class TeamCreate : BaseSets // Refactored
     {
-        private List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersons();
-        private List<ModelPerson> selectedTeamMembers = new List<ModelPerson>();
-        private ITeamRequestor _caller;
+        private readonly List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersons();
+        private readonly List<ModelPerson> selectedTeamMembers = new List<ModelPerson>();
+        private readonly ITeamRequestor _caller;
 
         public TeamCreate(ITeamRequestor caller)
         {
             InitializeComponent();
 
-            // CreateSampleData();
             _caller = caller;
-            WireUpLists();
-        }
-        private void CreateSampleData()
-        {
-            availTeamMembers.Add(new ModelPerson { FirstName = "Tim", LastName = "Barney" });
-            availTeamMembers.Add(new ModelPerson { FirstName = "BIM", LastName = "Swedea" });
 
-            selectedTeamMembers.Add(new ModelPerson { FirstName = "Kakren", LastName = "Wires" });
-            selectedTeamMembers.Add(new ModelPerson { FirstName = "Madia", LastName = "Olkiem" });
+            WireUpLists();
         }
         private void WireUpLists()
         {
@@ -46,20 +32,21 @@ namespace TrackerUI
             lbTeamMembers.DisplayMember = "FullName";
         }
 
-        private void bCreateMember_Click(object sender, EventArgs e)
+        private void BcreateMember_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
             {
-                ModelPerson m = new ModelPerson();
+                ModelPerson person = new ModelPerson
+                {
+                    FirstName = tbFirstName.Text,
+                    LastName = tbLastName.Text,
+                    EmailAddress = tbEmailAddress.Text,
+                    PhoneNumber = tbPhoneNumber.Text
+                };
 
-                m.FirstName = tbFirstName.Text;
-                m.LastName = tbLastName.Text;
-                m.EmailAddress = tbEmailAddress.Text;
-                m.PhoneNumber = tbPhoneNumber.Text;
+                GlobalConfig.Connection.CreatePerson(person);
 
-                GlobalConfig.Connection.CreatePerson(m);
-
-                selectedTeamMembers.Add(m);
+                selectedTeamMembers.Add(person);
                 WireUpLists();
 
                 tbFirstName.Text = tbLastName.Text = tbEmailAddress.Text = tbPhoneNumber.Text = "";
@@ -92,7 +79,7 @@ namespace TrackerUI
             return true;
         }
 
-        private void bAddMember_Click(object sender, EventArgs e)
+        private void BaddMember_Click(object sender, EventArgs e)
         {
             ModelPerson m = (ModelPerson) cbSelectTeamMember.SelectedItem;
 
@@ -105,7 +92,7 @@ namespace TrackerUI
             }
         }
 
-        private void bDeleteSelected_Click(object sender, EventArgs e)
+        private void BdeleteSelected_Click(object sender, EventArgs e)
         {
             ModelPerson m = (ModelPerson)lbTeamMembers.SelectedItem;
 
@@ -118,16 +105,17 @@ namespace TrackerUI
             }
         }
 
-        private void bCreateTeam_Click(object sender, EventArgs e)
+        private void BcreateTeam_Click(object sender, EventArgs e)
         {
-            ModelTeam m = new ModelTeam();
+            ModelTeam team = new ModelTeam
+            {
+                TeamName = tbTeamName.Text,
+                TeamMembers = selectedTeamMembers
+            };
 
-            m.TeamName = tbTeamName.Text;
-            m.TeamMembers = selectedTeamMembers;
+            GlobalConfig.Connection.CreateTeam(team);
 
-            GlobalConfig.Connection.CreateTeam(m);
-
-            _caller.TeamComplete(m);
+            _caller.TeamComplete(team);
 
             this.Close();
         }

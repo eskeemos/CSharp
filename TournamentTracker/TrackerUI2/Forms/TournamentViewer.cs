@@ -13,7 +13,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class TournamentViewer : BaseSets
+    public partial class TournamentViewer : BaseSets // Refactored
     {
         private readonly ModelTournament tournament;
         readonly BindingList<int> rounds = new BindingList<int>();

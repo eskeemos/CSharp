@@ -10,8 +10,10 @@ using static TrackerLibrary.Enums;
 
 namespace TrackerLibrary
 {
-    public static class GlobalConfig
+    
+    public static class GlobalConfig // Refactored
     {
+
         public const string
             PrizesFile = "PrizeModels.csv",
             PeopleFile = "PersonModels.csv",
@@ -40,5 +42,6 @@ namespace TrackerLibrary
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
+
     }
 }

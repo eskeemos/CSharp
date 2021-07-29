@@ -6,16 +6,16 @@ using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class PrizeCreate : BaseSets
+    public partial class PrizeCreate : BaseSets // Refactored
     {
-        IPrizeRequestor _caller;
+        readonly IPrizeRequestor _caller;
         public PrizeCreate(IPrizeRequestor caller)
         {
             InitializeComponent();
             _caller = caller;
         }
 
-        private void bCreatePrize_Click(object sender, EventArgs e)
+        private void BcreatePrize_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
             {
@@ -40,13 +40,10 @@ namespace TrackerUI
         }
         private bool ValidateForm()
         {
-            float prizePercentage = 0;
-            int placeNumber = 0,
-                prizeAmount = 0;
             bool result = true, 
-                 placeNumberValid = int.TryParse(tbPlaceNumber.Text, out placeNumber),
-                 prizeAmountValid = int.TryParse(tbPrizeAmount.Text, out prizeAmount),
-                 prizePercentageValid = float.TryParse(tbPrizePercentage.Text, out prizePercentage);
+                 placeNumberValid = int.TryParse(tbPlaceNumber.Text, out int placeNumber),
+                 prizeAmountValid = int.TryParse(tbPrizeAmount.Text, out int prizeAmount),
+                 prizePercentageValid = float.TryParse(tbPrizePercentage.Text, out float prizePercentage);
 
             if (!placeNumberValid)
             {

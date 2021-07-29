@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TrackerLibrary.Models
+﻿namespace TrackerLibrary.Models // Refactored
 {
     public class ModelMatchupEntry
     {

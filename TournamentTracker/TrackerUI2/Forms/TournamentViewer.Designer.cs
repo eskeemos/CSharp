@@ -259,7 +259,7 @@ namespace TrackerUI
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "TournamentViewer";
-            this.Text = "Tournament Viewer";
+            this.Text = "7";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);

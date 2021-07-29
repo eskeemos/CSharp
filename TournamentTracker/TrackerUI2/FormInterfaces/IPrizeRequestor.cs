@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrackerLibrary.Models;
+﻿using TrackerLibrary.Models;
 
 namespace TrackerUI2
 {
-    public interface IPrizeRequestor
+    public interface IPrizeRequestor // Refactored
     {
-        void PrizeComplete(ModelPrize model);
+        void PrizeComplete(ModelPrize prize);
     }
 }

@@ -34,7 +34,7 @@ namespace TrackerUI
             this.cbSelectTeamMember = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bCreateMember = new System.Windows.Forms.Button();
+            this.BcreateMember = new System.Windows.Forms.Button();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbEmailAddress = new System.Windows.Forms.TextBox();
@@ -45,13 +45,13 @@ namespace TrackerUI
             this.label3 = new System.Windows.Forms.Label();
             this.lbTMembers = new System.Windows.Forms.ListBox();
             this.dDeletePrize = new System.Windows.Forms.Button();
-            this.bCreateTeam = new System.Windows.Forms.Button();
+            this.BcreateTeam = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bAddMember = new System.Windows.Forms.Button();
-            this.bDeleteSelected = new System.Windows.Forms.Button();
+            this.BaddMember = new System.Windows.Forms.Button();
+            this.BdeleteSelected = new System.Windows.Forms.Button();
             this.lbTeamMembers = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -99,7 +99,7 @@ namespace TrackerUI
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.bCreateMember);
+            this.groupBox1.Controls.Add(this.BcreateMember);
             this.groupBox1.Controls.Add(this.tbPhoneNumber);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.tbEmailAddress);
@@ -117,17 +117,16 @@ namespace TrackerUI
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Member";
             // 
-            // bCreateMember
+            // BcreateMember
             // 
-            this.bCreateMember.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bCreateMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.bCreateMember.Location = new System.Drawing.Point(45, 183);
-            this.bCreateMember.Name = "bCreateMember";
-            this.bCreateMember.Size = new System.Drawing.Size(194, 36);
-            this.bCreateMember.TabIndex = 32;
-            this.bCreateMember.Text = "Create Member";
-            this.bCreateMember.UseVisualStyleBackColor = true;
-            this.bCreateMember.Click += new System.EventHandler(this.bCreateMember_Click);
+            this.BcreateMember.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.BcreateMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.BcreateMember.Location = new System.Drawing.Point(45, 183);
+            this.BcreateMember.Name = "BcreateMember";
+            this.BcreateMember.Size = new System.Drawing.Size(194, 36);
+            this.BcreateMember.TabIndex = 32;
+            this.BcreateMember.Text = "Create Member";
+            this.BcreateMember.UseVisualStyleBackColor = true;
             // 
             // tbPhoneNumber
             // 
@@ -223,15 +222,14 @@ namespace TrackerUI
             this.dDeletePrize.Text = "Delete Selected";
             this.dDeletePrize.UseVisualStyleBackColor = true;
             // 
-            // bCreateTeam
+            // BcreateTeam
             // 
-            this.bCreateTeam.Location = new System.Drawing.Point(328, 382);
-            this.bCreateTeam.Name = "bCreateTeam";
-            this.bCreateTeam.Size = new System.Drawing.Size(194, 48);
-            this.bCreateTeam.TabIndex = 29;
-            this.bCreateTeam.Text = "Create Team";
-            this.bCreateTeam.UseVisualStyleBackColor = true;
-            this.bCreateTeam.Click += new System.EventHandler(this.bCreateTeam_Click);
+            this.BcreateTeam.Location = new System.Drawing.Point(328, 382);
+            this.BcreateTeam.Name = "BcreateTeam";
+            this.BcreateTeam.Size = new System.Drawing.Size(194, 48);
+            this.BcreateTeam.TabIndex = 29;
+            this.BcreateTeam.Text = "Create Team";
+            this.BcreateTeam.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -267,12 +265,12 @@ namespace TrackerUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.panel2.Controls.Add(this.bAddMember);
-            this.panel2.Controls.Add(this.bDeleteSelected);
+            this.panel2.Controls.Add(this.BaddMember);
+            this.panel2.Controls.Add(this.BdeleteSelected);
             this.panel2.Controls.Add(this.lbTeamMembers);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.tbTeamName);
-            this.panel2.Controls.Add(this.bCreateTeam);
+            this.panel2.Controls.Add(this.BcreateTeam);
             this.panel2.Controls.Add(this.lbTMembers);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.groupBox1);
@@ -283,26 +281,24 @@ namespace TrackerUI
             this.panel2.Size = new System.Drawing.Size(534, 523);
             this.panel2.TabIndex = 31;
             // 
-            // bAddMember
+            // BaddMember
             // 
-            this.bAddMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.bAddMember.Location = new System.Drawing.Point(23, 194);
-            this.bAddMember.Name = "bAddMember";
-            this.bAddMember.Size = new System.Drawing.Size(194, 46);
-            this.bAddMember.TabIndex = 33;
-            this.bAddMember.Text = "Add Member";
-            this.bAddMember.UseVisualStyleBackColor = true;
-            this.bAddMember.Click += new System.EventHandler(this.bAddMember_Click);
+            this.BaddMember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.BaddMember.Location = new System.Drawing.Point(23, 194);
+            this.BaddMember.Name = "BaddMember";
+            this.BaddMember.Size = new System.Drawing.Size(194, 46);
+            this.BaddMember.TabIndex = 33;
+            this.BaddMember.Text = "Add Member";
+            this.BaddMember.UseVisualStyleBackColor = true;
             // 
-            // bDeleteSelected
+            // BdeleteSelected
             // 
-            this.bDeleteSelected.Location = new System.Drawing.Point(328, 266);
-            this.bDeleteSelected.Name = "bDeleteSelected";
-            this.bDeleteSelected.Size = new System.Drawing.Size(194, 48);
-            this.bDeleteSelected.TabIndex = 31;
-            this.bDeleteSelected.Text = "Delete Selected";
-            this.bDeleteSelected.UseVisualStyleBackColor = true;
-            this.bDeleteSelected.Click += new System.EventHandler(this.bDeleteSelected_Click);
+            this.BdeleteSelected.Location = new System.Drawing.Point(328, 266);
+            this.BdeleteSelected.Name = "BdeleteSelected";
+            this.BdeleteSelected.Size = new System.Drawing.Size(194, 48);
+            this.BdeleteSelected.TabIndex = 31;
+            this.BdeleteSelected.Text = "Delete Selected";
+            this.BdeleteSelected.UseVisualStyleBackColor = true;
             // 
             // lbTeamMembers
             // 
@@ -349,14 +345,14 @@ namespace TrackerUI
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.ListBox lbTMembers;
         private System.Windows.Forms.Button dDeletePrize;
-        private System.Windows.Forms.Button bCreateTeam;
+        private System.Windows.Forms.Button BcreateTeam;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button bDeleteSelected;
+        private System.Windows.Forms.Button BdeleteSelected;
         private System.Windows.Forms.ListBox lbTeamMembers;
-        private System.Windows.Forms.Button bCreateMember;
-        private System.Windows.Forms.Button bAddMember;
+        private System.Windows.Forms.Button BcreateMember;
+        private System.Windows.Forms.Button BaddMember;
     }
 }

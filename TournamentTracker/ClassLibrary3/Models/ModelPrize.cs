@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrackerLibrary.Models
+﻿namespace TrackerLibrary.Models // Refactored
 {
     public class ModelPrize
     {
@@ -15,18 +9,15 @@ namespace TrackerLibrary.Models
         public double PrizePercentage { get; set; }
         public ModelPrize(string placeNumber, string placeName, string prizeAmount, string prizePercentage)
         {
-            int placeNumberValid = 0;
-            int.TryParse(placeNumber, out placeNumberValid);
+            int.TryParse(placeNumber, out int placeNumberValid);
             PlaceNumber = placeNumberValid;
 
             PlaceName = placeName;
 
-            int prizeAmountValid = 0;
-            int.TryParse(prizeAmount, out prizeAmountValid);
+            int.TryParse(prizeAmount, out int prizeAmountValid);
             PrizeAmount = prizeAmountValid;
 
-            int prizePercentageValid = 0;
-            int.TryParse(prizePercentage, out prizePercentageValid);
+            int.TryParse(prizePercentage, out int prizePercentageValid);
             PrizePercentage = prizePercentageValid;
         }
         public ModelPrize()

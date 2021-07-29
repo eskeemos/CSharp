@@ -2,7 +2,7 @@
 
 namespace TrackerLibrary.Models
 {
-    public class ModelMatchup
+    public class ModelMatchup // Refactored
     {
         public int Id { get; set; }
         public List<ModelMatchupEntry> Entries { get; set; } = new List<ModelMatchupEntry>();

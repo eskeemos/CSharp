@@ -14,11 +14,11 @@ using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class TournamentCreate : BaseSets, IPrizeRequestor, ITeamRequestor
+    public partial class TournamentCreate : BaseSets, IPrizeRequestor, ITeamRequestor // Refactored
     {
-        List<ModelTeam> availTeams = GlobalConfig.Connection.GetTeams();
-        List<ModelTeam> selectedTeams = new List<ModelTeam>();
-        List<ModelPrize> selectedPrizes = new List<ModelPrize>();
+        readonly List<ModelTeam> availTeams = GlobalConfig.Connection.GetTeams();
+        readonly List<ModelTeam> selectedTeams = new List<ModelTeam>();
+        readonly List<ModelPrize> selectedPrizes = new List<ModelPrize>();
 
         public TournamentCreate()
         {
@@ -37,7 +37,7 @@ namespace TrackerUI
             lbPrizes.DisplayMember = "PlaceName";
         }
 
-        private void bAddTeam_Click(object sender, EventArgs e)
+        private void BaddTeam_Click(object sender, EventArgs e)
         {
             ModelTeam m = (ModelTeam)cbTeams.SelectedItem;
 
@@ -65,13 +65,13 @@ namespace TrackerUI
             lbPrizes.DisplayMember = "PlaceName";
         }
 
-        private void llCreateTeam_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LlCreateTeam_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TeamCreate form = new TeamCreate(this);
             form.Show();
         }
 
-        private void bCreatePrize_Click(object sender, EventArgs e)
+        private void BcreatePrize_Click(object sender, EventArgs e)
         {
             PrizeCreate form = new PrizeCreate(this);
             form.Show();
@@ -89,7 +89,7 @@ namespace TrackerUI
             WireUpLists();
         }
 
-        private void bDeletePlayers_Click(object sender, EventArgs e)
+        private void BdeletePlayers_Click(object sender, EventArgs e)
         {
             ModelTeam model = (ModelTeam)lbTeams.SelectedItem;
             if(model != null)
@@ -101,7 +101,7 @@ namespace TrackerUI
             }
         }
 
-        private void bDeletePrizes_Click(object sender, EventArgs e)
+        private void BdeletePrizes_Click(object sender, EventArgs e)
         {
             ModelPrize model = (ModelPrize)lbPrizes.SelectedItem;
             if(model != null)
@@ -112,22 +112,22 @@ namespace TrackerUI
             }
         }
 
-        private void bCreateTournament_Click(object sender, EventArgs e)
+        private void BcreateTournament_Click(object sender, EventArgs e)
         {
-            decimal fee = 0;
-            bool feeAcceptable = decimal.TryParse(tbEntryFee.Text, out fee);
+            bool feeAcceptable = decimal.TryParse(tbEntryFee.Text, out decimal fee);
             if (!feeAcceptable)
             {
                 MessageBox.Show("You need to enter valid Entry Fee data!", "Invalid Fee", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var model = new ModelTournament();
-
-            model.TournamentName = tbTournamentName.Text;
-            model.EntryFee = fee;
-            model.Prizes = selectedPrizes;
-            model.EnteredTeams = selectedTeams;
+            var model = new ModelTournament
+            {
+                TournamentName = tbTournamentName.Text,
+                EntryFee = fee,
+                Prizes = selectedPrizes,
+                EnteredTeams = selectedTeams
+            };
 
             TournamentLogic.CreateRounds(model);
 

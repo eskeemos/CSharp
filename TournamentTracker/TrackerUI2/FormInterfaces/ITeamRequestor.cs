@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrackerLibrary.Models;
+﻿using TrackerLibrary.Models;
 
 namespace TrackerUI2
 {
-    public interface ITeamRequestor
+    public interface ITeamRequestor // Refactored
     {
-        void TeamComplete(ModelTeam model);
+        void TeamComplete(ModelTeam team);
     }
 }

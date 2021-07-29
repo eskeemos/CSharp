@@ -13,7 +13,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class TournamentDashboard : BaseSets
+    public partial class TournamentDashboard : BaseSets // Refactored
     {
         readonly List<ModelTournament> tournaments = GlobalConfig.Connection.GetTournaments();
         public TournamentDashboard()
@@ -40,10 +40,10 @@ namespace TrackerUI
         private void BloadTournament_Click(object sender, EventArgs e)
         {
             
-            ModelTournament model = (ModelTournament)cbLoadTournaments.SelectedItem;
-            if(model != null)
+            ModelTournament tournament = (ModelTournament)cbLoadTournaments.SelectedItem;
+            if(tournament != null)
             {
-                TournamentViewer form = new TournamentViewer(model);
+                TournamentViewer form = new TournamentViewer(tournament);
                 form.Show();
             }
         }

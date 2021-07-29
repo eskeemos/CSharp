@@ -2,96 +2,89 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
 namespace LogicLibrary
 {
-    public static class TournamentLogic
+    public static class TournamentLogic // Refactored
     {
-        public static void CreateRounds(ModelTournament model)
+        public static void CreateRounds(ModelTournament tournament)
         {
-            List<ModelTeam> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
-            int rounds = FindNumberOfRounds(randomizedTeams.Count);
-            int byes = FindNumberOfByes(rounds, randomizedTeams.Count);
-            model.Rounds.Add(CreateFirstRound(byes, randomizedTeams));
-            CreateOtherRounds(model, rounds);
-
+            List<ModelTeam> teams = RandomizeTeams(tournament.EnteredTeams);
+            int rounds = FindNumberOfRounds(teams.Count);
+            int bots = FindNumberOfBots(rounds, teams.Count);
+            tournament.Rounds.Add(CreateFirstRound(bots, teams));
+            CreateOtherRounds(tournament, rounds);
         }
-        private static void CreateOtherRounds(ModelTournament model, int rounds)
+        private static void CreateOtherRounds(ModelTournament tournament, int rounds)
         {
             int round = 2;
-            List<ModelMatchup> previousRound = model.Rounds[0];
-            List<ModelMatchup> currRound = new List<ModelMatchup>();
-            ModelMatchup currMatchup = new ModelMatchup();
+            List<ModelMatchup> roundBefore = tournament.Rounds[0];
+            List<ModelMatchup> roundNow = new List<ModelMatchup>();
+            ModelMatchup matchupNow = new ModelMatchup();
 
             while(round <= rounds)
             {
-                foreach (ModelMatchup matchup in previousRound)
+                foreach (ModelMatchup matchup in roundBefore)
                 {
-                    currMatchup.Entries.Add(new ModelMatchupEntry { ParentMatchup = matchup });
+                    matchupNow.Entries.Add(new ModelMatchupEntry { ParentMatchup = matchup });
 
-                    if(currMatchup.Entries.Count > 1)
+                    if(matchupNow.Entries.Count > 1)
                     {
-                        currMatchup.MatchupRound = round;
-                        currRound.Add(currMatchup);
-                        currMatchup = new ModelMatchup();
+                        matchupNow.MatchupRound = round;
+                        roundNow.Add(matchupNow);
+                        matchupNow = new ModelMatchup();
                     }
                 }
-                model.Rounds.Add(currRound);
-                previousRound = currRound;
-                currRound = new List<ModelMatchup>();
+                tournament.Rounds.Add(roundNow);
+                roundBefore = roundNow;
+                roundNow = new List<ModelMatchup>();
                 round += 1;
             }
         }
-        private static List<ModelMatchup> CreateFirstRound(int byes, List<ModelTeam> randomizedTeams)
+        private static List<ModelMatchup> CreateFirstRound(int bot, List<ModelTeam> teams)
         {
-            List<ModelMatchup> output = new List<ModelMatchup>();
-            ModelMatchup curr = new ModelMatchup();
-            foreach (ModelTeam team in randomizedTeams)
+            List<ModelMatchup> firstRound = new List<ModelMatchup>();
+            ModelMatchup matchupNow = new ModelMatchup();
+            foreach (ModelTeam team in teams)
             {
-                curr.Entries.Add(new ModelMatchupEntry { TeamCompeting = team });
-                if((byes > 0) || (curr.Entries.Count > 1))
+                matchupNow.Entries.Add(new ModelMatchupEntry { TeamCompeting = team });
+                if((bot > 0) || (matchupNow.Entries.Count > 1))
                 {
-                    curr.MatchupRound = 1;
-                    output.Add(curr);
-                    curr = new ModelMatchup();
+                    matchupNow.MatchupRound = 1;
+                    firstRound.Add(matchupNow);
+                    matchupNow = new ModelMatchup();
 
-                    if (byes > 0) byes -= 1;
+                    if (bot > 0) bot -= 1;
                 }
             }
-            return output;
+            return firstRound;
         }
-        private static int FindNumberOfByes(int rounds, int numberOfTeams)
+        private static int FindNumberOfBots(int rounds, int teamCount)
         {
             int totalTeams = 1;
-            for (int i = 1; i <= rounds; i++)
-            {
-                totalTeams *= 2;
-            }
-            int output = totalTeams - numberOfTeams;
 
-            return output;
+            for (int i = 1; i <= rounds; i++) totalTeams *= 2;
+            
+            return totalTeams - teamCount;
         }
         private static int FindNumberOfRounds(int teamsCount)
         {
 
-            int output = 1;
-            int value = 2;
+            int rounds = 1,
+                value = 2;
 
             while(value < teamsCount)
             {
-                output += 1;
+                rounds += 1;
                 value *= 2;
             }
-            return output;
+            return rounds;
         }
-        private static List<ModelTeam> RandomizeTeamOrder(List<ModelTeam> enteredTeams)
+        private static List<ModelTeam> RandomizeTeams(List<ModelTeam> teams)
         {
-            return enteredTeams.OrderBy((x) => Guid.NewGuid()).ToList();
+            return teams.OrderBy((x) => Guid.NewGuid()).ToList();
         }
         public static void UpdateTournamentResults(ModelTournament tournament)
         {
@@ -114,7 +107,6 @@ namespace LogicLibrary
 
             toScore.ForEach((x) => GlobalConfig.Connection.UpdateMatchup(x));
         }
-
         private static void AdvanceWinners(List<ModelMatchup> matchupList, ModelTournament tournament)
         {
             foreach (ModelMatchup parentMatchup in matchupList)
@@ -135,7 +127,6 @@ namespace LogicLibrary
                 }
             }
         }
-
         private static void MarkWinnerInMatchup(List<ModelMatchup> models)
         {
             string scoreDirection = ConfigurationManager.AppSettings["greatherWins"];
