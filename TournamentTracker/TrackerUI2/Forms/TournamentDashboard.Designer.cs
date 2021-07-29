@@ -33,8 +33,8 @@ namespace TrackerUI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bCreateTournament = new System.Windows.Forms.Button();
-            this.bLoadTournament = new System.Windows.Forms.Button();
+            this.BcreateTournament = new System.Windows.Forms.Button();
+            this.BloadTournament = new System.Windows.Forms.Button();
             this.cbLoadTournaments = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -75,8 +75,8 @@ namespace TrackerUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.panel2.Controls.Add(this.bCreateTournament);
-            this.panel2.Controls.Add(this.bLoadTournament);
+            this.panel2.Controls.Add(this.BcreateTournament);
+            this.panel2.Controls.Add(this.BloadTournament);
             this.panel2.Controls.Add(this.cbLoadTournaments);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -85,25 +85,24 @@ namespace TrackerUI
             this.panel2.Size = new System.Drawing.Size(534, 243);
             this.panel2.TabIndex = 1;
             // 
-            // bCreateTournament
+            // BcreateTournament
             // 
-            this.bCreateTournament.Location = new System.Drawing.Point(279, 138);
-            this.bCreateTournament.Name = "bCreateTournament";
-            this.bCreateTournament.Size = new System.Drawing.Size(150, 40);
-            this.bCreateTournament.TabIndex = 3;
-            this.bCreateTournament.Text = "Create Tournament";
-            this.bCreateTournament.UseVisualStyleBackColor = true;
-            this.bCreateTournament.Click += new System.EventHandler(this.bCreateTournament_Click);
+            this.BcreateTournament.Location = new System.Drawing.Point(279, 138);
+            this.BcreateTournament.Name = "BcreateTournament";
+            this.BcreateTournament.Size = new System.Drawing.Size(150, 40);
+            this.BcreateTournament.TabIndex = 3;
+            this.BcreateTournament.Text = "Create Tournament";
+            this.BcreateTournament.UseVisualStyleBackColor = true;
+            this.BcreateTournament.Click += new System.EventHandler(this.BCreateTournament_Click);
             // 
-            // bLoadTournament
+            // BloadTournament
             // 
-            this.bLoadTournament.Location = new System.Drawing.Point(108, 138);
-            this.bLoadTournament.Name = "bLoadTournament";
-            this.bLoadTournament.Size = new System.Drawing.Size(150, 40);
-            this.bLoadTournament.TabIndex = 2;
-            this.bLoadTournament.Text = "Load Tournament";
-            this.bLoadTournament.UseVisualStyleBackColor = true;
-            this.bLoadTournament.Click += new System.EventHandler(this.bLoadTournament_Click);
+            this.BloadTournament.Location = new System.Drawing.Point(108, 138);
+            this.BloadTournament.Name = "BloadTournament";
+            this.BloadTournament.Size = new System.Drawing.Size(150, 40);
+            this.BloadTournament.TabIndex = 2;
+            this.BloadTournament.Text = "Load Tournament";
+            this.BloadTournament.UseVisualStyleBackColor = true;
             // 
             // cbLoadTournaments
             // 
@@ -112,6 +111,7 @@ namespace TrackerUI
             this.cbLoadTournaments.Name = "cbLoadTournaments";
             this.cbLoadTournaments.Size = new System.Drawing.Size(190, 25);
             this.cbLoadTournaments.TabIndex = 1;
+            this.cbLoadTournaments.Text = "No Tournaments Currently";
             // 
             // label3
             // 
@@ -147,9 +147,9 @@ namespace TrackerUI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button bCreateTournament;
+        private System.Windows.Forms.Button BcreateTournament;
         private System.Windows.Forms.ComboBox cbLoadTournaments;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button bLoadTournament;
+        private System.Windows.Forms.Button BloadTournament;
     }
 }

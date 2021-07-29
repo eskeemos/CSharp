@@ -15,9 +15,9 @@ namespace TrackerUI
 {
     public partial class TournamentViewer : BaseSets
     {
-        private ModelTournament tournament;
-        BindingList<int> rounds = new BindingList<int>();
-        BindingList<ModelMatchup> selectedMatchups = new BindingList<ModelMatchup>();
+        private readonly ModelTournament tournament;
+        readonly BindingList<int> rounds = new BindingList<int>();
+        readonly BindingList<ModelMatchup> selectedMatchups = new BindingList<ModelMatchup>();
 
         public TournamentViewer(ModelTournament _tournament)
         {
@@ -34,13 +34,12 @@ namespace TrackerUI
         private void LoadFormData()
         {
             lTournamentName.Text = tournament.TournamentName;
-
         }
         private void WireUpLists()
         {
-            cbRounds.DataSource = rounds;
-            lbRounds.DataSource = selectedMatchups;
-            lbRounds.DisplayMember = "DisplayName";
+            CbRounds.DataSource = rounds;
+            LbRounds.DataSource = selectedMatchups;
+            LbRounds.DisplayMember = "DisplayName";
         }
         private void LoadRounds()
         {
@@ -68,7 +67,7 @@ namespace TrackerUI
                     selectedMatchups.Clear();
                     foreach (ModelMatchup model in matchups)
                     {
-                        if(model.Winner == null || !cbUnplayedOnly.Checked)
+                        if(model.Winner == null || !CbUnplayedOnly.Checked)
                         {
                             selectedMatchups.Add(model);
                         }
@@ -93,13 +92,13 @@ namespace TrackerUI
 
         }
 
-        private void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMatchupList((int)cbRounds.SelectedItem);
+            LoadMatchupList((int)CbRounds.SelectedItem);
         }
-        private void lbRounds_SelectedIndexChanged(object sender, EventArgs e)
+        private void LbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMatchup((ModelMatchup)lbRounds.SelectedItem);
+            LoadMatchup((ModelMatchup)LbRounds.SelectedItem);
         }
         private void LoadMatchup(ModelMatchup model)
         {
@@ -140,16 +139,14 @@ namespace TrackerUI
             }
         }
 
-        private void cbUnplayedOnly_CheckedChanged(object sender, EventArgs e)
+        private void CbUnplayedOnly_CheckedChanged(object sender, EventArgs e)
         {
-            LoadMatchupList((int)cbRounds.SelectedItem);
+            LoadMatchupList((int)CbRounds.SelectedItem);
         }
 
-        private void bScore_Click(object sender, EventArgs e)
+        private void Bscore_Click(object sender, EventArgs e)
         {
-            ModelMatchup model = (ModelMatchup)lbRounds.SelectedItem;
-            double teamOneScore = 0;
-            double teamTwoScore = 0;
+            ModelMatchup model = (ModelMatchup)LbRounds.SelectedItem;
 
             for (int i = 0; i < model.Entries.Count; i++)
             {
@@ -157,7 +154,7 @@ namespace TrackerUI
                 {
                     if(model.Entries[0].TeamCompeting != null)
                     {
-                        bool validScore = double.TryParse(tbTeamOne.Text, out teamOneScore);
+                        bool validScore = double.TryParse(tbTeamOne.Text, out double teamOneScore);
                         if (validScore)
                         {
                             model.Entries[0].Score = teamOneScore;
@@ -173,7 +170,7 @@ namespace TrackerUI
                 {
                     if (model.Entries[1].TeamCompeting != null)
                     {
-                        bool validScore = double.TryParse(tbTeamTwo.Text, out teamTwoScore);
+                        bool validScore = double.TryParse(tbTeamTwo.Text, out double teamTwoScore);
                         if (validScore)
                         {
                             model.Entries[1].Score = teamTwoScore;
@@ -187,7 +184,7 @@ namespace TrackerUI
             }
             TournamentLogic.UpdateTournamentResults(tournament);
 
-            LoadMatchupList((int)cbRounds.SelectedItem);
+            LoadMatchupList((int)CbRounds.SelectedItem);
         }
     }
 }

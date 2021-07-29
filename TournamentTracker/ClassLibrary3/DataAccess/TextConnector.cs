@@ -6,71 +6,51 @@ using LogicLibrary;
 
 namespace TrackerLibrary.DataAccess
 {
-    public class TextConnector : IDataConnection
+    public class TextConnector : IDataConnection // Refactored
     {
-        public void CreatePerson(ModelPerson model)
+        public void CreatePerson(ModelPerson person)
         {
             List<ModelPerson> peoples = GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
 
-            int currentID = 1;
-            if (peoples.Count > 0) currentID = GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel().First().ID + 1;
+            person.Id = (peoples.Count > 0) ? GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel().First().Id + 1 : 1;
 
-            model.ID = currentID;
-
-            peoples.Add(model);
-
+            peoples.Add(person);
             peoples.SaveToPeopleFile();
         }
-        public void CreatePrize(ModelPrize model)
+        public void CreatePrize(ModelPrize prize)
         {
             List<ModelPrize> prizes = GlobalConfig.PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModel();
 
-            int currentID = 1;
-            if (prizes.Count > 0) currentID = prizes.OrderByDescending((x) => x.ID).First().ID + 1;
+            prize.ID = (prizes.Count > 0) ? prizes.OrderByDescending((x) => x.ID).First().ID + 1 : 1;
 
-            model.ID = currentID;
-
-            prizes.Add(model);
-
+            prizes.Add(prize);
             prizes.SaveToPrizeFile();
         }
-        public void CreateTeam(ModelTeam model)
+        public void CreateTeam(ModelTeam team)
         {
             List<ModelTeam> teams = GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModel();
 
-            int currentID = 1;
-            if (teams.Count > 0) currentID = teams.OrderByDescending((x) => x.ID).First().ID + 1;
+            team.ID = (teams.Count > 0) ? teams.OrderByDescending((x) => x.ID).First().ID + 1 : 1;
 
-            model.ID = currentID;
-
-            teams.Add(model);
-
+            teams.Add(team);
             teams.SaveToTeamFile();
         }
-        public void CreateTournament(ModelTournament model)
+        public void CreateTournament(ModelTournament tournament)
         {
             List<ModelTournament> tournaments = GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
 
-            int currentId = 1;
+            tournament.Id = (tournaments.Count > 0) ? tournaments.OrderByDescending((x) => x.Id).First().Id + 1 : 1;
 
-            if(tournaments.Count > 0)
-            {
-                currentId = tournaments.OrderByDescending((x) => x.Id).First().Id + 1;
-            }
+            tournament.SaveRoundsToFile();
 
-            model.Id = currentId;
-
-            model.SaveRoundsToFile();
-
-            tournaments.Add(model);
-
+            tournaments.Add(tournament);
             tournaments.SaveToTournamentFile();
 
-            TournamentLogic.UpdateTournamentResults(model);
+            TournamentLogic.UpdateTournamentResults(tournament);
         }
-        public void UpdateMatchup(ModelMatchup model)
+        public void UpdateMatchup(ModelMatchup matchup)
         {
-            model.UpdateMatchupToFile();
+            matchup.UpdateMatchupToFile();
         }
         public List<ModelPerson> GetPersons()
         {

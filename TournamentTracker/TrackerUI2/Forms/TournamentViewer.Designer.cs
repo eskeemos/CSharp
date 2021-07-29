@@ -32,15 +32,15 @@ namespace TrackerUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TournamentViewer));
             this.lTournamentName = new System.Windows.Forms.Label();
             this.lRound = new System.Windows.Forms.Label();
-            this.cbRounds = new System.Windows.Forms.ComboBox();
-            this.cbUnplayedOnly = new System.Windows.Forms.CheckBox();
-            this.lbRounds = new System.Windows.Forms.ListBox();
+            this.CbRounds = new System.Windows.Forms.ComboBox();
+            this.CbUnplayedOnly = new System.Windows.Forms.CheckBox();
+            this.LbRounds = new System.Windows.Forms.ListBox();
             this.lteamOne = new System.Windows.Forms.Label();
             this.lTeamTwo = new System.Windows.Forms.Label();
             this.lVersus = new System.Windows.Forms.Label();
             this.tbTeamTwo = new System.Windows.Forms.TextBox();
             this.tbTeamOne = new System.Windows.Forms.TextBox();
-            this.bScore = new System.Windows.Forms.Button();
+            this.Bscore = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,39 +76,39 @@ namespace TrackerUI
             this.lRound.TabIndex = 2;
             this.lRound.Text = "Round";
             // 
-            // cbRounds
+            // CbRounds
             // 
-            this.cbRounds.FormattingEnabled = true;
-            this.cbRounds.Location = new System.Drawing.Point(107, 27);
-            this.cbRounds.Name = "cbRounds";
-            this.cbRounds.Size = new System.Drawing.Size(130, 25);
-            this.cbRounds.TabIndex = 3;
-            this.cbRounds.SelectedIndexChanged += new System.EventHandler(this.cbRounds_SelectedIndexChanged);
+            this.CbRounds.FormattingEnabled = true;
+            this.CbRounds.Location = new System.Drawing.Point(107, 27);
+            this.CbRounds.Name = "CbRounds";
+            this.CbRounds.Size = new System.Drawing.Size(130, 25);
+            this.CbRounds.TabIndex = 3;
+            this.CbRounds.SelectedIndexChanged += new System.EventHandler(this.CbRounds_SelectedIndexChanged);
             // 
-            // cbUnplayedOnly
+            // CbUnplayedOnly
             // 
-            this.cbUnplayedOnly.AutoSize = true;
-            this.cbUnplayedOnly.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.cbUnplayedOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.cbUnplayedOnly.Location = new System.Drawing.Point(107, 60);
-            this.cbUnplayedOnly.Margin = new System.Windows.Forms.Padding(5);
-            this.cbUnplayedOnly.Name = "cbUnplayedOnly";
-            this.cbUnplayedOnly.Size = new System.Drawing.Size(136, 24);
-            this.cbUnplayedOnly.TabIndex = 4;
-            this.cbUnplayedOnly.Text = "Unplayed Only";
-            this.cbUnplayedOnly.UseVisualStyleBackColor = true;
-            this.cbUnplayedOnly.CheckedChanged += new System.EventHandler(this.cbUnplayedOnly_CheckedChanged);
+            this.CbUnplayedOnly.AutoSize = true;
+            this.CbUnplayedOnly.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.CbUnplayedOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.CbUnplayedOnly.Location = new System.Drawing.Point(107, 60);
+            this.CbUnplayedOnly.Margin = new System.Windows.Forms.Padding(5);
+            this.CbUnplayedOnly.Name = "CbUnplayedOnly";
+            this.CbUnplayedOnly.Size = new System.Drawing.Size(136, 24);
+            this.CbUnplayedOnly.TabIndex = 4;
+            this.CbUnplayedOnly.Text = "Unplayed Only";
+            this.CbUnplayedOnly.UseVisualStyleBackColor = true;
+            this.CbUnplayedOnly.CheckedChanged += new System.EventHandler(this.CbUnplayedOnly_CheckedChanged);
             // 
-            // lbRounds
+            // LbRounds
             // 
-            this.lbRounds.FormattingEnabled = true;
-            this.lbRounds.ItemHeight = 17;
-            this.lbRounds.Location = new System.Drawing.Point(33, 99);
-            this.lbRounds.Margin = new System.Windows.Forms.Padding(10);
-            this.lbRounds.Name = "lbRounds";
-            this.lbRounds.Size = new System.Drawing.Size(209, 140);
-            this.lbRounds.TabIndex = 5;
-            this.lbRounds.SelectedIndexChanged += new System.EventHandler(this.lbRounds_SelectedIndexChanged);
+            this.LbRounds.FormattingEnabled = true;
+            this.LbRounds.ItemHeight = 17;
+            this.LbRounds.Location = new System.Drawing.Point(33, 99);
+            this.LbRounds.Margin = new System.Windows.Forms.Padding(10);
+            this.LbRounds.Name = "LbRounds";
+            this.LbRounds.Size = new System.Drawing.Size(209, 140);
+            this.LbRounds.TabIndex = 5;
+            this.LbRounds.SelectedIndexChanged += new System.EventHandler(this.LbRounds_SelectedIndexChanged);
             // 
             // lteamOne
             // 
@@ -164,15 +164,14 @@ namespace TrackerUI
             this.tbTeamOne.Text = "0";
             this.tbTeamOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // bScore
+            // Bscore
             // 
-            this.bScore.Location = new System.Drawing.Point(335, 209);
-            this.bScore.Name = "bScore";
-            this.bScore.Size = new System.Drawing.Size(101, 30);
-            this.bScore.TabIndex = 14;
-            this.bScore.Text = "Score";
-            this.bScore.UseVisualStyleBackColor = true;
-            this.bScore.Click += new System.EventHandler(this.bScore_Click);
+            this.Bscore.Location = new System.Drawing.Point(335, 209);
+            this.Bscore.Name = "Bscore";
+            this.Bscore.Size = new System.Drawing.Size(101, 30);
+            this.Bscore.TabIndex = 14;
+            this.Bscore.Text = "Score";
+            this.Bscore.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -221,15 +220,15 @@ namespace TrackerUI
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.panel2.Controls.Add(this.lNoneSelected);
             this.panel2.Controls.Add(this.lRound);
-            this.panel2.Controls.Add(this.cbRounds);
-            this.panel2.Controls.Add(this.bScore);
+            this.panel2.Controls.Add(this.CbRounds);
+            this.panel2.Controls.Add(this.Bscore);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.tbTeamTwo);
             this.panel2.Controls.Add(this.tbTeamOne);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.cbUnplayedOnly);
+            this.panel2.Controls.Add(this.CbUnplayedOnly);
             this.panel2.Controls.Add(this.lVersus);
-            this.panel2.Controls.Add(this.lbRounds);
+            this.panel2.Controls.Add(this.LbRounds);
             this.panel2.Controls.Add(this.lteamOne);
             this.panel2.Controls.Add(this.lTeamTwo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -274,15 +273,15 @@ namespace TrackerUI
         #endregion
         private System.Windows.Forms.Label lTournamentName;
         private System.Windows.Forms.Label lRound;
-        private System.Windows.Forms.ComboBox cbRounds;
-        private System.Windows.Forms.CheckBox cbUnplayedOnly;
-        private System.Windows.Forms.ListBox lbRounds;
+        private System.Windows.Forms.ComboBox CbRounds;
+        private System.Windows.Forms.CheckBox CbUnplayedOnly;
+        private System.Windows.Forms.ListBox LbRounds;
         private System.Windows.Forms.Label lteamOne;
         private System.Windows.Forms.Label lTeamTwo;
         private System.Windows.Forms.Label lVersus;
         private System.Windows.Forms.TextBox tbTeamTwo;
         private System.Windows.Forms.TextBox tbTeamOne;
-        private System.Windows.Forms.Button bScore;
+        private System.Windows.Forms.Button Bscore;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;

@@ -15,7 +15,7 @@ namespace TrackerUI
 {
     public partial class TournamentDashboard : BaseSets
     {
-        List<ModelTournament> tournaments = GlobalConfig.Connection.GetTournaments();
+        readonly List<ModelTournament> tournaments = GlobalConfig.Connection.GetTournaments();
         public TournamentDashboard()
         {
             InitializeComponent();
@@ -24,21 +24,28 @@ namespace TrackerUI
         }
         private void WireUpLists()
         {
-            cbLoadTournaments.DataSource = tournaments;
-            cbLoadTournaments.DisplayMember = "TournamentName";
+            if(tournaments != null)
+            {
+                cbLoadTournaments.DataSource = tournaments;
+                cbLoadTournaments.DisplayMember = "TournamentName";
+            }
         }
 
-        private void bCreateTournament_Click(object sender, EventArgs e)
+        private void BCreateTournament_Click(object sender, EventArgs e)
         {
             TournamentCreate form = new TournamentCreate();
             form.Show();
         }
 
-        private void bLoadTournament_Click(object sender, EventArgs e)
+        private void BloadTournament_Click(object sender, EventArgs e)
         {
+            
             ModelTournament model = (ModelTournament)cbLoadTournaments.SelectedItem;
-            TournamentViewer form = new TournamentViewer(model);
-            form.Show();
+            if(model != null)
+            {
+                TournamentViewer form = new TournamentViewer(model);
+                form.Show();
+            }
         }
     }
 }
