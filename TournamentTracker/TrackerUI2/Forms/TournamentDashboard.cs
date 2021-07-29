@@ -31,7 +31,7 @@ namespace TrackerUI
             }
         }
 
-        private void BCreateTournament_Click(object sender, EventArgs e)
+        private void BcreateTournament_Click(object sender, EventArgs e)
         {
             TournamentCreate form = new TournamentCreate();
             form.Show();
@@ -39,9 +39,8 @@ namespace TrackerUI
 
         private void BloadTournament_Click(object sender, EventArgs e)
         {
-            
             ModelTournament tournament = (ModelTournament)cbLoadTournaments.SelectedItem;
-            if(tournament != null)
+            if (tournament != null)
             {
                 TournamentViewer form = new TournamentViewer(tournament);
                 form.Show();

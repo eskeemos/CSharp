@@ -83,6 +83,7 @@ namespace TrackerLibrary.DataAccess
                 SaveTournamentEntries(conn, tournament);
 
                 SaveTournamentRounds(conn, tournament);
+
             }
 
             TournamentLogic.UpdateTournamentResults(tournament);
@@ -91,10 +92,13 @@ namespace TrackerLibrary.DataAccess
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                    var data = new DynamicParameters();
+                var data = new DynamicParameters();
+                if (matchup.Winner != null)
+                {
                     data.Add("Id", matchup.Id);
                     data.Add("WinnerId", matchup.Winner.ID);
                     conn.Execute("dbo.procMatchups_update", data, commandType: CommandType.StoredProcedure);
+                }
 
                 foreach (ModelMatchupEntry entry in matchup.Entries)
                 {

@@ -81,7 +81,6 @@ namespace TrackerUI
             }
             DisplayMatchupInfo();
         }
-
         private void DisplayMatchupInfo()
         {
             bool isVisible = (selectedMatchups.Count > 0);
@@ -91,14 +90,9 @@ namespace TrackerUI
             lNoneSelected.Visible = !isVisible;
 
         }
-
         private void CbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadMatchupList((int)CbRounds.SelectedItem);
-        }
-        private void LbRounds_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadMatchup((ModelMatchup)LbRounds.SelectedItem);
         }
         private void LoadMatchup(ModelMatchup model)
         {
@@ -138,12 +132,10 @@ namespace TrackerUI
                 }
             }
         }
-
         private void CbUnplayedOnly_CheckedChanged(object sender, EventArgs e)
         {
             LoadMatchupList((int)CbRounds.SelectedItem);
         }
-
         private void Bscore_Click(object sender, EventArgs e)
         {
             ModelMatchup model = (ModelMatchup)LbRounds.SelectedItem;
@@ -152,7 +144,7 @@ namespace TrackerUI
             {
                 if (i == 0)
                 {
-                    if(model.Entries[0].TeamCompeting != null)
+                    if (model.Entries[0].TeamCompeting != null)
                     {
                         bool validScore = double.TryParse(tbTeamOne.Text, out double teamOneScore);
                         if (validScore)
@@ -185,6 +177,10 @@ namespace TrackerUI
             TournamentLogic.UpdateTournamentResults(tournament);
 
             LoadMatchupList((int)CbRounds.SelectedItem);
+        }
+        private void LbRounds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMatchup((ModelMatchup)LbRounds.SelectedItem);
         }
     }
 }

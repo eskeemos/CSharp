@@ -14,30 +14,6 @@ namespace TrackerUI
             InitializeComponent();
             _caller = caller;
         }
-
-        private void BcreatePrize_Click(object sender, EventArgs e)
-        {
-            if (ValidateForm())
-            {
-                ModelPrize model = new ModelPrize(
-                    tbPlaceNumber.Text,
-                    tbPlaceName.Text,
-                    tbPrizeAmount.Text,
-                    tbPrizePercentage.Text);
-
-                GlobalConfig.Connection.CreatePrize(model);
-
-                _caller.PrizeComplete(model);
-                this.Close();
-                
-                tbPlaceNumber.Text = tbPlaceName.Text = "";
-                tbPrizeAmount.Text = tbPrizePercentage.Text = "0";
-            }
-            else
-            {
-                MessageBox.Show("This form has some invalid information. Please check and try again");
-            }
-        }
         private bool ValidateForm()
         {
             bool result = true, 
@@ -71,6 +47,30 @@ namespace TrackerUI
             }
             
             return result;
+        }
+
+        private void BcreatePrize_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                ModelPrize model = new ModelPrize(
+                    tbPlaceNumber.Text,
+                    tbPlaceName.Text,
+                    tbPrizeAmount.Text,
+                    tbPrizePercentage.Text);
+
+                GlobalConfig.Connection.CreatePrize(model);
+
+                _caller.PrizeComplete(model);
+                this.Close();
+
+                tbPlaceNumber.Text = tbPlaceName.Text = "";
+                tbPrizeAmount.Text = tbPrizePercentage.Text = "0";
+            }
+            else
+            {
+                MessageBox.Show("This form has some invalid information. Please check and try again");
+            }
         }
     }
 }

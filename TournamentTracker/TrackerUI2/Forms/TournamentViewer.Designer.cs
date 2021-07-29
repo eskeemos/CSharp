@@ -172,6 +172,7 @@ namespace TrackerUI
             this.Bscore.TabIndex = 14;
             this.Bscore.Text = "Score";
             this.Bscore.UseVisualStyleBackColor = true;
+            this.Bscore.Click += new System.EventHandler(this.Bscore_Click);
             // 
             // pictureBox1
             // 

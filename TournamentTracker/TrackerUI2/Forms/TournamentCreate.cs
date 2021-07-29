@@ -1,12 +1,6 @@
 ﻿using LogicLibrary;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrackerLibrary;
 using TrackerLibrary.Models;
@@ -36,20 +30,6 @@ namespace TrackerUI
             lbPrizes.DataSource = selectedPrizes;
             lbPrizes.DisplayMember = "PlaceName";
         }
-
-        private void BaddTeam_Click(object sender, EventArgs e)
-        {
-            ModelTeam m = (ModelTeam)cbTeams.SelectedItem;
-
-            if(m != null)
-            {
-                availTeams.Remove(m);
-                selectedTeams.Add(m);
-
-                WireUpLists();
-            }
-        }
-
         private void WireUpLists()
         {
             cbTeams.DataSource = null;
@@ -64,54 +44,33 @@ namespace TrackerUI
             lbPrizes.DataSource = selectedPrizes;
             lbPrizes.DisplayMember = "PlaceName";
         }
+        public void PrizeComplete(ModelPrize prize)
+        {
+            selectedPrizes.Add(prize);
+            WireUpLists();
+        }
+        public void TeamComplete(ModelTeam team)
+        {
+            selectedTeams.Add(team);
+            WireUpLists();
+        }
+        private void BaddTeam_Click(object sender, EventArgs e)
+        {
+            ModelTeam model = (ModelTeam)cbTeams.SelectedItem;
 
+            if (model != null)
+            {
+                availTeams.Remove(model);
+                selectedTeams.Add(model);
+
+                WireUpLists();
+            }
+        }
         private void LlCreateTeam_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TeamCreate form = new TeamCreate(this);
             form.Show();
         }
-
-        private void BcreatePrize_Click(object sender, EventArgs e)
-        {
-            PrizeCreate form = new PrizeCreate(this);
-            form.Show();
-        }
-
-        public void PrizeComplete(ModelPrize model)
-        {
-            selectedPrizes.Add(model);
-            WireUpLists();
-        }
-
-        public void TeamComplete(ModelTeam model)
-        {
-            selectedTeams.Add(model);
-            WireUpLists();
-        }
-
-        private void BdeletePlayers_Click(object sender, EventArgs e)
-        {
-            ModelTeam model = (ModelTeam)lbTeams.SelectedItem;
-            if(model != null)
-            {
-                selectedTeams.Remove(model);
-                availTeams.Add(model);
-
-                WireUpLists();
-            }
-        }
-
-        private void BdeletePrizes_Click(object sender, EventArgs e)
-        {
-            ModelPrize model = (ModelPrize)lbPrizes.SelectedItem;
-            if(model != null)
-            {
-                selectedPrizes.Remove(model);
-
-                WireUpLists();
-            }
-        }
-
         private void BcreateTournament_Click(object sender, EventArgs e)
         {
             bool feeAcceptable = decimal.TryParse(tbEntryFee.Text, out decimal fee);
@@ -136,6 +95,33 @@ namespace TrackerUI
             TournamentViewer form = new TournamentViewer(model);
             form.Show();
             this.Close();
+        }
+        private void BdeletePrizes_Click(object sender, EventArgs e)
+        {
+            ModelPrize model = (ModelPrize)lbPrizes.SelectedItem;
+            if (model != null)
+            {
+                selectedPrizes.Remove(model);
+
+                WireUpLists();
+            }
+        }
+        private void BdeleteTeam_Click(object sender, EventArgs e)
+        {
+            ModelTeam model = (ModelTeam)lbTeams.SelectedItem;
+            if (model != null)
+            {
+                selectedTeams.Remove(model);
+                availTeams.Add(model);
+
+                WireUpLists();
+            }
+        }
+
+        private void BcreatePrize_Click(object sender, EventArgs e)
+        {
+            PrizeCreate form = new PrizeCreate(this);
+            form.Show();
         }
     }
 }

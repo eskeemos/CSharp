@@ -93,7 +93,7 @@ namespace TrackerUI
             this.BcreateTournament.TabIndex = 3;
             this.BcreateTournament.Text = "Create Tournament";
             this.BcreateTournament.UseVisualStyleBackColor = true;
-            this.BcreateTournament.Click += new System.EventHandler(this.BCreateTournament_Click);
+            this.BcreateTournament.Click += new System.EventHandler(this.BcreateTournament_Click);
             // 
             // BloadTournament
             // 
@@ -103,6 +103,7 @@ namespace TrackerUI
             this.BloadTournament.TabIndex = 2;
             this.BloadTournament.Text = "Load Tournament";
             this.BloadTournament.UseVisualStyleBackColor = true;
+            this.BloadTournament.Click += new System.EventHandler(this.BloadTournament_Click);
             // 
             // cbLoadTournaments
             // 

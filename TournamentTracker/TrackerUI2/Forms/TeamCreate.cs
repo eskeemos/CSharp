@@ -32,30 +32,6 @@ namespace TrackerUI
             lbTeamMembers.DisplayMember = "FullName";
         }
 
-        private void BcreateMember_Click(object sender, EventArgs e)
-        {
-            if (ValidateForm())
-            {
-                ModelPerson person = new ModelPerson
-                {
-                    FirstName = tbFirstName.Text,
-                    LastName = tbLastName.Text,
-                    EmailAddress = tbEmailAddress.Text,
-                    PhoneNumber = tbPhoneNumber.Text
-                };
-
-                GlobalConfig.Connection.CreatePerson(person);
-
-                selectedTeamMembers.Add(person);
-                WireUpLists();
-
-                tbFirstName.Text = tbLastName.Text = tbEmailAddress.Text = tbPhoneNumber.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("You need to fill in all of the fields!");
-            }
-        }
         private bool ValidateForm()
         {
             if(tbFirstName.Text.Length == 0)
@@ -79,17 +55,19 @@ namespace TrackerUI
             return true;
         }
 
-        private void BaddMember_Click(object sender, EventArgs e)
+        private void BcreateTeam_Click(object sender, EventArgs e)
         {
-            ModelPerson m = (ModelPerson) cbSelectTeamMember.SelectedItem;
-
-            if (m != null)
+            ModelTeam team = new ModelTeam
             {
-                availTeamMembers.Remove(m);
-                selectedTeamMembers.Add(m);
+                TeamName = tbTeamName.Text,
+                TeamMembers = selectedTeamMembers
+            };
 
-                WireUpLists();
-            }
+            GlobalConfig.Connection.CreateTeam(team);
+
+            _caller.TeamComplete(team);
+
+            this.Close();
         }
 
         private void BdeleteSelected_Click(object sender, EventArgs e)
@@ -105,19 +83,42 @@ namespace TrackerUI
             }
         }
 
-        private void BcreateTeam_Click(object sender, EventArgs e)
+        private void BaddMember_Click(object sender, EventArgs e)
         {
-            ModelTeam team = new ModelTeam
+            ModelPerson m = (ModelPerson)cbSelectTeamMember.SelectedItem;
+
+            if (m != null)
             {
-                TeamName = tbTeamName.Text,
-                TeamMembers = selectedTeamMembers
-            };
+                availTeamMembers.Remove(m);
+                selectedTeamMembers.Add(m);
 
-            GlobalConfig.Connection.CreateTeam(team);
+                WireUpLists();
+            }
+        }
 
-            _caller.TeamComplete(team);
+        private void BcreateMember_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                ModelPerson person = new ModelPerson
+                {
+                    FirstName = tbFirstName.Text,
+                    LastName = tbLastName.Text,
+                    EmailAddress = tbEmailAddress.Text,
+                    PhoneNumber = tbPhoneNumber.Text
+                };
 
-            this.Close();
+                GlobalConfig.Connection.CreatePerson(person);
+
+                selectedTeamMembers.Add(person);
+                WireUpLists();
+
+                tbFirstName.Text = tbLastName.Text = tbEmailAddress.Text = tbPhoneNumber.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("You need to fill in all of the fields!");
+            }
         }
     }
 }

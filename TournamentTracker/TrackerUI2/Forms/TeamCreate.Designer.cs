@@ -127,6 +127,7 @@ namespace TrackerUI
             this.BcreateMember.TabIndex = 32;
             this.BcreateMember.Text = "Create Member";
             this.BcreateMember.UseVisualStyleBackColor = true;
+            this.BcreateMember.Click += new System.EventHandler(this.BcreateMember_Click);
             // 
             // tbPhoneNumber
             // 
@@ -230,6 +231,7 @@ namespace TrackerUI
             this.BcreateTeam.TabIndex = 29;
             this.BcreateTeam.Text = "Create Team";
             this.BcreateTeam.UseVisualStyleBackColor = true;
+            this.BcreateTeam.Click += new System.EventHandler(this.BcreateTeam_Click);
             // 
             // panel1
             // 
@@ -290,6 +292,7 @@ namespace TrackerUI
             this.BaddMember.TabIndex = 33;
             this.BaddMember.Text = "Add Member";
             this.BaddMember.UseVisualStyleBackColor = true;
+            this.BaddMember.Click += new System.EventHandler(this.BaddMember_Click);
             // 
             // BdeleteSelected
             // 
@@ -299,6 +302,7 @@ namespace TrackerUI
             this.BdeleteSelected.TabIndex = 31;
             this.BdeleteSelected.Text = "Delete Selected";
             this.BdeleteSelected.UseVisualStyleBackColor = true;
+            this.BdeleteSelected.Click += new System.EventHandler(this.BdeleteSelected_Click);
             // 
             // lbTeamMembers
             // 
