@@ -1,4 +1,4 @@
-﻿using LogicLibrary;
+﻿using ClassLibrary3;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,7 +71,6 @@ namespace TrackerUI
                         {
                             selectedMatchups.Add(model);
                         }
-                        
                     }
                 }
             }
@@ -136,8 +135,41 @@ namespace TrackerUI
         {
             LoadMatchupList((int)CbRounds.SelectedItem);
         }
+        private string ValidateData()
+        {
+            string output = "";
+
+            bool scoreTwoValid = double.TryParse(tbTeamOne.Text, out double teamOneScore);
+            bool scoreOneValid = double.TryParse(tbTeamTwo.Text, out double teamTwoScore);
+
+            if(!scoreOneValid)
+            {
+                output = "The score one is not valid number";
+            }
+            else if (!scoreTwoValid)
+            {
+                output = "The score two is not valid number";
+            }
+            else if(teamOneScore == 0 && teamTwoScore == 0)
+            {
+                output = "You didnt enter a score for either teams";
+            }
+            else if(teamOneScore == teamTwoScore)
+            {
+                output = "Ties are't allowed in this App";
+            }
+
+            return output;
+        }
         private void Bscore_Click(object sender, EventArgs e)
         {
+            string errorMsg = ValidateData();
+            if (errorMsg.Length > 0)
+            {
+                MessageBox.Show($"Input error : {errorMsg}");
+                return;
+            }
+
             ModelMatchup model = (ModelMatchup)LbRounds.SelectedItem;
 
             for (int i = 0; i < model.Entries.Count; i++)
@@ -146,36 +178,26 @@ namespace TrackerUI
                 {
                     if (model.Entries[0].TeamCompeting != null)
                     {
-                        bool validScore = double.TryParse(tbTeamOne.Text, out double teamOneScore);
-                        if (validScore)
-                        {
-                            model.Entries[0].Score = teamOneScore;
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Please Enter A Valid Score For {lteamOne.Text}");
-                            return;
-                        }
+                        model.Entries[0].Score = Convert.ToDouble(tbTeamOne.Text);
                     }
                 }
                 if (i == 1)
                 {
                     if (model.Entries[1].TeamCompeting != null)
                     {
-                        bool validScore = double.TryParse(tbTeamTwo.Text, out double teamTwoScore);
-                        if (validScore)
-                        {
-                            model.Entries[1].Score = teamTwoScore;
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Please Enter A Valid Score For {lTeamTwo.Text}");
-                        }
+                        model.Entries[1].Score = Convert.ToDouble(tbTeamTwo.Text);
                     }
                 }
             }
-            TournamentLogic.UpdateTournamentResults(tournament);
-
+            try
+            {
+                TournamentLogic.UpdateTournamentResults(tournament);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"The App Encounter An Error : {ex.Message}");
+                return;
+            }
             LoadMatchupList((int)CbRounds.SelectedItem);
         }
         private void LbRounds_SelectedIndexChanged(object sender, EventArgs e)

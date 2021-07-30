@@ -1,8 +1,8 @@
 ﻿using TrackerLibrary.Models;
-using LogicLibrary.DataAccess.TextHelpers;
+using ClassLibrary3.DataAccess.TextHelpers;
 using System.Collections.Generic;
 using System.Linq;
-using LogicLibrary;
+using ClassLibrary3;
 
 namespace TrackerLibrary.DataAccess
 {

@@ -1,4 +1,4 @@
-﻿using LogicLibrary;
+﻿using ClassLibrary3;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -117,7 +117,6 @@ namespace TrackerUI
                 WireUpLists();
             }
         }
-
         private void BcreatePrize_Click(object sender, EventArgs e)
         {
             PrizeCreate form = new PrizeCreate(this);

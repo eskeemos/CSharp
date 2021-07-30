@@ -1,4 +1,4 @@
-﻿using LogicLibrary.DataAccess.TextHelpers;
+﻿using ClassLibrary3.DataAccess.TextHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

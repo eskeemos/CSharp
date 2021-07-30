@@ -6,7 +6,7 @@ using System.Linq;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
-namespace LogicLibrary.DataAccess.TextHelpers
+namespace ClassLibrary3.DataAccess.TextHelpers
 {
     public static class TextConnectorProcessor // Refactored
     {

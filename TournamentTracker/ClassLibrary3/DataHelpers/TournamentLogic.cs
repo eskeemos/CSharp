@@ -5,7 +5,7 @@ using System.Linq;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
-namespace LogicLibrary
+namespace ClassLibrary3
 {
     public static class TournamentLogic // Refactored
     {
@@ -170,19 +170,6 @@ namespace LogicLibrary
                     }
                 }
             }
-            
-            //if (teamOneScore > teamTwoScore)
-            //{
-            //    model.Winner = model.Entries[0].TeamCompeting;
-            //}
-            //else if (teamOneScore < teamTwoScore)
-            //{
-            //    model.Winner = model.Entries[1].TeamCompeting;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("I don't hanle tie games");
-            //}
         }
     }
 }

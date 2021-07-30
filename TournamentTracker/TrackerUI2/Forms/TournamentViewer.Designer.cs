@@ -47,6 +47,7 @@ namespace TrackerUI
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lNoneSelected = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -152,7 +153,6 @@ namespace TrackerUI
             this.tbTeamTwo.Name = "tbTeamTwo";
             this.tbTeamTwo.Size = new System.Drawing.Size(64, 23);
             this.tbTeamTwo.TabIndex = 12;
-            this.tbTeamTwo.Text = "0";
             this.tbTeamTwo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbTeamOne
@@ -161,7 +161,6 @@ namespace TrackerUI
             this.tbTeamOne.Name = "tbTeamOne";
             this.tbTeamOne.Size = new System.Drawing.Size(64, 23);
             this.tbTeamOne.TabIndex = 13;
-            this.tbTeamOne.Text = "0";
             this.tbTeamOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Bscore
@@ -219,6 +218,7 @@ namespace TrackerUI
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lNoneSelected);
             this.panel2.Controls.Add(this.lRound);
             this.panel2.Controls.Add(this.CbRounds);
@@ -250,6 +250,16 @@ namespace TrackerUI
             this.lNoneSelected.TabIndex = 17;
             this.lNoneSelected.Text = "No Matchup Selected";
             this.lNoneSelected.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(364, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Score";
             // 
             // TournamentViewer
             // 
@@ -289,5 +299,6 @@ namespace TrackerUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lNoneSelected;
+        private System.Windows.Forms.Label label1;
     }
 }
