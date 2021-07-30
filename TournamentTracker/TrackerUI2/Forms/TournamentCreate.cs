@@ -80,7 +80,7 @@ namespace TrackerUI
                 return;
             }
 
-            var model = new ModelTournament
+            var tournament = new ModelTournament
             {
                 TournamentName = tbTournamentName.Text,
                 EntryFee = fee,
@@ -88,11 +88,11 @@ namespace TrackerUI
                 EnteredTeams = selectedTeams
             };
 
-            TournamentLogic.CreateRounds(model);
+            TournamentLogic.CreateRounds(tournament);
 
-            GlobalConfig.Connection.CreateTournament(model);
+            GlobalConfig.Connection.CreateTournament(tournament);
 
-            TournamentViewer form = new TournamentViewer(model);
+            TournamentViewer form = new TournamentViewer(tournament);
             form.Show();
             this.Close();
         }

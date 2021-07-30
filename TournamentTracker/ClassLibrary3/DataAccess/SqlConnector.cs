@@ -84,9 +84,8 @@ namespace TrackerLibrary.DataAccess
 
                 SaveTournamentRounds(conn, tournament);
 
+                TournamentLogic.UpdateTournamentResults(tournament);
             }
-
-            TournamentLogic.UpdateTournamentResults(tournament);
         }
         public void UpdateMatchup(ModelMatchup matchup)
         {

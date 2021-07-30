@@ -44,6 +44,7 @@ namespace TrackerLibrary.DataAccess
             tournament.SaveRoundsToFile();
 
             tournaments.Add(tournament);
+
             tournaments.SaveToTournamentFile();
 
             TournamentLogic.UpdateTournamentResults(tournament);

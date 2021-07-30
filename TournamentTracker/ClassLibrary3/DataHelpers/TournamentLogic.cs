@@ -15,6 +15,7 @@ namespace LogicLibrary
             int rounds = FindNumberOfRounds(teams.Count);
             int bots = FindNumberOfBots(rounds, teams.Count);
             tournament.Rounds.Add(CreateFirstRound(bots, teams));
+
             CreateOtherRounds(tournament, rounds);
         }
         private static void CreateOtherRounds(ModelTournament tournament, int rounds)
@@ -94,7 +95,7 @@ namespace LogicLibrary
             {
                 foreach (ModelMatchup matchup in matchupList)
                 {
-                    if((matchup.Winner == null)&&(matchup.Entries.Any((x) => x.Score != 0))||(matchup.Entries.Count == 1))
+                    if((matchup.Winner == null) && matchup.Entries.Any((x) => x.Score != 0) || (matchup.Entries.Count == 1))
                     {
                         toScore.Add(matchup);
                     }
@@ -127,11 +128,11 @@ namespace LogicLibrary
                 }
             }
         }
-        private static void MarkWinnerInMatchup(List<ModelMatchup> models)
+        private static void MarkWinnerInMatchup(List<ModelMatchup> matchups)
         {
             string scoreDirection = ConfigurationManager.AppSettings["greatherWins"];
 
-            foreach (ModelMatchup matchup in models)
+            foreach (ModelMatchup matchup in matchups)
             {
                 if(matchup.Entries.Count == 1)
                 {
