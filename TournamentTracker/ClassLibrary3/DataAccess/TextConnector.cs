@@ -53,6 +53,16 @@ namespace TrackerLibrary.DataAccess
         {
             matchup.UpdateMatchupToFile();
         }
+        public void CompleteTournament(ModelTournament tournament)
+        {
+            List<ModelTournament> tournaments = GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
+
+            tournaments.Remove(tournament);
+
+            tournaments.SaveToTournamentFile();
+
+            TournamentLogic.UpdateTournamentResults(tournament);
+        }
         public List<ModelPerson> GetPersons()
         {
             return GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
@@ -65,6 +75,5 @@ namespace TrackerLibrary.DataAccess
         {
             return GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
         }
-        
     }
 }

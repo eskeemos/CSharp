@@ -99,7 +99,7 @@ namespace ClassLibrary3
             {
                 foreach (ModelMatchup matchup in matchupList)
                 {
-                    if((matchup.Winner == null) && matchup.Entries.Any((x) => x.Score != 0) || (matchup.Entries.Count == 1))
+                    if(matchup.Winner == null && matchup.Entries.Any((x) => x.Score != 0) || matchup.Entries.Count == 1)
                     {
                         toScore.Add(matchup);
                     }
@@ -135,7 +135,6 @@ namespace ClassLibrary3
                 }
             }
         }
-
         private static void AlertPersonToNewRound(ModelPerson person, string teamName, ModelMatchupEntry entry)
         {
             if(person.EmailAddress.Length == 0)
@@ -145,7 +144,6 @@ namespace ClassLibrary3
 
             StringBuilder body = new StringBuilder();
             string subject;
-
 
             if (entry != null)
             {
@@ -168,11 +166,8 @@ namespace ClassLibrary3
 
             string to = person.EmailAddress;
 
-
-
             EmailLogic.SendEmail(to, subject, body.ToString());
         }
-
         private static int CheckCurrentRound(this ModelTournament tournament)
         {
             int currRound = 1;
@@ -183,9 +178,88 @@ namespace ClassLibrary3
                 {
                     currRound += 1;
                 }
+                else
+                {
+                    return currRound;
+                }
+            }
+            CompleteTournament(tournament);
+            return currRound - 1;
+        }
+        public static void CompleteTournament(ModelTournament tournament)
+        {
+            GlobalConfig.Connection.CompleteTournament(tournament);
+            ModelTeam winner = tournament.Rounds.Last().First().Winner;
+            ModelTeam runnerUp = tournament.Rounds.Last().First().Entries.Where(x => x.TeamCompeting != winner).First().TeamCompeting;
+
+            decimal winnerPrize = 0;
+            decimal runnerUpPrize = 0;
+
+            if(tournament.Prizes.Count > 0)
+            {
+                decimal income = tournament.EnteredTeams.Count * tournament.EntryFee;
+                ModelPrize firstPrize = tournament.Prizes.Where(x => x.PlaceNumber == 1).FirstOrDefault();
+                ModelPrize secondPrize = tournament.Prizes.Where(x => x.PlaceNumber == 2).FirstOrDefault();
+
+                if (firstPrize != null)
+                {
+                    winnerPrize = firstPrize.CalculatePrize(income);
+                }
+                if (secondPrize != null)
+                {
+                    runnerUpPrize = secondPrize.CalculatePrize(income);
+                }
             }
 
-            return currRound;
+            StringBuilder body = new StringBuilder();
+            string subject;
+
+            subject = $"In {tournament.TournamentName}, {winner.TeamName} has won!";
+
+            body.AppendLine("<h1>We have a WINNER!</h1>");
+            body.AppendLine("<p>Congratulations to our winner on a great tournament</p>");
+            body.AppendLine("<br> />");
+
+            if(winnerPrize > 0)
+            {
+                body.AppendLine($"<p>{winner.TeamName} will receive ${winnerPrize}</p>");
+            }
+            if (runnerUpPrize > 0)
+            {
+                body.AppendLine($"<p>{runnerUp.TeamName} will receive ${runnerUpPrize}</p>");
+            }
+            body.AppendLine("<p>Thanks for a great tournament everyone!</p>");
+            body.AppendLine("~Tournament Tracker");
+
+            List<string> bcc = new List<string>();
+
+            foreach (ModelTeam team in tournament.EnteredTeams)
+            {
+                foreach (ModelPerson person in team.TeamMembers)
+                {
+                    if (person.EmailAddress.Length > 0)
+                    {
+                        bcc.Add(person.EmailAddress);
+                    }
+                }
+            }
+
+            EmailLogic.SendEmail(new List<string>() ,bcc, subject, body.ToString());
+
+            tournament.CompleteTournament();
+        }
+        private static decimal CalculatePrize(this ModelPrize prize, decimal income)
+        {
+            decimal totalPrize = 0;
+            if(prize.PrizeAmount > 0)
+            {
+                totalPrize = prize.PrizeAmount;
+            }
+            else
+            {
+                totalPrize = Decimal.Multiply(income, Convert.ToDecimal(prize.PrizePercentage / 100));
+            }
+            return totalPrize;
         }
         private static void AdvanceWinners(List<ModelMatchup> matchupList, ModelTournament tournament)
         {

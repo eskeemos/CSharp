@@ -112,6 +112,16 @@ namespace TrackerLibrary.DataAccess
                 }
             }
         }
+        public void CompleteTournament(ModelTournament model)
+        {
+            using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var dp = new DynamicParameters();
+                dp.Add("Id", model.Id);
+
+                conn.Execute("dbo.procTournaments_complete", dp, commandType: CommandType.StoredProcedure);
+            }
+        }
         public List<ModelPerson> GetPersons()
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
