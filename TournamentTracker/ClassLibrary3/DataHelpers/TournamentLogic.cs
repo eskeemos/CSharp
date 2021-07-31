@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ClassLibrary3.DataHelpers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
@@ -14,6 +16,7 @@ namespace ClassLibrary3
             List<ModelTeam> teams = RandomizeTeams(tournament.EnteredTeams);
             int rounds = FindNumberOfRounds(teams.Count);
             int bots = FindNumberOfBots(rounds, teams.Count);
+
             tournament.Rounds.Add(CreateFirstRound(bots, teams));
 
             CreateOtherRounds(tournament, rounds);
@@ -89,6 +92,7 @@ namespace ClassLibrary3
         }
         public static void UpdateTournamentResults(ModelTournament tournament)
         {
+            int startRound = tournament.CheckCurrentRound();
             List<ModelMatchup> toScore = new List<ModelMatchup>();
 
             foreach (List<ModelMatchup> matchupList in tournament.Rounds)
@@ -107,6 +111,81 @@ namespace ClassLibrary3
             AdvanceWinners(toScore, tournament);
 
             toScore.ForEach((x) => GlobalConfig.Connection.UpdateMatchup(x));
+
+            int finishRound = tournament.CheckCurrentRound();
+
+            if(finishRound > startRound)
+            {
+                tournament.AlertUsersToNewRound();
+            }
+        }
+        public static void AlertUsersToNewRound(this ModelTournament tournament)
+        {
+            int currRound = tournament.CheckCurrentRound();
+            List<ModelMatchup> currMatchups = tournament.Rounds.Where(x => x.First().MatchupRound == currRound).First();
+
+            foreach (ModelMatchup matchup in currMatchups)
+            {
+                foreach (ModelMatchupEntry entry in matchup.Entries)
+                {
+                    foreach (var person in entry.TeamCompeting.TeamMembers)
+                    {
+                        AlertPersonToNewRound(person, entry.TeamCompeting.TeamName, matchup.Entries.Where(x => x.TeamCompeting != entry.TeamCompeting).FirstOrDefault());
+                    }
+                }
+            }
+        }
+
+        private static void AlertPersonToNewRound(ModelPerson person, string teamName, ModelMatchupEntry entry)
+        {
+            if(person.EmailAddress.Length == 0)
+            {
+                return;
+            }
+
+            StringBuilder body = new StringBuilder();
+            string subject;
+
+
+            if (entry != null)
+            {
+                subject = $"You have a new matchup with {entry.TeamCompeting.TeamName}";
+
+                body.AppendLine("<h1>You have a new matchup</h1>");
+                body.Append("<strong>Competitor: </strong>");
+                body.Append(entry.TeamCompeting.TeamName);
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Have a great time!");
+                body.AppendLine("~Tournament Tracker");
+            }
+            else
+            {
+                subject = $"You go throught this round due to enemy missing";
+                body.AppendLine("Enjoy your round off");
+                body.AppendLine("~Tournament Tracker");
+            }
+
+            string to = person.EmailAddress;
+
+
+
+            EmailLogic.SendEmail(to, subject, body.ToString());
+        }
+
+        private static int CheckCurrentRound(this ModelTournament tournament)
+        {
+            int currRound = 1;
+
+            foreach (List<ModelMatchup> matchupList in tournament.Rounds)
+            {
+                if(matchupList.All(x => x.Winner != null))
+                {
+                    currRound += 1;
+                }
+            }
+
+            return currRound;
         }
         private static void AdvanceWinners(List<ModelMatchup> matchupList, ModelTournament tournament)
         {

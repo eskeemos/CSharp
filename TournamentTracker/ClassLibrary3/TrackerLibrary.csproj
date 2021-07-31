@@ -50,6 +50,7 @@
     <Compile Include="DataAccess\SqlConnector.cs" />
     <Compile Include="DataAccess\TextConnector.cs" />
     <Compile Include="DataAccess\TextConnectorProcessor.cs" />
+    <Compile Include="DataHelpers\EmailLogic.cs" />
     <Compile Include="DataHelpers\Enums.cs" />
     <Compile Include="DataHelpers\GlobalConfig.cs" />
     <Compile Include="Models\ModelMatchup.cs" />
