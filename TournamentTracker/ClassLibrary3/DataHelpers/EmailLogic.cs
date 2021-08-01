@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.Mail;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Configuration;
+using System.Net.Mail;
 
-namespace ClassLibrary3.DataHelpers
+namespace Logic.DataHelpers
 {
-    public static class EmailLogic
+    public static class EmailLogic // REFACTORED
     {
         public static void SendEmail(string to, string subject, string body)
         {
             SendEmail(new List<string> {to}, new List<string> { }, subject, body );
         }
-        public static void SendEmail(List<string> to,List<string> bcc, string subject, string body)
+        public static void SendEmail(List<string> to, List<string> bcc, string subject, string body)
         {
             MailAddress fromMail = new MailAddress(ConfigurationManager.AppSettings["senderEmail"], ConfigurationManager.AppSettings["senderDisplayName"]);
 

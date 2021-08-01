@@ -1,21 +1,23 @@
-﻿using TrackerLibrary.Models;
-using ClassLibrary3.DataAccess.TextHelpers;
+﻿using Logic.DataAccess.TextHelpers;
 using System.Collections.Generic;
 using System.Linq;
-using ClassLibrary3;
+using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
-    public class TextConnector : IDataConnection // Refactored
+    public class TextConnector : IDataConnection // REFACTORED
     {
+        #region Interface
+
         public void CreatePerson(ModelPerson person)
         {
-            List<ModelPerson> peoples = GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
+            List<ModelPerson> persons = GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
 
-            person.Id = (peoples.Count > 0) ? GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel().First().Id + 1 : 1;
+            person.Id = (persons.Count > 0) ? GlobalConfig.PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel().First().Id + 1 : 1;
 
-            peoples.Add(person);
-            peoples.SaveToPeopleFile();
+            persons.Add(person);
+
+            persons.SaveToPeopleFile();
         }
         public void CreatePrize(ModelPrize prize)
         {
@@ -30,7 +32,7 @@ namespace TrackerLibrary.DataAccess
         {
             List<ModelTeam> teams = GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModel();
 
-            team.ID = (teams.Count > 0) ? teams.OrderByDescending((x) => x.ID).First().ID + 1 : 1;
+            team.Id = (teams.Count > 0) ? teams.OrderByDescending((x) => x.Id).First().Id + 1 : 1;
 
             teams.Add(team);
             teams.SaveToTeamFile();
@@ -47,7 +49,7 @@ namespace TrackerLibrary.DataAccess
 
             tournaments.SaveToTournamentFile();
 
-            TournamentLogic.UpdateTournamentResults(tournament);
+            Logic.AppLogic.UpdateTournamentResults(tournament);
         }
         public void UpdateMatchup(ModelMatchup matchup)
         {
@@ -61,7 +63,7 @@ namespace TrackerLibrary.DataAccess
 
             tournaments.SaveToTournamentFile();
 
-            TournamentLogic.UpdateTournamentResults(tournament);
+            Logic.AppLogic.UpdateTournamentResults(tournament);
         }
         public List<ModelPerson> GetPersons()
         {
@@ -75,5 +77,8 @@ namespace TrackerLibrary.DataAccess
         {
             return GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
         }
+
+        #endregion
+
     }
 }

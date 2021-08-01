@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic; // Refactored
+﻿using System.Collections.Generic;
 
-namespace TrackerLibrary.Models
+namespace TrackerLibrary.Models // REFACTORED
 {
     public class ModelTeam
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string TeamName { get; set; }
         public List<ModelPerson> TeamMembers { get; set; } = new List<ModelPerson>();
     }

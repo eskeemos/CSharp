@@ -7,11 +7,17 @@ using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class TeamCreate : BaseSets // Refactored
+    public partial class TeamCreate : BaseSets // REFACTORED
     {
+        #region Readonly
+
         private readonly List<ModelPerson> availTeamMembers = GlobalConfig.Connection.GetPersons();
         private readonly List<ModelPerson> selectedTeamMembers = new List<ModelPerson>();
         private readonly ITeamRequestor _caller;
+
+        #endregion
+
+        #region Constructor
 
         public TeamCreate(ITeamRequestor caller)
         {
@@ -21,6 +27,11 @@ namespace TrackerUI
 
             WireUpLists();
         }
+
+        #endregion
+
+        #region PrivateFunc
+
         private void WireUpLists()
         {
             cbSelectTeamMember.DataSource = null;
@@ -31,10 +42,9 @@ namespace TrackerUI
             lbTeamMembers.DataSource = selectedTeamMembers;
             lbTeamMembers.DisplayMember = "FullName";
         }
-
         private bool ValidateForm()
         {
-            if(tbFirstName.Text.Length == 0)
+            if (tbFirstName.Text.Length == 0)
             {
                 return false;
             }
@@ -51,10 +61,8 @@ namespace TrackerUI
                 return false;
             }
 
-
             return true;
         }
-
         private void BcreateTeam_Click(object sender, EventArgs e)
         {
             ModelTeam team = new ModelTeam
@@ -69,7 +77,6 @@ namespace TrackerUI
 
             this.Close();
         }
-
         private void BdeleteSelected_Click(object sender, EventArgs e)
         {
             ModelPerson m = (ModelPerson)lbTeamMembers.SelectedItem;
@@ -82,7 +89,6 @@ namespace TrackerUI
                 WireUpLists();
             }
         }
-
         private void BaddMember_Click(object sender, EventArgs e)
         {
             ModelPerson m = (ModelPerson)cbSelectTeamMember.SelectedItem;
@@ -95,7 +101,6 @@ namespace TrackerUI
                 WireUpLists();
             }
         }
-
         private void BcreateMember_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
@@ -120,5 +125,8 @@ namespace TrackerUI
                 MessageBox.Show("You need to fill in all of the fields!");
             }
         }
+
+        #endregion
     }
+
 }

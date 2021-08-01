@@ -1,4 +1,4 @@
-﻿using ClassLibrary3;
+﻿using Logic;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,17 +8,28 @@ using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class TournamentCreate : BaseSets, IPrizeRequestor, ITeamRequestor // Refactored
+    public partial class TournamentCreate : BaseSets, IPrizeRequestor, ITeamRequestor // REFACTORED
     {
+        #region Readonly
+
         readonly List<ModelTeam> availTeams = GlobalConfig.Connection.GetTeams();
         readonly List<ModelTeam> selectedTeams = new List<ModelTeam>();
         readonly List<ModelPrize> selectedPrizes = new List<ModelPrize>();
+
+        #endregion
+
+        #region Constructor
 
         public TournamentCreate()
         {
             InitializeComponent();
             InitializeLists();
         }
+
+        #endregion
+
+        #region PrivateFunc
+
         private void InitializeLists()
         {
             cbTeams.DataSource = availTeams;
@@ -43,16 +54,6 @@ namespace TrackerUI
             lbPrizes.DataSource = null;
             lbPrizes.DataSource = selectedPrizes;
             lbPrizes.DisplayMember = "PlaceName";
-        }
-        public void PrizeComplete(ModelPrize prize)
-        {
-            selectedPrizes.Add(prize);
-            WireUpLists();
-        }
-        public void TeamComplete(ModelTeam team)
-        {
-            selectedTeams.Add(team);
-            WireUpLists();
         }
         private void BaddTeam_Click(object sender, EventArgs e)
         {
@@ -88,7 +89,7 @@ namespace TrackerUI
                 EnteredTeams = selectedTeams
             };
 
-            TournamentLogic.CreateRounds(tournament);
+            Logic.AppLogic.CreateRounds(tournament);
 
             GlobalConfig.Connection.CreateTournament(tournament);
 
@@ -124,5 +125,23 @@ namespace TrackerUI
             PrizeCreate form = new PrizeCreate(this);
             form.Show();
         }
+
+        #endregion
+
+        #region PublicFunc
+
+        public void PrizeComplete(ModelPrize prize)
+        {
+            selectedPrizes.Add(prize);
+            WireUpLists();
+        }
+        public void TeamComplete(ModelTeam team)
+        {
+            selectedTeams.Add(team);
+            WireUpLists();
+        }
+        
+
+        #endregion
     }
 }

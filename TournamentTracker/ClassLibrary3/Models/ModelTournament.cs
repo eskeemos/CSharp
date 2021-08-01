@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic; // Refactored
+using System.Collections.Generic;
 
 namespace TrackerLibrary.Models
 {
-    public class ModelTournament
+    public class ModelTournament // REFACTORED
     {
         public event EventHandler<DateTime> OnTournamentComplete;
         public int Id { get; set; }

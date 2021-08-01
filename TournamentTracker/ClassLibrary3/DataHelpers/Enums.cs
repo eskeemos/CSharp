@@ -1,6 +1,6 @@
 ﻿namespace TrackerLibrary
 {
-    public class Enums // Refactored
+    public class Enums // REFACTORED
     {
         public enum DatabaseType
         {

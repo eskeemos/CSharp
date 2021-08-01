@@ -2,7 +2,7 @@
 
 namespace TrackerLibrary.Models
 {
-    public class ModelMatchup // Refactored
+    public class ModelMatchup // REFACTORED
     {
         public int Id { get; set; }
         public List<ModelMatchupEntry> Entries { get; set; } = new List<ModelMatchupEntry>();
@@ -14,6 +14,7 @@ namespace TrackerLibrary.Models
             get
             {
                 string output = "";
+
                 foreach (ModelMatchupEntry model in Entries)
                 {
                     if(model.TeamCompeting != null)
@@ -33,6 +34,7 @@ namespace TrackerLibrary.Models
                         break;
                     }
                 }
+
                 return output;
             }
         }

@@ -1,23 +1,23 @@
-﻿using ClassLibrary3;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TrackerLibrary;
 using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class TournamentViewer : BaseSets // Refactored
+    public partial class TournamentViewer : BaseSets // REFACTORED
     {
-        private readonly ModelTournament tournament;
+        #region Readonly
+
+        readonly ModelTournament tournament;
         readonly BindingList<int> rounds = new BindingList<int>();
         readonly BindingList<ModelMatchup> selectedMatchups = new BindingList<ModelMatchup>();
+
+        #endregion
+
+        #region Constructor
 
         public TournamentViewer(ModelTournament _tournament)
         {
@@ -34,11 +34,14 @@ namespace TrackerUI
             LoadRounds();
         }
 
+        #endregion
+
+        #region PrivateFunc
+
         private void Tournament_OnTournamentComplete(object sender, DateTime e)
         {
             this.Close();
         }
-
         private void LoadFormData()
         {
             lTournamentName.Text = tournament.TournamentName;
@@ -58,7 +61,7 @@ namespace TrackerUI
 
             foreach (List<ModelMatchup> matchups in tournament.Rounds)
             {
-                if(matchups.First().MatchupRound > currRound)
+                if (matchups.First().MatchupRound > currRound)
                 {
                     currRound = matchups.First().MatchupRound;
                     rounds.Add(currRound);
@@ -75,14 +78,14 @@ namespace TrackerUI
                     selectedMatchups.Clear();
                     foreach (ModelMatchup model in matchups)
                     {
-                        if(model.Winner == null || !CbUnplayedOnly.Checked)
+                        if (model.Winner == null || !CbUnplayedOnly.Checked)
                         {
                             selectedMatchups.Add(model);
                         }
                     }
                 }
             }
-            if(selectedMatchups.Count > 0)
+            if (selectedMatchups.Count > 0)
             {
                 LoadMatchup(selectedMatchups.First());
             }
@@ -103,7 +106,7 @@ namespace TrackerUI
         }
         private void LoadMatchup(ModelMatchup model)
         {
-            if(model != null)
+            if (model != null)
             {
                 for (int i = 0; i < model.Entries.Count; i++)
                 {
@@ -150,7 +153,7 @@ namespace TrackerUI
             bool scoreTwoValid = double.TryParse(tbTeamOne.Text, out double teamOneScore);
             bool scoreOneValid = double.TryParse(tbTeamTwo.Text, out double teamTwoScore);
 
-            if(!scoreOneValid)
+            if (!scoreOneValid)
             {
                 output = "The score one is not valid number";
             }
@@ -158,11 +161,11 @@ namespace TrackerUI
             {
                 output = "The score two is not valid number";
             }
-            else if(teamOneScore == 0 && teamTwoScore == 0)
+            else if (teamOneScore == 0 && teamTwoScore == 0)
             {
                 output = "You didnt enter a score for either teams";
             }
-            else if(teamOneScore == teamTwoScore)
+            else if (teamOneScore == teamTwoScore)
             {
                 output = "Ties are't allowed in this App";
             }
@@ -199,7 +202,7 @@ namespace TrackerUI
             }
             try
             {
-                TournamentLogic.UpdateTournamentResults(tournament);
+                Logic.AppLogic.UpdateTournamentResults(tournament);
             }
             catch (Exception ex)
             {
@@ -212,5 +215,7 @@ namespace TrackerUI
         {
             LoadMatchup((ModelMatchup)LbRounds.SelectedItem);
         }
+
+        #endregion
     }
 }

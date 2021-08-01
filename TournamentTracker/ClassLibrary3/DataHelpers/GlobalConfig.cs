@@ -11,8 +11,10 @@ using static TrackerLibrary.Enums;
 namespace TrackerLibrary
 {
     
-    public static class GlobalConfig // Refactored
+    public static class GlobalConfig // REFACTORED
     {
+
+        #region Const
 
         public const string
             PrizesFile = "PrizeModels.csv",
@@ -21,6 +23,11 @@ namespace TrackerLibrary
             TournamentFile = "TournamentModels.csv",
             MatchupFile = "MatchupModels.csv",
             MatchupEntryModels = "MatchupEntryModels.csv";
+
+        #endregion
+
+        #region GlobalFunctions
+
         public static IDataConnection Connection { get; private set; }
         public static void InitializeConnections(DatabaseType db)
         {
@@ -34,8 +41,6 @@ namespace TrackerLibrary
                     TextConnector txt = new TextConnector();
                     Connection = txt;
                     break;
-                default:
-                    break;
             }
         }
         public static string CnnString(string name)
@@ -46,6 +51,8 @@ namespace TrackerLibrary
         {
             return ConfigurationManager.AppSettings[key];
         }
+
+        #endregion
 
     }
 }

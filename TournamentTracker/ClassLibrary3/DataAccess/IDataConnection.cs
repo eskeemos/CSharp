@@ -3,14 +3,14 @@ using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
-    public interface IDataConnection // Refactored
+    public interface IDataConnection // REFACTORED
     {
-        void CreatePrize(ModelPrize model);
-        void CreatePerson(ModelPerson model);
-        void CreateTeam(ModelTeam model);
-        void CreateTournament(ModelTournament model);
-        void UpdateMatchup(ModelMatchup model);
-        void CompleteTournament(ModelTournament model);
+        void CreatePrize(ModelPrize prize);
+        void CreatePerson(ModelPerson person);
+        void CreateTeam(ModelTeam team);
+        void CreateTournament(ModelTournament tournament);
+        void UpdateMatchup(ModelMatchup matchup);
+        void CompleteTournament(ModelTournament tournament);
         List<ModelPerson> GetPersons();
         List<ModelTeam> GetTeams();
         List<ModelTournament> GetTournaments();

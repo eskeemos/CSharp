@@ -6,17 +6,29 @@ using TrackerUI2;
 
 namespace TrackerUI
 {
-    public partial class PrizeCreate : BaseSets // Refactored
+    public partial class PrizeCreate : BaseSets // REFACTORED
     {
+        #region Readonly
+
         readonly IPrizeRequestor _caller;
+
+        #endregion
+
+        #region Constructor
+
         public PrizeCreate(IPrizeRequestor caller)
         {
             InitializeComponent();
             _caller = caller;
         }
+
+        #endregion
+
+        #region PrivateFunc
+
         private bool ValidateForm()
         {
-            bool result = true, 
+            bool result = true,
                  placeNumberValid = int.TryParse(tbPlaceNumber.Text, out int placeNumber),
                  prizeAmountValid = int.TryParse(tbPrizeAmount.Text, out int prizeAmount),
                  prizePercentageValid = float.TryParse(tbPrizePercentage.Text, out float prizePercentage);
@@ -33,7 +45,7 @@ namespace TrackerUI
             {
                 result = false;
             }
-            if ((!prizeAmountValid)||(!prizePercentageValid))
+            if ((!prizeAmountValid) || (!prizePercentageValid))
             {
                 result = false;
             }
@@ -45,7 +57,7 @@ namespace TrackerUI
             {
                 result = false;
             }
-            
+
             return result;
         }
 
@@ -72,5 +84,8 @@ namespace TrackerUI
                 MessageBox.Show("This form has some invalid information. Please check and try again");
             }
         }
+
+        #endregion
+
     }
 }

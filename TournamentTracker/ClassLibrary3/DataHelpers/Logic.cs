@@ -1,4 +1,4 @@
-﻿using ClassLibrary3.DataHelpers;
+﻿using Logic.DataHelpers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,9 +7,9 @@ using System.Text;
 using TrackerLibrary;
 using TrackerLibrary.Models;
 
-namespace ClassLibrary3
+namespace Logic
 {
-    public static class TournamentLogic // Refactored
+    public static class AppLogic 
     {
         public static void CreateRounds(ModelTournament tournament)
         {
@@ -147,7 +147,7 @@ namespace ClassLibrary3
 
             if (entry != null)
             {
-                subject = $"You have a new matchup with {entry.TeamCompeting.TeamName}";
+                subject = $"Hello {teamName} You have a new matchup with {entry.TeamCompeting.TeamName}";
 
                 body.AppendLine("<h1>You have a new matchup</h1>");
                 body.Append("<strong>Competitor: </strong>");
@@ -250,8 +250,8 @@ namespace ClassLibrary3
         }
         private static decimal CalculatePrize(this ModelPrize prize, decimal income)
         {
-            decimal totalPrize = 0;
-            if(prize.PrizeAmount > 0)
+            decimal totalPrize;
+            if (prize.PrizeAmount > 0)
             {
                 totalPrize = prize.PrizeAmount;
             }

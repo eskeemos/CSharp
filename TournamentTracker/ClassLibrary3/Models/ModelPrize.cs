@@ -1,6 +1,6 @@
-﻿namespace TrackerLibrary.Models // Refactored
+﻿namespace TrackerLibrary.Models
 {
-    public class ModelPrize
+    public class ModelPrize // REFACTORED
     {
         public int ID { get; set; }
         public int PlaceNumber { get; set; }

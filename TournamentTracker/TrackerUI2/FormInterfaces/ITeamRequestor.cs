@@ -2,7 +2,7 @@
 
 namespace TrackerUI2
 {
-    public interface ITeamRequestor // Refactored
+    public interface ITeamRequestor // REFACTORED
     {
         void TeamComplete(ModelTeam team);
     }
