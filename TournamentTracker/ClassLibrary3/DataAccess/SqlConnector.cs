@@ -10,7 +10,7 @@ namespace TrackerLibrary.DataAccess
     {
         #region Readonly
 
-        private readonly string db = "db_TournamentTracker";
+        private readonly string db = "TournamentTracker";
 
         #endregion
 
@@ -28,7 +28,7 @@ namespace TrackerLibrary.DataAccess
                 dP.Add("@PhoneNumber", person.PhoneNumber);
                 dP.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.procPeople_insert", dP, commandType: CommandType.StoredProcedure);
+                conn.Execute("proPeople_ins", dP, commandType: CommandType.StoredProcedure);
 
                 person.Id = dP.Get<int>("@Id");
             }

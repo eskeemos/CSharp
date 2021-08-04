@@ -1,9 +1,0 @@
-ALTER TABLE TournamentEntries ADD FOREIGN KEY(TournamentID) REFERENCES Tournaments(ID);
-ALTER TABLE TournamentPrizes  ADD FOREIGN KEY(TournamentID) REFERENCES Tournaments(ID);
-ALTER TABLE TournamentPrizes  ADD FOREIGN KEY(PrizeID) REFERENCES Prizes(ID);
-ALTER TABLE TournamentEntries ADD FOREIGN KEY(TeamID) REFERENCES Teams(ID);
-ALTER TABLE TeamMembers	      ADD FOREIGN KEY(PersonID) REFERENCES People(ID);
-ALTER TABLE TeamMembers		  ADD FOREIGN KEY(TeamID) REFERENCES Teams(ID);
-ALTER TABLE Matchups		  ADD FOREIGN KEY(WinnerID) REFERENCES Teams(ID);
-ALTER TABLE MatchupEntries    ADD FOREIGN KEY(TeamCompetingID) REFERENCES Teams(ID);
-ALTER TABLE MatchupEntries    ADD FOREIGN KEY(ParentMatchupID) REFERENCES Matchups(ID);

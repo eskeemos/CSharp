@@ -1,4 +1,3 @@
-C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI.csprojAssemblyReference.cache
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI.BaseSets.resources
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI.PrizeCreate.resources
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI2.Properties.Resources.resources
@@ -18,3 +17,4 @@ C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI2.
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI2.pdb
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\bin\Debug\Dapper.dll
 C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\bin\Debug\Dapper.xml
+C:\Users\krzys\Desktop\CSharp\TournamentTracker\TrackerUI2\obj\Debug\TrackerUI.csproj.AssemblyReference.cache
