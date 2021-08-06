@@ -175,7 +175,7 @@ namespace TrackerLibrary.DataAccess
                     {
                         data = new DynamicParameters();
 
-                        data.Add("@TeamID");
+                        data.Add("@EntryId", team.Id);
                         team.TeamMembers = conn.Query<ModelPerson>("dbo.People_getByTeam", data, commandType: CommandType.StoredProcedure).ToList();
                     }
 
@@ -206,7 +206,7 @@ namespace TrackerLibrary.DataAccess
                             }
                             if (team.ParentMatchupId > 0)
                             {
-                                team.ParentMatchup = matchups.Where((x) => x.Id == team.ParentMatchupId).First();
+                                team.ParentMatchup = matchups.Where((x) => x.Id == team.ParentMatchupId).FirstOrDefault();
                             }
                         }
                     }
@@ -257,11 +257,11 @@ namespace TrackerLibrary.DataAccess
 
                         data.Add("@MatchupID", matchup.Id);
 
-                        if (entry.ParentMatchup == null) data.Add("@ParentMatchupID", null);
-                        else data.Add("@ParentMatchupID", entry.ParentMatchup.Id);
+                        if (entry.ParentMatchup == null) data.Add("@ParentMatchupId", null);
+                        else data.Add("@ParentMatchupId", entry.ParentMatchup.Id);
 
-                        if (entry.TeamCompeting == null) data.Add("@TeamCompetingID", null);
-                        else data.Add("@TeamCompetingID", entry.TeamCompeting.Id);
+                        if (entry.TeamCompeting == null) data.Add("@TeamCompetingId", null);
+                        else data.Add("@TeamCompetingId", entry.TeamCompeting.Id);
                         
                         data.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
 
