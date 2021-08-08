@@ -5,15 +5,18 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using TrackerLibrary;
+using TrackerLibrary.DataAccess;
 using TrackerLibrary.Models;
 
 namespace Logic
 {
     public static class AppLogic 
     {
+
         public static void CreateRounds(ModelTournament tournament)
         {
             List<ModelTeam> teams = RandomizeTeams(tournament.EnteredTeams);
+
             int rounds = FindNumberOfRounds(teams.Count);
             int bots = FindNumberOfBots(rounds, teams.Count);
 
@@ -147,21 +150,18 @@ namespace Logic
 
             if (entry != null)
             {
-                subject = $"Hello {teamName} You have a new matchup with {entry.TeamCompeting.TeamName}";
+                subject = $"Hello {teamName}! You have a new matchup with {entry.TeamCompeting.TeamName}.";
 
-                body.AppendLine("<h1>You have a new matchup</h1>");
+                body.AppendLine("<h1>New Matchup</h1>");
                 body.Append("<strong>Competitor: </strong>");
                 body.Append(entry.TeamCompeting.TeamName);
-                body.AppendLine();
-                body.AppendLine();
-                body.AppendLine("Have a great time!");
-                body.AppendLine("~Tournament Tracker");
+                body.AppendLine("<p>Have a great time! ~ Tournament Tracker</p>");
             }
             else
             {
-                subject = $"You go throught this round due to enemy missing";
-                body.AppendLine("Enjoy your round off");
-                body.AppendLine("~Tournament Tracker");
+                subject = $"Hello {teamName}! You go throught this round.";
+                body.AppendLine("<h1>Round Off Info</h1>");
+                body.AppendLine("<p>Enjoy your round off! ~ Tournament Tracker</p>");
             }
 
             string to = person.EmailAddress;
@@ -217,8 +217,8 @@ namespace Logic
             subject = $"In {tournament.TournamentName}, {winner.TeamName} has won!";
 
             body.AppendLine("<h1>We have a WINNER!</h1>");
-            body.AppendLine("<p>Congratulations to our winner on a great tournament</p>");
-            body.AppendLine("<br> />");
+            body.AppendLine("<p>Congratulations to our winner on a great tournament!</p>");
+            body.AppendLine("<br>");
 
             if(winnerPrize > 0)
             {

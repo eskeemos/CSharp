@@ -6,7 +6,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
-    public class SqlConnector : IDataConnection // REFACTORED
+    public class SqlConnector : IDataConnection // x
     {
         #region Readonly
 
@@ -20,57 +20,57 @@ namespace TrackerLibrary.DataAccess
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                var dP = new DynamicParameters();
+                var dp = new DynamicParameters();
 
-                dP.Add("@FirstName", person.FirstName);
-                dP.Add("@LastName", person.LastName);
-                dP.Add("@EmailAddress", person.EmailAddress);
-                dP.Add("@PhoneNumber", person.PhoneNumber);
-                dP.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                dp.Add("@FirstName", person.FirstName);
+                dp.Add("@LastName", person.LastName);
+                dp.Add("@EmailAddress", person.EmailAddress);
+                dp.Add("@PhoneNumber", person.PhoneNumber);
+                dp.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.People_insert", dP, commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.People_insert", dp, commandType: CommandType.StoredProcedure);
 
-                person.Id = dP.Get<int>("@Id");
+                person.Id = dp.Get<int>("@Id");
             }
         }  
         public void CreatePrize(ModelPrize prize)
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                var dP = new DynamicParameters();
+                var dp = new DynamicParameters();
 
-                dP.Add("@PlaceNumber", prize.PlaceNumber);
-                dP.Add("@PlaceName", prize.PlaceName);
-                dP.Add("@PrizeAmount", prize.PrizeAmount);
-                dP.Add("@PrizePercentage", prize.PrizePercentage);
-                dP.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                dp.Add("@PlaceNumber", prize.PlaceNumber);
+                dp.Add("@PlaceName", prize.PlaceName);
+                dp.Add("@PrizeAmount", prize.PrizeAmount);
+                dp.Add("@PrizePercentage", prize.PrizePercentage);
+                dp.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.Prizes_insert", dP, commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.Prizes_insert", dp, commandType: CommandType.StoredProcedure);
 
-                prize.ID = dP.Get<int>("@Id");
+                prize.Id = dp.Get<int>("@Id");
             }
         }
         public void CreateTeam(ModelTeam team)
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                var dP = new DynamicParameters();
+                var dp = new DynamicParameters();
 
-                dP.Add("TeamName", team.TeamName);
-                dP.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                dp.Add("TeamName", team.TeamName);
+                dp.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.Teams_insert", dP, commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.Teams_insert", dp, commandType: CommandType.StoredProcedure);
 
-                team.Id = dP.Get<int>("@Id");
+                team.Id = dp.Get<int>("@Id");
 
                 foreach (ModelPerson person in team.TeamMembers)
                 {
-                    dP = new DynamicParameters();
+                    dp = new DynamicParameters();
 
-                    dP.Add("TeamId", team.Id);
-                    dP.Add("PersonId", person.Id);
+                    dp.Add("TeamId", team.Id);
+                    dp.Add("PersonId", person.Id);
 
-                    conn.Execute("dbo.TeamMembers_insert", dP, commandType: CommandType.StoredProcedure);
+                    conn.Execute("dbo.TeamMembers_insert", dp, commandType: CommandType.StoredProcedure);
                 }
             }
         }
@@ -93,27 +93,27 @@ namespace TrackerLibrary.DataAccess
         {
             using (IDbConnection conn = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                var dP = new DynamicParameters();
+                var dp = new DynamicParameters();
 
                 if (matchup.Winner != null)
                 {
-                    dP.Add("Id", matchup.Id);
-                    dP.Add("WinnerId", matchup.Winner.Id);
+                    dp.Add("Id", matchup.Id);
+                    dp.Add("WinnerId", matchup.Winner.Id);
 
-                    conn.Execute("dbo.Matchups_update", dP, commandType: CommandType.StoredProcedure);
+                    conn.Execute("dbo.Matchups_update", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 foreach (ModelMatchupEntry entry in matchup.Entries)
                 {
                     if (entry.TeamCompeting != null)
                     {
-                        dP = new DynamicParameters();
+                        dp = new DynamicParameters();
 
-                        dP.Add("Id", entry.Id);
-                        dP.Add("TeamCompetingId", entry.TeamCompeting.Id);
-                        dP.Add("Score", entry.Score);
+                        dp.Add("Id", entry.Id);
+                        dp.Add("TeamCompetingId", entry.TeamCompeting.Id);
+                        dp.Add("Score", entry.Score);
 
-                        conn.Execute("dbo.MatchupEntries_update", dP, commandType: CommandType.StoredProcedure);
+                        conn.Execute("dbo.MatchupEntries_update", dp, commandType: CommandType.StoredProcedure);
                     }
                 }
             }
@@ -144,10 +144,11 @@ namespace TrackerLibrary.DataAccess
 
                 foreach (ModelTeam team in teams)
                 {
-                    var data = new DynamicParameters();
+                    var dp = new DynamicParameters();
 
-                    data.Add("@TeamID", team.Id);
-                    team.TeamMembers = conn.Query<ModelPerson>("dbo.TeamMembers_getByTeam", data, commandType: CommandType.StoredProcedure).ToList();
+                    dp.Add("@TeamID", team.Id);
+
+                    team.TeamMembers = conn.Query<ModelPerson>("dbo.TeamMembers_getByTeam", dp, commandType: CommandType.StoredProcedure).ToList();
                 }
 
                 return teams;
@@ -161,35 +162,40 @@ namespace TrackerLibrary.DataAccess
 
                 foreach (ModelTournament tournament in tournaments)
                 {
-                    var data = new DynamicParameters();
+                    var dp = new DynamicParameters();
 
-                    data.Add("@TournamentId", tournament.Id);
-                    tournament.Prizes = conn.Query<ModelPrize>("dbo.Prizes_getByTournament", data, commandType: CommandType.StoredProcedure).ToList();
+                    dp.Add("@TournamentId", tournament.Id);
 
-                    data = new DynamicParameters();
+                    tournament.Prizes = conn.Query<ModelPrize>("dbo.Prizes_getByTournament", dp, commandType: CommandType.StoredProcedure).ToList();
 
-                    data.Add("@TournamentId", tournament.Id);
-                    tournament.EnteredTeams = conn.Query<ModelTeam>("dbo.Teams_getByTournament", data, commandType: CommandType.StoredProcedure).ToList();
+                    dp = new DynamicParameters();
+
+                    dp.Add("@TournamentId", tournament.Id);
+
+                    tournament.EnteredTeams = conn.Query<ModelTeam>("dbo.Teams_getByTournament", dp, commandType: CommandType.StoredProcedure).ToList();
 
                     foreach (ModelTeam team in tournament.EnteredTeams)
                     {
-                        data = new DynamicParameters();
+                        dp = new DynamicParameters();
 
-                        data.Add("@EntryId", team.Id);
-                        team.TeamMembers = conn.Query<ModelPerson>("dbo.People_getByTeam", data, commandType: CommandType.StoredProcedure).ToList();
+                        dp.Add("@EntryId", team.Id);
+
+                        team.TeamMembers = conn.Query<ModelPerson>("dbo.People_getByTeam", dp, commandType: CommandType.StoredProcedure).ToList();
                     }
 
-                    data = new DynamicParameters();
+                    dp = new DynamicParameters();
 
-                    data.Add("@TournamentId", tournament.Id);
-                    List<ModelMatchup> matchups = conn.Query<ModelMatchup>("dbo.Matchups_getByTournament", data, commandType: CommandType.StoredProcedure).ToList();
+                    dp.Add("@TournamentId", tournament.Id);
+
+                    List<ModelMatchup> matchups = conn.Query<ModelMatchup>("dbo.Matchups_getByTournament", dp, commandType: CommandType.StoredProcedure).ToList();
 
                     foreach (ModelMatchup matchup in matchups)
                     {
-                        data = new DynamicParameters();
+                        dp = new DynamicParameters();
 
-                        data.Add("MatchupId", matchup.Id);
-                        matchup.Entries = conn.Query<ModelMatchupEntry>("dbo.MatchupEntries_getByTournament", data, commandType: CommandType.StoredProcedure).ToList();
+                        dp.Add("MatchupId", matchup.Id);
+
+                        matchup.Entries = conn.Query<ModelMatchupEntry>("dbo.MatchupEntries_getByTournament", dp, commandType: CommandType.StoredProcedure).ToList();
 
                         List<ModelTeam> teams = GetTeams();
 
@@ -241,73 +247,73 @@ namespace TrackerLibrary.DataAccess
             {
                 foreach (ModelMatchup matchup in rounds)
                 {
-                    var data = new DynamicParameters();
+                    var dp = new DynamicParameters();
 
-                    data.Add("@TournamentId", tournament.Id);
-                    data.Add("@MatchupRound", matchup.MatchupRound);
-                    data.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                    dp.Add("@TournamentId", tournament.Id);
+                    dp.Add("@MatchupRound", matchup.MatchupRound);
+                    dp.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
 
-                    conn.Execute("dbo.Matchups_insert", data, commandType: CommandType.StoredProcedure);
+                    conn.Execute("dbo.Matchups_insert", dp, commandType: CommandType.StoredProcedure);
 
-                    matchup.Id = data.Get<int>("@Id");
+                    matchup.Id = dp.Get<int>("@Id");
 
                     foreach (ModelMatchupEntry entry in matchup.Entries)
                     {
-                        data = new DynamicParameters();
+                        dp = new DynamicParameters();
 
-                        data.Add("@MatchupID", matchup.Id);
+                        dp.Add("@MatchupID", matchup.Id);
 
-                        if (entry.ParentMatchup == null) data.Add("@ParentMatchupId", null);
-                        else data.Add("@ParentMatchupId", entry.ParentMatchup.Id);
+                        if (entry.ParentMatchup == null) dp.Add("@ParentMatchupId", null);
+                        else dp.Add("@ParentMatchupId", entry.ParentMatchup.Id);
 
-                        if (entry.TeamCompeting == null) data.Add("@TeamCompetingId", null);
-                        else data.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+                        if (entry.TeamCompeting == null) dp.Add("@TeamCompetingId", null);
+                        else dp.Add("@TeamCompetingId", entry.TeamCompeting.Id);
                         
-                        data.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                        dp.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
 
-                        conn.Execute("dbo.MatchupEntries_insert", data, commandType: CommandType.StoredProcedure);
+                        conn.Execute("dbo.MatchupEntries_insert", dp, commandType: CommandType.StoredProcedure);
 
-                        entry.Id = data.Get<int>("@Id");
+                        entry.Id = dp.Get<int>("@Id");
                     }
                 }
             }
         }
         private void SaveTournament(IDbConnection conn, ModelTournament tournament)
         {
-            var data = new DynamicParameters();
+            var dp = new DynamicParameters();
 
-            data.Add("@TournamentName", tournament.TournamentName);
-            data.Add("@EntryFee", tournament.EntryFee);
-            data.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
+            dp.Add("@TournamentName", tournament.TournamentName);
+            dp.Add("@EntryFee", tournament.EntryFee);
+            dp.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
 
-            conn.Execute("dbo.Tournaments_insert", data, commandType: CommandType.StoredProcedure);
+            conn.Execute("dbo.Tournaments_insert", dp, commandType: CommandType.StoredProcedure);
 
-            tournament.Id = data.Get<int>("@Id");
+            tournament.Id = dp.Get<int>("@Id");
         }
         private void SaveTournamentPrizes(IDbConnection conn, ModelTournament tournament)
         {
             foreach (ModelPrize prize in tournament.Prizes)
             {
-                var data = new DynamicParameters();
+                var dp = new DynamicParameters();
 
-                data.Add("@TournamentId", tournament.Id);
-                data.Add("PrizeId", prize.ID);
-                data.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                dp.Add("@TournamentId", tournament.Id);
+                dp.Add("PrizeId", prize.Id);
+                dp.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.TournamentPrizes_insert", data, commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.TournamentPrizes_insert", dp, commandType: CommandType.StoredProcedure);
             }
         }
         private void SaveTournamentEntries(IDbConnection conn, ModelTournament tournament)
         {
             foreach (ModelTeam team in tournament.EnteredTeams)
             {
-                var data = new DynamicParameters();
+                var dp = new DynamicParameters();
 
-                data.Add("@TournamentId", tournament.Id);
-                data.Add("TeamId", team.Id);
-                data.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
+                dp.Add("@TournamentId", tournament.Id);
+                dp.Add("TeamId", team.Id);
+                dp.Add("@Id", 0, DbType.Int32, direction: ParameterDirection.Output);
 
-                conn.Execute("dbo.TournamentEntries_insert", data, commandType: CommandType.StoredProcedure);
+                conn.Execute("dbo.TournamentEntries_insert", dp, commandType: CommandType.StoredProcedure);
             }
         }
 

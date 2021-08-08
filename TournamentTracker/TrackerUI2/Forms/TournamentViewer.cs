@@ -118,6 +118,7 @@ namespace TrackerUI
                             tbTeamOne.Text = model.Entries[0].Score.ToString();
 
                             lTeamTwo.Text = "<bot>";
+                            tbTeamTwo.ReadOnly = true;
                             tbTeamTwo.Text = "0";
                         }
                         else
@@ -131,6 +132,7 @@ namespace TrackerUI
                         if (model.Entries[1].TeamCompeting != null)
                         {
                             lTeamTwo.Text = model.Entries[1].TeamCompeting.TeamName; ;
+                            tbTeamTwo.ReadOnly = false;
                             tbTeamTwo.Text = model.Entries[1].Score.ToString();
                         }
                         else
@@ -150,8 +152,8 @@ namespace TrackerUI
         {
             string output = "";
 
-            bool scoreTwoValid = double.TryParse(tbTeamOne.Text, out double teamOneScore);
-            bool scoreOneValid = double.TryParse(tbTeamTwo.Text, out double teamTwoScore);
+            bool scoreOneValid = double.TryParse(tbTeamOne.Text, out double teamOneScore);
+            bool scoreTwoValid = double.TryParse(tbTeamTwo.Text, out double teamTwoScore);
 
             if (!scoreOneValid)
             {
@@ -189,14 +191,14 @@ namespace TrackerUI
                 {
                     if (model.Entries[0].TeamCompeting != null)
                     {
-                        model.Entries[0].Score = Convert.ToDouble(tbTeamOne.Text);
+                        model.Entries[0].Score = Convert.ToInt32(tbTeamOne.Text);
                     }
                 }
                 if (i == 1)
                 {
                     if (model.Entries[1].TeamCompeting != null)
                     {
-                        model.Entries[1].Score = Convert.ToDouble(tbTeamTwo.Text);
+                        model.Entries[1].Score = Convert.ToInt32(tbTeamTwo.Text);
                     }
                 }
             }

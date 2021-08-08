@@ -1,11 +1,13 @@
 ﻿using Logic.DataAccess.TextHelpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
-    public class TextConnector : IDataConnection // REFACTORED
+    public class TextConnector : IDataConnection // x
     {
         #region Interface
 
@@ -23,9 +25,10 @@ namespace TrackerLibrary.DataAccess
         {
             List<ModelPrize> prizes = GlobalConfig.PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModel();
 
-            prize.ID = (prizes.Count > 0) ? prizes.OrderByDescending((x) => x.ID).First().ID + 1 : 1;
+            prize.Id = (prizes.Count > 0) ? prizes.OrderByDescending((x) => x.Id).First().Id + 1 : 1;
 
             prizes.Add(prize);
+
             prizes.SaveToPrizeFile();
         }
         public void CreateTeam(ModelTeam team)
@@ -35,6 +38,7 @@ namespace TrackerLibrary.DataAccess
             team.Id = (teams.Count > 0) ? teams.OrderByDescending((x) => x.Id).First().Id + 1 : 1;
 
             teams.Add(team);
+
             teams.SaveToTeamFile();
         }
         public void CreateTournament(ModelTournament tournament)
@@ -59,11 +63,16 @@ namespace TrackerLibrary.DataAccess
         {
             List<ModelTournament> tournaments = GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
 
-            tournaments.Remove(tournament);
+            foreach (ModelTournament tournamentA in tournaments)
+            {
+                if(tournamentA.Id == tournament.Id)
+                {
+                    tournaments.Remove(tournamentA);
+                    break;
+                }
+            }
 
             tournaments.SaveToTournamentFile();
-
-            Logic.AppLogic.UpdateTournamentResults(tournament);
         }
         public List<ModelPerson> GetPersons()
         {
@@ -79,6 +88,5 @@ namespace TrackerLibrary.DataAccess
         }
 
         #endregion
-
     }
 }

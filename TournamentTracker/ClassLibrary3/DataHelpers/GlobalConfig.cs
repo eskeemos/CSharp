@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Configuration;
 using TrackerLibrary.DataAccess;
 using static TrackerLibrary.Enums;
 
 namespace TrackerLibrary
 {
-    
-    public static class GlobalConfig // REFACTORED
-    {
 
+    public static class GlobalConfig // x
+    {
         #region Const
 
         public const string

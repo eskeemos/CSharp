@@ -74,7 +74,7 @@ namespace TrackerUI
         }
         private void BcreateTournament_Click(object sender, EventArgs e)
         {
-            bool feeAcceptable = decimal.TryParse(tbEntryFee.Text, out decimal fee);
+            bool feeAcceptable = int.TryParse(tbEntryFee.Text, out int fee);
             if (!feeAcceptable)
             {
                 MessageBox.Show("You need to enter valid Entry Fee data!", "Invalid Fee", MessageBoxButtons.OK, MessageBoxIcon.Error);

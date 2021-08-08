@@ -2,7 +2,7 @@
 
 namespace TrackerLibrary.Models
 {
-    public class ModelMatchup // REFACTORED
+    public class ModelMatchup // x
     {
         public int Id { get; set; }
         public List<ModelMatchupEntry> Entries { get; set; } = new List<ModelMatchupEntry>();
@@ -15,23 +15,22 @@ namespace TrackerLibrary.Models
             {
                 string output = "";
 
-                foreach (ModelMatchupEntry model in Entries)
+                foreach (ModelMatchupEntry entry in Entries)
                 {
-                    if(model.TeamCompeting != null)
+                    if(entry.TeamCompeting != null)
                     {
                         if (output.Length == 0)
                         {
-                            output = model.TeamCompeting.TeamName;
+                            output = entry.TeamCompeting.TeamName;
                         }
                         else
                         {
-                            output += $" vs. {model.TeamCompeting.TeamName}";
+                            output += $" vs. {entry.TeamCompeting.TeamName}";
                         }
                     }
                     else
                     {
                         output = "Matchup Not Yet Determined";
-                        break;
                     }
                 }
 

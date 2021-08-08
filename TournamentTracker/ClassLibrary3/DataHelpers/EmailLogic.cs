@@ -4,7 +4,7 @@ using System.Net.Mail;
 
 namespace Logic.DataHelpers
 {
-    public static class EmailLogic // REFACTORED
+    public static class EmailLogic // x
     {
         public static void SendEmail(string to, string subject, string body)
         {
@@ -24,6 +24,7 @@ namespace Logic.DataHelpers
             {
                 mail.Bcc.Add(email);
             }
+
             mail.From = fromMail;
             mail.Subject = subject;
             mail.Body = body;

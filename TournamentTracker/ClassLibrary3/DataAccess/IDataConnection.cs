@@ -3,7 +3,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess
 {
-    public interface IDataConnection // REFACTORED
+    public interface IDataConnection // x
     {
         void CreatePrize(ModelPrize prize);
         void CreatePerson(ModelPerson person);

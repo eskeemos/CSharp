@@ -8,7 +8,7 @@ using TrackerLibrary.Models;
 
 namespace Logic.DataAccess.TextHelpers
 {
-    public static class TextConnectorProcessor // REFACTORED
+    public static class TextConnectorProcessor // x
     {
         #region ConvertDataToModel
 
@@ -22,11 +22,11 @@ namespace Logic.DataAccess.TextHelpers
 
                 ModelPrize prize = new ModelPrize
                 {
-                    ID = int.Parse(cols[0]),
+                    Id = int.Parse(cols[0]),
                     PlaceNumber = int.Parse(cols[1]),
                     PlaceName = cols[2],
-                    PrizeAmount = decimal.Parse(cols[3]),
-                    PrizePercentage = double.Parse(cols[4])
+                    PrizeAmount = int.Parse(cols[3]),
+                    PrizePercentage = int.Parse(cols[4])
                 };
 
                 prizes.Add(prize);
@@ -98,25 +98,28 @@ namespace Logic.DataAccess.TextHelpers
                 {
                     Id = int.Parse(cols[0]),
                     TournamentName = cols[1],
-                    EntryFee = decimal.Parse(cols[2])
+                    EntryFee = int.Parse(cols[2])
                 };
 
                 string[] teamIds = cols[3].Split('|');
+
                 foreach (string id in teamIds)
                 {
                     tournament.EnteredTeams.Add(teams.Where((x) => x.Id == int.Parse(id)).First());
                 }
 
                 string[] prizeIds = cols[4].Split('|');
+
                 if (int.Parse(prizeIds[0]) != 0)
                 {
                     foreach (string Id in prizeIds)
                     {
-                        tournament.Prizes.Add(prizes.Where((x) => x.ID == int.Parse(Id)).First());
+                        tournament.Prizes.Add(prizes.Where((x) => x.Id == int.Parse(Id)).First());
                     }
                 }
 
                 string[] rounds = cols[5].Split('|');
+
                 foreach (string round in rounds)
                 {
                     string[] msText = round.Split('^');
@@ -168,7 +171,7 @@ namespace Logic.DataAccess.TextHelpers
                 };
 
                 entry.TeamCompeting = (cols[1].Length == 0) ? null : LookeupTeamId(cols[1]);
-                entry.Score = double.Parse(cols[2]);
+                entry.Score = int.Parse(cols[2]);
                 entry.ParentMatchup = (int.TryParse(cols[3], out int pId)) ? LookupMatchupId(Convert.ToString(pId)) : null;
 
                 entries.Add(entry);
@@ -209,13 +212,13 @@ namespace Logic.DataAccess.TextHelpers
         }
         private static string ConvertPrizeListToString(List<ModelPrize> prizes)
         {
-            string prizesList = "";
+            string prizesList = "0";
 
             if (prizes.Count == 0) return prizesList;
 
             foreach (ModelPrize prize in prizes)
             {
-                prizesList += $"{prize.ID}";
+                prizesList += $"{prize.Id}";
             }
 
             return prizesList;
@@ -270,7 +273,7 @@ namespace Logic.DataAccess.TextHelpers
 
             foreach (ModelPrize prize in prizes)
             {
-                prizeLines.Add($"{prize.ID},{prize.PlaceNumber},{prize.PlaceName},{prize.PrizeAmount},{prize.PrizePercentage}");
+                prizeLines.Add($"{prize.Id},{prize.PlaceNumber},{prize.PlaceName},{prize.PrizeAmount},{prize.PrizePercentage}");
             }
 
             File.WriteAllLines(GlobalConfig.PrizesFile.FullFilePath(), prizeLines);
@@ -339,6 +342,7 @@ namespace Logic.DataAccess.TextHelpers
 
                 matchupLines.Add($"{MatchupN.Id},{ConvertMatchupEntryListToString(MatchupN.Entries)},{winnerId},{MatchupN.MatchupRound}");
             }
+
             File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), matchupLines);
         }
         private static void SaveEntryToFile(this ModelMatchupEntry entry)
@@ -353,7 +357,7 @@ namespace Logic.DataAccess.TextHelpers
 
             foreach (ModelMatchupEntry entryN in entries)
             {
-                string parentMatchupId = (entryN.ParentMatchup != null) ?  entryN.ParentMatchup.Id.ToString() : "0";
+                string parentMatchupId = (entryN.ParentMatchup != null) ? entryN.ParentMatchup.Id.ToString() : "0";
                 string teamCompetingId = (entryN.TeamCompeting != null) ? entryN.TeamCompeting.Id.ToString() : "0";
 
                 entryLines.Add($"{entryN.Id},{teamCompetingId},{entryN.Score},{parentMatchupId}");
@@ -366,21 +370,22 @@ namespace Logic.DataAccess.TextHelpers
 
         #region UpdateToFile
 
-        public static void UpdateMatchupToFile(this ModelMatchup matchupM)
+        public static void UpdateMatchupToFile(this ModelMatchup matchup)
         {
             List<ModelMatchup> matchups = GlobalConfig.MatchupFile.FullFilePath().LoadFile().ConvertToMatchupModels();
 
-            foreach (ModelMatchup matchup in matchups)
+            foreach (ModelMatchup matchupA in matchups)
             {
-                if (matchup.Id == matchupM.Id)
+                if (matchupA.Id == matchup.Id)
                 {
-                    matchups.Remove(matchup);
+                    matchups.Remove(matchupA);
+                    break;
                 }
             }
 
-            matchups.Add(matchupM);
+            matchups.Add(matchup);
 
-            foreach (ModelMatchupEntry entry in matchupM.Entries)
+            foreach (ModelMatchupEntry entry in matchup.Entries)
             {
                 entry.UpdateEntryToFile();
             }
@@ -395,27 +400,28 @@ namespace Logic.DataAccess.TextHelpers
             }
             File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), matchupLines);
         }
-        public static void UpdateEntryToFile(this ModelMatchupEntry entryM)
+        public static void UpdateEntryToFile(this ModelMatchupEntry entry)
         {
             List<ModelMatchupEntry> entries = GlobalConfig.MatchupEntryModels.FullFilePath().LoadFile().ConvertToMatchupEntryModels();
 
-            foreach (ModelMatchupEntry entry in entries)
+            foreach (ModelMatchupEntry entryA in entries)
             {
-                if (entry.Id == entryM.Id)
+                if (entryA.Id == entry.Id)
                 {
-                    entries.Remove(entry);
+                    entries.Remove(entryA);
+                    break;
                 }
             }
             
-            entries.Add(entryM);
+            entries.Add(entry);
 
             List<string> entryLines = new List<string>();
 
-            foreach (ModelMatchupEntry entry in entries)
+            foreach (ModelMatchupEntry entryN in entries)
             {
-                string parentMatchupId = (entry.ParentMatchup != null) ? entry.ParentMatchup.Id.ToString() : "0";
-                string teamCompetingId = (entry.TeamCompeting != null) ? entry.TeamCompeting.Id.ToString() : "0";
-                entryLines.Add($"{entry.Id},{teamCompetingId},{entry.Score},{parentMatchupId}");
+                string parentMatchupId = (entryN.ParentMatchup != null) ? entryN.ParentMatchup.Id.ToString() : "0";
+                string teamCompetingId = (entryN.TeamCompeting != null) ? entryN.TeamCompeting.Id.ToString() : "0";
+                entryLines.Add($"{entryN.Id},{teamCompetingId},{entryN.Score},{parentMatchupId}");
             }
 
             File.WriteAllLines(GlobalConfig.MatchupEntryModels.FullFilePath(), entryLines);
@@ -475,6 +481,7 @@ namespace Logic.DataAccess.TextHelpers
                     {
                         row
                     };
+
                     return team.ConvertToTeamModel().First();
                 }
             }
@@ -495,6 +502,7 @@ namespace Logic.DataAccess.TextHelpers
                     {
                         row
                     };
+
                     return matchup.ConvertToMatchupModels().First();
                 }
             }

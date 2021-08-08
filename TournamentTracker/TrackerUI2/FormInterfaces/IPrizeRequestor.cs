@@ -2,7 +2,7 @@
 
 namespace TrackerUI2
 {
-    public interface IPrizeRequestor // REFACTORED
+    public interface IPrizeRequestor // x
     {
         void PrizeComplete(ModelPrize prize);
     }
